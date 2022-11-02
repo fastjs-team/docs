@@ -9,7 +9,27 @@
         },
         {
           "text": "Getting Started",
-          "link": "/v1.x/"
+          "link": "/guide/getting-started"
+        }
+      ]
+    },
+    {
+      "text": "Start Here",
+      "items": [
+        {
+          "text": "v1.x",
+          "link": "/v1.x"
+        }
+      ]
+    }
+  ],
+  "/v1.x": [
+    {
+      "text": "Essentials",
+      "items": [
+        {
+          "text": "Selecter",
+          "link": "/v1.x/selecter"
         }
       ]
     }

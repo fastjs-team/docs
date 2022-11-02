@@ -8,7 +8,7 @@ export default defineConfig({
         nav: navbar.nav,
         sidebar: sidebar,
         editLink: {
-            pattern: "https://github.com/fastjs-team/fastjs-docs/edit/dev/:path",
+            pattern: "https://github.com/fastjs-team/fastjs-docs/edit/dev/docs/:path",
             text: "Edit this page on GitHub",
         }
     }

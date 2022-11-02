@@ -41,13 +41,3 @@ import { selecter } from 'fastjs-next'
 
 selecter('body').html('Hello World!')
 ```
-
-### Custom name
-
-Don't like `selecter`? Change it!
-
-```js
-import { selecter as $ } from 'fastjs-next'
-
-$('body').html('Hello World!')
-```
