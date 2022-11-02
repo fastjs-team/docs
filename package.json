@@ -1,0 +1,25 @@
+{
+  "name": "fastjs-docs",
+  "version": "1.0.0",
+  "description": "On here, participate in fastjs-next document writing",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vitepress dev docs",
+    "build": "vitepress build docs",
+    "serve": "vitepress serve docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fastjs-team/fastjs-docs.git"
+  },
+  "author": "dy-xiaodong2022",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fastjs-team/fastjs-docs/issues"
+  },
+  "homepage": "https://github.com/fastjs-team/fastjs-docs#readme",
+  "dependencies": {
+    "vitepress": "^1.0.0-alpha.26",
+    "vue": "^3.2.41"
+  }
+}
