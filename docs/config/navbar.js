@@ -1,6 +1,10 @@
 export default {
   "nav": [
     {
+      "text": "Home",
+      "link": "https://fastjs.com.cn/"
+    },
+    {
       "text": "Github",
       "link": "https://github.com/fastjs-team/fastjs-next"
     },
