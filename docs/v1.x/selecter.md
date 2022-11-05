@@ -28,3 +28,6 @@ import { selecter as $ } from 'fastjs-next';
 console.log($(".class")); // FastjsDomList
 ```
 
+## Return
+
+`selecter` will return a `FastjsDom` or `FastjsDomList` object.

@@ -16,12 +16,6 @@ Then, init a new project.
 npm init
 ```
 
-### Vue-cli
-
-```bash
-vue create fastjs-demo
-```
-
 ### Vite
 
 ```bash

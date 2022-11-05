@@ -21,6 +21,14 @@ export default {
         {
           "text": "Selecter",
           "link": "/v1.x/selecter"
+        },
+        {
+          "text": "Element",
+          "link": "/v1.x/element"
+        },
+        {
+          "text": "Array",
+          "link": "/v1.x/array"
         }
       ]
     }

@@ -1,4 +1,4 @@
-{
+export default {
   "nav": [
     {
       "text": "Github",
@@ -9,9 +9,9 @@
       "items": [
         {
           "text": "v1.x",
-          "link": "./v1.x/"
+          "link": "/v1.x/selecter"
         }
       ]
-    }
+    },
   ]
 }
