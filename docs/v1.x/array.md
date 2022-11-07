@@ -1,7 +1,7 @@
-# Array <Badge type="warning" text="^1.0.4" title="there is bug before 1.0.4" />
+# Array <Badge type="warning" text="^1.0.11" />
 
 :::tip Strong FastjsArray
-FastjsArray's type check can use without typescript, it also has a lot of useful methods. 
+FastjsArray's type check can use without typescript, it also has a lot of useful methods.
 :::
 
 :::tip Suggestions
@@ -16,7 +16,7 @@ It can let you find error in runtime with some error output.
 Use `new FastjsArray()` to create a FastjsArray.
 
 ```javascript
-import { FastjsArray } from 'fastjs-next';
+import {FastjsArray} from 'fastjs-next';
 
 const array = new FastjsArray();
 ```
@@ -26,10 +26,10 @@ const array = new FastjsArray();
 Give parameter `config.type` to allow type check.
 
 ```javascript
-import { FastjsArray } from 'fastjs-next';
+import {FastjsArray} from 'fastjs-next';
 
 const array = new FastjsArray([], {
-    type: ["string", "number"]
+  type: ["string", "number"]
 });
 ```
 
@@ -38,10 +38,10 @@ const array = new FastjsArray([], {
 Give parameter `config.length` to allow max length.
 
 ```javascript
-import { FastjsArray } from 'fastjs-next';
+import {FastjsArray} from 'fastjs-next';
 
 const array = new FastjsArray([], {
-    length: 10
+  length: 10
 });
 ```
 
@@ -50,10 +50,10 @@ const array = new FastjsArray([], {
 First, create a `<number>FastjsArray` .
 
 ```javascript
-import { FastjsArray } from 'fastjs-next';
+import {FastjsArray} from 'fastjs-next';
 
 const array = new FastjsArray([], {
-    type: ["number"],
+  type: ["number"],
 });
 ```
 
@@ -70,10 +70,10 @@ If you add a string to the array, it will throw an error.
 
 ```javascript
 try {
-    array.push("4");
+  array.push("4");
 } catch (e) {
-    console.log(e); // Error
-    console.log(array.toArray()); // [1, 2, 3]
+  console.log(e); // Error
+  console.log(array.toArray()); // [1, 2, 3]
 }
 ```
 
@@ -84,10 +84,10 @@ try {
 Use `push` to add some index to the end of the array.
 
 ```javascript
-import { FastjsArray } from 'fastjs-next';
+import {FastjsArray} from 'fastjs-next';
 
 const array = new FastjsArray([], {
-    type: ["number"],
+  type: ["number"],
 });
 
 array.push(1, 2, 3);
@@ -103,10 +103,10 @@ Function `add` only can add one index each time.
 Use `add` to add some index to the array.
 
 ```javascript
-import { FastjsArray } from 'fastjs-next';
+import {FastjsArray} from 'fastjs-next';
 
 const array = new FastjsArray([], {
-    type: ["number"],
+  type: ["number"],
 });
 
 array.add(2);
@@ -121,10 +121,10 @@ array.toArray(); // [1, 2]
 Use `remove` to remove some index from the array.
 
 ```javascript
-import { FastjsArray } from 'fastjs-next';
+import {FastjsArray} from 'fastjs-next';
 
 const array = new FastjsArray([], {
-    type: ["number"],
+  type: ["number"],
 });
 
 array.push(1, 2, 3);
@@ -137,15 +137,15 @@ array.toArray(); // [1, 3]
 Use `each` to loop the array.
 
 ```javascript
-import { FastjsArray } from 'fastjs-next';
+import {FastjsArray} from 'fastjs-next';
 
 const array = new FastjsArray([], {
-    type: ["number"],
+  type: ["number"],
 });
 
 array.push(1, 2, 3);
 array.each((value, index) => {
-    console.log(value, index);
+  console.log(value, index);
 });
 // 1 0
 // 2 1
@@ -157,15 +157,30 @@ array.each((value, index) => {
 Use `get(index)` or `set(index, value)` to access the array.
 
 ```javascript
-import { FastjsArray } from 'fastjs-next';
+import {FastjsArray} from 'fastjs-next';
 
 const array = new FastjsArray([], {
-    type: ["number"],
+  type: ["number"],
 });
 
 array.push(1, 2, 3);
 array.get(1); // 2
 array.set(1, 4); // <number>FastjsArray -> [1, 4, 3]
+```
+
+### OR
+
+```javascript
+import {FastjsArray} from 'fastjs-next';
+
+const array = new FastjsArray([], {
+  type: ["number"],
+});
+// array._array = [1, 2, 3]; // Don't use this, it will lose type check, hooks and other features.
+array._array[0] = 1;
+array._array[1] = 2;
+array._array[2] = 3;
+array.toArray(); // [1, 2, 3]
 ```
 
 ## Then
@@ -177,14 +192,14 @@ Give empty time to run the function immediately.
 :::
 
 ```javascript
-import { FastjsArray } from 'fastjs-next';
+import {FastjsArray} from 'fastjs-next';
 
 const array = new FastjsArray([], {
-    type: ["number"],
+  type: ["number"],
 });
 
 array.push(1, 2, 3).then(() => {
-    console.log(array.toArray()); // [1, 2, 3, 4]
+  console.log(array.toArray()); // [1, 2, 3, 4]
 });
 array.push(4);
 ```
@@ -196,10 +211,10 @@ array.push(4);
 Use `length` to get the length of the array.
 
 ```javascript
-import { FastjsArray } from 'fastjs-next';
+import {FastjsArray} from 'fastjs-next';
 
 const array = new FastjsArray([1, 2, 3], {
-    type: ["number"],
+  type: ["number"],
 });
 
 array.length(); // 3
@@ -208,14 +223,45 @@ array.length(); // 3
 ### Get
 
 ```javascript
-import { FastjsArray } from 'fastjs-next';
+import {FastjsArray} from 'fastjs-next';
 
 const array = new FastjsArray([1, 2, 3], {
-    type: ["number"],
+  type: ["number"],
 });
 
 array.get("length"); // 3
 ```
+
+## Hook <Badge type="tip" text="^1.0.12" /> <Badge type="warning" text="^1.0.13" />
+
+You can use `addHook` to register a hook, it will run when the array changed.
+
+```javascript
+// Vue
+import {FastjsArray} from 'fastjs-next';
+
+export default {
+  data() {
+    const arr = new FastjsArray([]);
+    arr.addHook(() => {
+      this.$nextTick(this.$forceUpdate)
+    });
+    return {
+      arr
+    };
+  }
+}
+```
+
+:::details Common Problem
+**- My hook not work in vue**
+
+Did you use `toArray()` to get the array? Try to use `_array` to get the array.
+
+**- My hook still not work**
+
+Did you use `each()` to loop the array? Try to use `_array.forEach()` to loop the array.
+:::
 
 ## Other methods
 

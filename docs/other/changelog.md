@@ -4,6 +4,32 @@ Here you can find the most important changes in each version of the library.
 
 Remember to update to the latest version to get the latest features and bug fixes!!! :lady_beetle:
 
+## 1.0.13
+
+* Fix 1 bug - FastjsArray run hooks
+
+## 1.0.12
+
+* Update FastjsArray - add function addHooks()
+
+## 1.0.11
+
+* Fix 1 bug - FastjsArray add element place error
+
+## 1.0.10
+
+* Fix 1 bug - FastjsArray remove element will cause index error and can't remove element correctly
+* Update .npmignore
+* Update package.json
+
+## 1.0.9
+
+* Update README.md
+
+## 1.0.8
+
+* Update README.md
+
 ## 1.0.7
 
 * Fix 1 bug - FastjsArray.add
