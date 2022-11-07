@@ -1,8 +1,7 @@
-# Change Log
+## 1.0.14
 
-Here you can find the most important changes in each version of the library.
-
-Remember to update to the latest version to get the latest features and bug fixes!!! :lady_beetle:
+* Update package.json
+* Update .npmignore
 
 ## 1.0.13
 

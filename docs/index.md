@@ -18,5 +18,5 @@ We are trying to make a small, fast and powerful JavaScript Frame. Fastjs can us
 
 Fastjs is developed by [Fastjs Team](https://github.com/fastjs-team).
 
-- dy-xiaodong2022
+- [dy-xiaodong2022](https://xiaodong.indouyin.cn/)
 - shugoforgit
