@@ -2,30 +2,20 @@
 
 ## Create a new project
 
-### Npm
+:::tip Fastjs CLI
+Fastjs-cli is now available!
+:::
 
-Create and into a new directory.
+First, you need to install the Fastjs CLI:
 
 ```bash
-mkdir fastjs-demo && cd fastjs-demo
+npm install -g fastjs-cli
 ```
 
-Then, init a new project.
+Then, use fastjs-cli to create a new project:
 
 ```bash
-npm init
-```
-
-### Vite
-
-```bash
-npm init vite@latest
-```
-
-## Install Fastjs
-
-```bash
-npm install fastjs-next
+fastjs create my-project
 ```
 
 ## Write a demo
