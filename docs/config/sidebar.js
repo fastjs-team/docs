@@ -63,6 +63,14 @@ export default {
           "link": "/v1.x/element"
         },
         {
+          "text": "Dom",
+          "link": "/v1.x/dom"
+        },
+        {
+          "text": "DomList",
+          "link": "/v1.x/domlist"
+        },
+        {
           "text": "Array",
           "link": "/v1.x/array"
         },

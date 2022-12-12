@@ -6,6 +6,10 @@
 Fastjs-cli is now available!
 :::
 
+:::warning Fastjs CLI
+If you using fastjs-next `v1.1.0` or later, please update fastjs-cli to `v2.3.0` or later.
+:::
+
 First, you need to install the Fastjs CLI:
 
 ```bash

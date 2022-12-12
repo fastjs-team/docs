@@ -1,5 +1,9 @@
 # Selecter
 
+:::tip Newest version
+Fastjs-next `v1.1.0` is now available. [Click here](/other/changelog.html) to view the changelog.
+:::
+
 ## Select element
 
 :::tip
@@ -27,6 +31,13 @@ import { selecter as $ } from 'fastjs-next';
 
 console.log($(".class")); // FastjsDomList
 ```
+
+::: details FastjsDom and FastjsDomList
+When will it return FastjsDom?
+
+If you use id to select element, it will return `FastjsDom`.<br/>
+Also, if your selector is selecting something in ./src/config.ts -> dom.specialDom: Array\<string\>, it will return `FastjsDom`.
+:::
 
 ## Return
 

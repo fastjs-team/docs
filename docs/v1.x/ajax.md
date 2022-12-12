@@ -27,6 +27,8 @@ const ajax = new FastjsAjax("https://fastjs.com.cn/");
 ajax.send("GET");
 ```
 
+## Callback <Badge text="v1.1.0" type="tip" vertical="middle"/>
+
 ## Callback
 
 Define callback and failed to get response when request is success or failed.

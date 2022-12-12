@@ -42,23 +42,23 @@ git add .
 ```
 
 ```bash
-git commit -m "Update docs"
+git commit -m "Update src/fastjsDom.ts"
 ```
 
 ### 3. Pull Request
 
 Push your changes to your fork and submit a pull request.
 
-https://github.com/fastjs-team/fastjs-docs/pulls
+https://github.com/fastjs-team/fastjs-next/pulls
 
-## Docs Team
+## Code Team
 
 ### 1. Clone the repository
 
 Clone the repository on GitHub and install dependencies.
 
 ```bash
-git clone -b dev https://github.com/fastjs-team/fastjs-docs.git
+git clone -b dev https://github.com/fastjs-team/fastjs-next.git
 ```
 
 ### 2. Do your changes

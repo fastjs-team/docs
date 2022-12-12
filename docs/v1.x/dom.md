@@ -1,15 +1,30 @@
 # Element
 
 :::tip Authoritative document
-This page is for junior users. If you are a senior user, please see [FastjsDom](./dom.html) and [FastjsDomList](./domlist.html).
+This page is for senior users. If you are a junior user, you can skip this page.
 :::
 
 ## Create Element
+
+```typescript
+function constructor(el: HTMLElement | string) {}
+```
+
+FastjsDom receives `tagname<string>`
 
 ```javascript
 import { FastjsDom } from 'fastjs-next';
 
 const element = new FastjsDom("div");
+```
+
+If you already have a element, and just want to use FastjsDom to manage it, you can give parameter `element<HTMLElement>` to FastjsDom.
+
+```javascript
+import { FastjsDom } from 'fastjs-next';
+
+const element = document.createElement("div");
+const fastjsDom = new FastjsDom(element);
 ```
 
 ## Set index
