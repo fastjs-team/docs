@@ -90,6 +90,8 @@ class fastjsDom {
 }
 ```
 
+### Example
+
 Use `val` to set or get the value of the `input`, `textarea` and `button` element.
 
 ```javascript
@@ -299,9 +301,9 @@ Please give an Element, not FastjsDom or FastjsDomList.
 class fastjsDom {
     appendTo(el: HTMLElement): fastjsDom {}
     pushTo(el: HTMLElement): fastjsDom {}
+    addFirst(el: HTMLElement): fastjsDom {}
     addAfter(el: HTMLElement): fastjsDom {}
     addBefore(el: HTMLElement): fastjsDom {}
-    addFirst(el: HTMLElement): fastjsDom {}
 }
 ```
 
@@ -309,7 +311,7 @@ class fastjsDom {
 
 ### Add to end
 
-Use `appendTo` or `push` to add the element to the end of the place.
+Use `appendTo` or `pushTo` to add the element to the end of the place.
 
 ```javascript
 import { selecter as $, FastjsDom } from 'fastjs-next';
@@ -329,6 +331,28 @@ import { selecter as $, FastjsDom } from 'fastjs-next';
 let div = new FastjsDom("div");
 div.html("Hello World");
 div.addFirst($("body").el());
+```
+
+### Add after element
+
+Use `addAfter` to add the element after the place.
+
+```javascript
+import { selecter as $, FastjsDom } from 'fastjs-next';
+
+$("body").html("<span>This is a website</span>")
+new FastjsDom("h1").text("Website").addAfter($("span").el());
+```
+
+### Add before element
+
+Use `addBefore` to add the element before the place.
+
+```javascript
+import { selecter as $, FastjsDom } from 'fastjs-next';
+
+$("body").html("<h1>Website</h1>")
+new FastjsDom("span").text("This is a website").addBefore($("h1").el());
 ```
 
 ## Access element
