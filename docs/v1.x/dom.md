@@ -39,8 +39,8 @@ const fastjsDom = new FastjsDom(element);
 
 ```typescript
 class fastjsDom {
-    html<T extends string | number>(val: T): T extends undefined ? string : fastjsDom {}
-    text<T extends string | number>(val: T): T extends undefined ? string : fastjsDom {}
+    html<T extends string>(val: T): T extends undefined ? string : fastjsDom {}
+    text<T extends string>(val: T): T extends undefined ? string : fastjsDom {}
 }
 ```
 
