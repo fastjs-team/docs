@@ -1,4 +1,4 @@
-# Sponsor
+# Become a Sponsor
 
 Can't participate in the project directly? You can still help us by sponsoring the project.
 
