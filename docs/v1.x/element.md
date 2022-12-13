@@ -1,7 +1,7 @@
 # Element
 
 :::tip Authoritative document
-This page is for junior users. If you are a senior user, please see [FastjsDom](./dom.html) and [FastjsDomList](./domlist.html).
+This page is for junior users. If you want to know more, please see [FastjsDom](./dom.html) and [FastjsDomList](./domlist.html).
 :::
 
 ## Create Element
@@ -31,6 +31,18 @@ import { selecter as $ } from 'fastjs-next';
 
 console.log($("body").html()); // <h1>Hello World</h1>
 ```
+
+## Set value
+
+Use `val` to set or get the value of the `input`, `textarea` and `button` element.
+
+```javascript
+import { selecter as $ } from 'fastjs-next';
+
+$("input").val("Hello World");
+console.log($("input").val()); // Hello World
+```
+
 
 ## Set attribute
 
@@ -154,13 +166,13 @@ console.log($("body").get("innerHTML")); // <h1>Hello World</h1>
 
 ## Get Parent
 
-Use `parent()` to get the parent of the element.
+Use `father()` to get the parent of the element.
 
 ```javascript
 import { selecter as $ } from 'fastjs-next';
 
 $("body").html("<div></div>");
-console.log($("div").parent()); // FastjsDom -> body
+console.log($("div").father()); // FastjsDom -> body
 ```
 
 ## Get Child
