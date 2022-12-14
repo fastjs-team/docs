@@ -29,3 +29,9 @@ import { selecter } from 'fastjs-next'
 
 selecter('body').html('Hello World!')
 ```
+
+## Run the demo
+
+```bash
+npm run dev
+```
