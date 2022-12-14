@@ -311,7 +311,7 @@ Use `focus()` to focus input element.
 ```javascript
 import { selecter as $ } from 'fastjs-next';
 
-$("input")[0].focus();
+$("input").getEl().focus();
 ```
 ## Demo
 
