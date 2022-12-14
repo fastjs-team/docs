@@ -1,5 +1,12 @@
 # Change Log
 
+## 1.1.1
+
+* Typescript check error fix
+* FastjsDomList add function `val(...)`
+* Fix some bug
+* Optimize code
+
 ## 1.1.0
 
 * FastjsDom refactor
@@ -11,6 +18,8 @@
 * Fix some bug
 * Add some methods in `FastjsDom`
 * Private variable refactor
+* Update FastjsAjax
+* FastjsAjax refactor
 
 ### 1.0.14
 
