@@ -152,7 +152,7 @@ import { selecter as $ } from 'fastjs-next';
 $("span").style("color", "red !important");
 ```
 
-## Event <Badge text="^1.1.0" type="warning"/>
+## Event <Badge text="v1.1.0" type="warning"/>
 
 ### Prototype
 
@@ -183,7 +183,7 @@ $("body").on("click", (el) => {
 });
 ```
 
-### off <Badge text="^1.1.0" type="warning"/>
+### off <Badge text="v1.1.0" type="warning"/>
 
 Use `off` to remove event from the element.
 
