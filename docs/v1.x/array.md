@@ -232,7 +232,7 @@ const array = new FastjsArray([1, 2, 3], {
 array.get("length"); // 3
 ```
 
-## Hook <Badge type="tip" text="^1.0.12" /> <Badge type="warning" text="^1.0.13" />
+## Hook <Badge type="tip" text="v1.0.12" /> <Badge type="warning" text="v1.0.13" />
 
 You can use `addHook` to register a hook, it will run when the array changed.
 
