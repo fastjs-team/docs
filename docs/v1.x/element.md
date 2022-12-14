@@ -6,10 +6,22 @@ This page is for junior users. If you want to know more, please see [FastjsDom](
 
 ## Create Element
 
+Use `FastjsDom` to create a element.
+
 ```javascript
 import { FastjsDom } from 'fastjs-next';
 
-const element = new FastjsDom("div");
+const div = new FastjsDom("div");
+const span = new FastjsDom("span");
+```
+
+You can also use `FastjsDom` to manage an existing element.
+
+```javascript
+import { FastjsDom } from 'fastjs-next';
+
+const div = document.createElement("div");
+const fastjsDom = new FastjsDom(div);
 ```
 
 ## Set index
@@ -34,13 +46,17 @@ console.log($("body").html()); // <h1>Hello World</h1>
 
 ## Set value
 
+:::tip Set value in FastjsDomList <Badge text="v1.1.1" type="tip" />
+Function `val()` in FastjsDomList is added in `v1.1.1`.
+:::
+
 Use `val` to set or get the value of the `input`, `textarea` and `button` element.
 
 ```javascript
 import { selecter as $ } from 'fastjs-next';
 
 $("input").val("Hello World");
-console.log($("input").val()); // Hello World
+console.log($("input")[0].val()); // Hello World
 ```
 
 
@@ -202,7 +218,7 @@ It only work on FastjsDom.
 ```javascript
 import { selecter as $ } from 'fastjs-next';
 
-$("input")[0].focus();
+$("input").getEl().focus();
 ```
 ## Demo
 
