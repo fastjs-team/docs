@@ -17,3 +17,4 @@ You can use Fastjs as a framework, or use it as a library.
 Fastjs is developed by [Fastjs Team](https://github.com/fastjs-team).
 
 - [dy-xiaodong2022](https://xiaodong.indouyin.cn/)
+- Ivan-Adam
