@@ -90,6 +90,10 @@ export default {
         {
           "text": "Ajax",
           "link": "/v1.x/ajax"
+        },
+        {
+          "text": "Date",
+          "link": "/v1.x/date"
         }
       ]
     },
