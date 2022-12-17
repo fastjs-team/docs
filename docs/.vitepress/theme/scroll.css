@@ -1,4 +1,4 @@
-html, html * {
+html {
     /* For Firefox */
     scrollbar-width: none;
 }
