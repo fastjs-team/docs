@@ -29,7 +29,7 @@ const fastjsDom = new FastjsDom(div);
 Use `html` or `text` to set the index of the element.
 
 ```javascript
-import { selecter as $ } from 'fastjs-next';
+import { selector as $ } from 'fastjs-next';
 
 $("body").html("<h1>Hello World</h1>");
 ```
@@ -39,7 +39,7 @@ $("body").html("<h1>Hello World</h1>");
 Use `html` or `text` to get the index of the element.
 
 ```javascript
-import { selecter as $ } from 'fastjs-next';
+import { selector as $ } from 'fastjs-next';
 
 console.log($("body").html()); // <h1>Hello World</h1>
 ```
@@ -53,7 +53,7 @@ Function `val()` in FastjsDomList is added in `v1.1.1`.
 Use `val` to set or get the value of the `input`, `textarea` and `button` element.
 
 ```javascript
-import { selecter as $ } from 'fastjs-next';
+import { selector as $ } from 'fastjs-next';
 
 $("input").val("Hello World");
 console.log($("input")[0].val()); // Hello World
@@ -65,7 +65,7 @@ console.log($("input")[0].val()); // Hello World
 Use `attr` to set the attribute of the element.
 
 ```javascript
-import { selecter as $ } from 'fastjs-next';
+import { selector as $ } from 'fastjs-next';
 
 $("body").attr("id", "body");
 ```
@@ -75,7 +75,7 @@ $("body").attr("id", "body");
 Use `attr` to get the attribute of the element.
 
 ```javascript
-import { selecter as $ } from 'fastjs-next';
+import { selector as $ } from 'fastjs-next';
 
 console.log($("body").attr("id")); // body
 ```
@@ -85,7 +85,7 @@ console.log($("body").attr("id")); // body
 Use `css` to set the style of the element.
 
 ```javascript
-import { selecter as $ } from 'fastjs-next';
+import { selector as $ } from 'fastjs-next';
 
 // css(key, value, isImportant)
 $("body").css("background-color", "red", true);
@@ -100,7 +100,7 @@ $("div").css({
 Use `css` to set the style of the element.
 
 ```javascript
-import { selecter as $ } from 'fastjs-next';
+import { selector as $ } from 'fastjs-next';
 
 $("body").css("background-color", "red !important");
 ```
@@ -112,7 +112,7 @@ $("body").css("background-color", "red !important");
 Use `on` to add event to the element.
 
 ```javascript
-import { selecter as $ } from 'fastjs-next';
+import { selector as $ } from 'fastjs-next';
 
 $("body").on("click", () => {
     console.log("click");
@@ -124,7 +124,7 @@ $("body").on("click", () => {
 Use `off` to remove event from the element.
 
 ```javascript
-import { selecter as $ } from 'fastjs-next';
+import { selector as $ } from 'fastjs-next';
 
 const callback = (el) => {
   console.log(el, "clicked");
@@ -140,7 +140,7 @@ $("body").on("click", callback);
 Use `el()` to change FastjsDom to Element.
 
 ```javascript
-import { selecter as $ } from 'fastjs-next';
+import { selector as $ } from 'fastjs-next';
 
 console.log($("body").el()); // Element
 ```
@@ -150,25 +150,29 @@ console.log($("body").el()); // Element
 Use `getEl(index)` to get FastjsDom, index default is 0.
 
 ```javascript
-import { selecter as $ } from 'fastjs-next';
+import { selector as $ } from 'fastjs-next';
 
-console.log($("body").getEl().el()); // Element
+console.log($("div").getEl().el()); // Element
 ```
 
 Use `el(index)` to change FastjsDomList -> FastjsDom to Element, index default is 0.
 
 ```javascript
-import { selecter as $ } from 'fastjs-next';
+import { selector as $ } from 'fastjs-next';
 
-console.log($("body").el()); // Element
+console.log($("div").el()); // Element
 ```
 
 ## Add element
 
+:::warning
+Please give an Element, not FastjsDom or FastjsDomList.
+:::
+
 Use `append` to add element.
 
 ```javascript
-import { selecter as $, FastjsDom } from 'fastjs-next';
+import { selector as $, FastjsDom } from 'fastjs-next';
 
 let div = new FastjsDom("div")
 $("body").append(div);
@@ -182,12 +186,10 @@ Please give an Element, not FastjsDom or FastjsDomList.
 
 ### Add to end
 
-### Add to end
-
 Use `appendTo` or `push` to add the element to the end of the place.
 
 ```javascript
-import { selecter as $, FastjsDom } from 'fastjs-next';
+import { selector as $, FastjsDom } from 'fastjs-next';
 
 let div = new FastjsDom("div");
 div.html("Hello World");
@@ -199,7 +201,7 @@ div.appendTo($("body").el());
 Use `addFirst` to add the element to the start of the place.
 
 ```javascript
-import { selecter as $, FastjsDom } from 'fastjs-next';
+import { selector as $, FastjsDom } from 'fastjs-next';
 
 let div = new FastjsDom("div");
 div.html("Hello World");
@@ -211,7 +213,7 @@ div.addFirst($("body").el());
 Use `addAfter` to add the element after the place.
 
 ```javascript
-import { selecter as $, FastjsDom } from 'fastjs-next';
+import { selector as $, FastjsDom } from 'fastjs-next';
 
 $("body").html("<span>This is a website</span>")
 new FastjsDom("h1").text("Website").addAfter($("span").el());
@@ -222,7 +224,7 @@ new FastjsDom("h1").text("Website").addAfter($("span").el());
 Use `addBefore` to add the element before the place.
 
 ```javascript
-import { selecter as $, FastjsDom } from 'fastjs-next';
+import { selector as $, FastjsDom } from 'fastjs-next';
 
 $("body").html("<h1>Website</h1>")
 new FastjsDom("span").text("This is a website").addBefore($("h1").el());
@@ -237,7 +239,7 @@ You can also use `el(index)` to get the element.
 Use `get(index)` or `set(index, value)` to operate element.
 
 ```javascript
-import { selecter as $ } from 'fastjs-next';
+import { selector as $ } from 'fastjs-next';
 
 $("body").set("innerHTML", "<h1>Hello World</h1>");
 console.log($("body").get("innerHTML")); // <h1>Hello World</h1>
@@ -248,7 +250,7 @@ console.log($("body").get("innerHTML")); // <h1>Hello World</h1>
 Use `father()` to get the parent of the element.
 
 ```javascript
-import { selecter as $ } from 'fastjs-next';
+import { selector as $ } from 'fastjs-next';
 
 $("body").html("<div></div>");
 console.log($("div").father()); // FastjsDom -> body
@@ -263,7 +265,7 @@ It only work on FastjsDom.
 Use `first` or `last` to get the first or last child of the element.
 
 ```javascript
-import { selecter as $ } from 'fastjs-next';
+import { selector as $ } from 'fastjs-next';
 
 $("body").html("<span></span><div></div>");
 console.log($("body").first()); // FastjsDom -> span
@@ -279,7 +281,7 @@ It only work on FastjsDom.
 :::
 
 ```javascript
-import { selecter as $ } from 'fastjs-next';
+import { selector as $ } from 'fastjs-next';
 
 $("input").getEl().focus();
 ```
