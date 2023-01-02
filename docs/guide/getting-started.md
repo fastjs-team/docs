@@ -25,9 +25,9 @@ fastjs create my-project
 ## Write a demo
 
 ```js
-import { selecter } from 'fastjs-next'
+import { selector } from 'fastjs-next'
 
-selecter('body').html('Hello World!')
+selector('body').html('Hello World!')
 ```
 
 ## Run the demo
