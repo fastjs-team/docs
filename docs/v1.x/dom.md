@@ -97,9 +97,15 @@ Use `val` to set or get the value of the `input`, `textarea` and `button` elemen
 ```javascript
 import { selector as $ } from 'fastjs-next';
 
-$("input").val("Hello World");
-console.log($("input").val()); // Hello World
+$("input").getEl().val("Hello World");
+console.log($("input").getEl().val()); // Hello World
 ```
+
+:::details Why getEl()?
+Function selecter("input") returns a fastjsDomList, this page is for fastjsDom, so we need to use getEl() to get the first element of fastjsDomList.
+
+You can read [domlist](./domlist) to see the difference between fastjsDom and fastjsDomList.
+:::
 
 ## Set attribute
 
@@ -297,6 +303,8 @@ Please give an Element, not FastjsDom or FastjsDomList.
 
 ### Prototype
 
+Default value of el is `body`.
+
 ```typescript
 class fastjsDom {
     appendTo(el: HTMLElement): fastjsDom {}
@@ -362,6 +370,8 @@ You can also use `el()` to get the element.
 :::
 
 ### Prototype
+
+#### set <Badge text="v1.2.0" type="warning"/>
 
 ```typescript
 class fastjsDom {
