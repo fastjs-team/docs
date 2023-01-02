@@ -2,12 +2,17 @@
 
 ## v1.x
 
+### v1.2
+
+- v1.2.0 <Badge type="tip" text="recommended"/>
+
 ### v1.1
 
-- v1.1.1 <Badge type="tip" text="recommended"/>
-- v1.1.0 <Badge text="typescript" type="warning" title="It have some wrong types"/>
+- v1.1.2 
+- v1.1.1
+- v1.1.0 <Badge text="typescript" type="warning" title="It has some wrong types"/>
 
-### v1.0 <Badge text="obsolete" type="warning"/> <Badge text="typescript" type="warning" title="It have some wrong types"/>
+### v1.0 <Badge text="obsolete" type="warning"/> <Badge text="typescript" type="warning" title="It has some wrong types"/>
 
 - v1.0.14
 - v1.0.13
