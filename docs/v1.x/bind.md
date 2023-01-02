@@ -1,17 +1,17 @@
-# Bind
+# Bind <Badge type="warning" text="v1.2.0">
 
 ## Create Bind
 
 Use `FastjsDom.bind` to create a bind.
 
 ```javascript
-import { selecter as $ } from 'fastjs-next';
+import { selector as $ } from 'fastjs-next';
 
 let obj = {
   time: 0,
 };
 
-obj = selecter("body").bind("innerHTML", "time", obj);
+obj = selector("body").bind("innerHTML", "time", obj);
 
 setInterval(() => {
   obj.time++;
@@ -21,7 +21,7 @@ setInterval(() => {
 ## Update
 
 ```javascript
-import { selecter as $ } from 'fastjs-next';
+import { selector as $ } from 'fastjs-next';
 
 let obj = {
   time: 0,
@@ -29,19 +29,19 @@ let obj = {
 
 setInterval(() => {
   obj.time++;
-  obj = selecter("body").bind("innerHTML", "time", obj);
+  obj = selector("body").bind("innerHTML", "time", obj);
 }, 1000);
 ```
 
 ## Remove
 
 ```javascript
-import { selecter as $ } from 'fastjs-next';
+import { selector as $ } from 'fastjs-next';
 
 let obj = {
   time: 0,
 };
 
-obj = selecter("body").bind("innerHTML", "time", obj);
+obj = selector("body").bind("innerHTML", "time", obj);
 obj = Object.assign({}, obj);
 ```
