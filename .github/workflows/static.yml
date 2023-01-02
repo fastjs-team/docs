@@ -15,6 +15,9 @@ concurrency:
   group: "pages"
   cancel-in-progress: true
 
+with:
+  branch: main
+
 jobs:
   deploy:
     environment:
