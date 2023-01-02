@@ -72,6 +72,35 @@ $("body").html("<span>1</span><span>2</span><span>3</span>");
 console.log($("span").text()); // 1
 ```
 
+## Set value <Badge text="v1.2.1" type="tip"/>
+
+:::warning
+After v1.2.0, val become stricter. Parameter `val` only be `string | undefined`.
+:::
+
+### Prototype
+
+```typescript
+class fastjsDom {
+    val(): string
+    val(val: string): FastjsDomList
+    
+    val(val?: string): FastjsDomList | string {}
+}
+```
+
+### Example
+
+Use `val` to set or get the value of the `input`, `textarea` and `button` element.
+
+```javascript
+import { selector as $ } from 'fastjs-next';
+
+$("input").val("Hello World");
+console.log($("input").val()); // Hello World
+```
+
+
 ## Set attribute
 
 ### Prototype
@@ -226,7 +255,7 @@ import { selector as $ } from 'fastjs-next';
 console.log($("div").getEl()); // FastjsDom
 ```
 
-## Access element
+## Access element <Badge text="v1.1.2" type="tips"/>
 
 :::tip
 You can also use `el()` to get the element.
@@ -236,18 +265,18 @@ You can also use `el()` to get the element.
 
 ```typescript
 class fastjsDom {
-    get<T extends keyof HTMLElement>(key: T): HTMLElement[T] {}
-    set<T extends keyof HTMLElement>(key: T, val: HTMLElement[T]): fastjsDom {}
+    set<T extends keyof HTMLElement>(key: T, val: HTMLElement[T], el?: number): fastjsDom {}
 }
 ```
 
-Use `get(index)` or `set(index, value)` to operate element.
+Use `set(index, value, set)` to operate element.
 
 ```javascript
 import { selector as $ } from 'fastjs-next';
 
-$("body").set("innerHTML", "<h1>Hello World</h1>");
-console.log($("body").get("innerHTML")); // <h1>Hello World</h1>
+$("body > *")
+  .set("innerHTML", "<span>Hello World</span>")
+  .set("innerHTML", "<h1>Title</h1>", 0)
 ```
 
 ## Get Parent
@@ -269,47 +298,4 @@ import { selector as $ } from 'fastjs-next';
 
 $("body").html("<div></div>");
 console.log($("div").father()); // FastjsDom -> body
-```
-
-## Get Child
-
-### Prototype
-
-```typescript
-class fastjsDom {
-    first(): fastjsDom | null {}
-    last(): fastjsDom | null {}
-}
-```
-
-### Example
-
-Use `first` or `last` to get the first or last child of the element.
-
-```javascript
-import { selector as $ } from 'fastjs-next';
-
-$("body").html("<span></span><div></div>");
-console.log($("body").first()); // FastjsDom -> span
-console.log($("body").last()); // FastjsDom -> div
-```
-
-## Focus
-
-### Prototype
-
-```typescript
-class fastjsDom {
-    focus(): fastjsDom {}
-}
-```
-
-### Example
-
-Use `focus()` to focus input element.
-
-```javascript
-import { selector as $ } from 'fastjs-next';
-
-$("input").getEl().focus();
 ```
