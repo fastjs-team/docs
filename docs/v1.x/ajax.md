@@ -220,20 +220,20 @@ When you send an ajax request, it will wait `config.wait` time to send.
 If there is a new ajax request when it is waiting, it will cancel the old one and send the new one.
 
 ```javascript
-import {FastjsAjax, selecter} from 'fastjs-next';
+import {FastjsAjax, selector} from 'fastjs-next';
 
 const ajax = new FastjsAjax("https://demo.lalala.com/", {}, {
     wait: 1000
 });
-selecter("#btn").on("click", () => {
+selector("#btn").on("click", () => {
     ajax.get();
 });
 
-selecter("#btn").el().click();
+selector("#btn").el().click();
 setTimeout(() => {
-    selecter("#btn").el().click();
+    selector("#btn").el().click();
     setTimeout(() => {
-        selecter("#btn").el().click();
+        selector("#btn").el().click();
     }, 500);
 }, 500);
 // It will only send 1 ajax request
@@ -246,7 +246,7 @@ Set `config.shutdown` to set shutdown or not.
 If `config.shutdown` is `true`, if you already send an ajax request, it will not send again.
 
 ```javascript
-import {FastjsAjax, selecter} from 'fastjs-next';
+import {FastjsAjax, selector} from 'fastjs-next';
 
 const ajax = new FastjsAjax("https://demo.lalala.com/", {}, {
     shutdown: true,
