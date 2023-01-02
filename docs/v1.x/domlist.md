@@ -47,7 +47,7 @@ class fastjsDomList {
 Use `html` or `text` to set the index of the element.
 
 ```javascript
-import { selecter as $ } from 'fastjs-next';
+import { selector as $ } from 'fastjs-next';
 
 $("div").text("I am div");
 ```
@@ -66,7 +66,7 @@ el.text(text) -> each -> el.innerText = text -> el
 Use `html` or `text` to get the index of the fastjsDomList[0].
 
 ```javascript
-import { selecter as $ } from 'fastjs-next';
+import { selector as $ } from 'fastjs-next';
 
 $("body").html("<span>1</span><span>2</span><span>3</span>");
 console.log($("span").text()); // 1
@@ -90,7 +90,7 @@ class fastjsDomList {
 Use `attr` to set the attribute of the element.
 
 ```javascript
-import { selecter as $ } from 'fastjs-next';
+import { selector as $ } from 'fastjs-next';
 
 $("div").attr("i-am", "div");
 ```
@@ -116,7 +116,7 @@ class fastjsDomList {
 Use `css` to set the style of the element.
 
 ```javascript
-import { selecter as $ } from 'fastjs-next';
+import { selector as $ } from 'fastjs-next';
 
 $("span").css("color", "red");
 ```
@@ -124,7 +124,7 @@ $("span").css("color", "red");
 This style is important? Write like this
 
 ```javascript
-import { selecter as $ } from 'fastjs-next';
+import { selector as $ } from 'fastjs-next';
 
 $("span").css("color", "red", true);
 ```
@@ -132,7 +132,7 @@ $("span").css("color", "red", true);
 You can also use object to set the style of the element.
 
 ```javascript
-import { selecter as $ } from 'fastjs-next';
+import { selector as $ } from 'fastjs-next';
 
 $("span").css({
     "color": "red",
@@ -147,7 +147,7 @@ $("span").css({
 Use `css` to set the style of the element.
 
 ```javascript
-import { selecter as $ } from 'fastjs-next';
+import { selector as $ } from 'fastjs-next';
 
 $("span").css("color", "red !important");
 ```
@@ -176,7 +176,7 @@ function callback(el: FastjsDom, ...EventListenerCallback): void {}
 Use `on` to add event to the element.
 
 ```javascript
-import { selecter as $ } from 'fastjs-next';
+import { selector as $ } from 'fastjs-next';
 
 $("body").on("click", (el) => {
     console.log(el, "clicked");
@@ -188,7 +188,7 @@ $("body").on("click", (el) => {
 Use `off` to remove event from the element.
 
 ```javascript
-import { selecter as $ } from 'fastjs-next';
+import { selector as $ } from 'fastjs-next';
 
 const callback = (el) => {
     console.log(el, "clicked");
@@ -213,7 +213,7 @@ class fastjsDomList {
 Use `el(key)` to change FastjsDomList -> FastjsDom to Element.
 
 ```javascript
-import { selecter as $ } from 'fastjs-next';
+import { selector as $ } from 'fastjs-next';
 
 console.log($("div").el()); // Element
 ```
@@ -221,7 +221,7 @@ console.log($("div").el()); // Element
 Use `getEl(key)` to get FastjsDom in FastjsDomList.
 
 ```javascript
-import { selecter as $ } from 'fastjs-next';
+import { selector as $ } from 'fastjs-next';
 
 console.log($("div").getEl()); // FastjsDom
 ```
@@ -244,7 +244,7 @@ class fastjsDom {
 Use `get(index)` or `set(index, value)` to operate element.
 
 ```javascript
-import { selecter as $ } from 'fastjs-next';
+import { selector as $ } from 'fastjs-next';
 
 $("body").set("innerHTML", "<h1>Hello World</h1>");
 console.log($("body").get("innerHTML")); // <h1>Hello World</h1>
@@ -265,7 +265,7 @@ class fastjsDomList {
 Use `father()` to get the parent of the fastjsDomList[0].
 
 ```javascript
-import { selecter as $ } from 'fastjs-next';
+import { selector as $ } from 'fastjs-next';
 
 $("body").html("<div></div>");
 console.log($("div").father()); // FastjsDom -> body
@@ -287,7 +287,7 @@ class fastjsDom {
 Use `first` or `last` to get the first or last child of the element.
 
 ```javascript
-import { selecter as $ } from 'fastjs-next';
+import { selector as $ } from 'fastjs-next';
 
 $("body").html("<span></span><div></div>");
 console.log($("body").first()); // FastjsDom -> span
@@ -309,7 +309,7 @@ class fastjsDom {
 Use `focus()` to focus input element.
 
 ```javascript
-import { selecter as $ } from 'fastjs-next';
+import { selector as $ } from 'fastjs-next';
 
 $("input").getEl().focus();
 ```
