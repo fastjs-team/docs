@@ -18,6 +18,8 @@ concurrency:
 with:
   branch: main
 
+uses: actions/deploy-pages@v1
+
 jobs:
   deploy:
     environment:
