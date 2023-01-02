@@ -299,3 +299,94 @@ import { selector as $ } from 'fastjs-next';
 $("body").html("<div></div>");
 console.log($("div").father()); // FastjsDom -> body
 ```
+
+## ForEach <Badge text="v1.1.2" type="tips"/>
+
+:::tip eachCallback -> index
+Query `index` is available after v1.2.1.
+:::
+
+### Prototype
+
+```typescript
+type eachCallback = (el: FastjsDom, dom: HTMLElement, index: number) => void;
+
+class fastjsDomList {
+    each(callback: eachCallback): fastjsDomList {}
+}
+```
+
+### Example
+
+Use `each` to loop the FastjsDomList.
+
+```javascript
+import { selector as $ } from 'fastjs-next';
+
+$("body > *").each((el, dom, index) => {
+    console.log(el, dom, index);
+});
+```
+
+## Manage FastjsDomList
+
+### Prototype
+
+```typescript
+class fastjsDomList {
+    add(el: FastjsDom | HTMLElement): FastjsDomList {}
+    delete(key: number, deleteDom: boolean = false): FastjsDomList {}
+}
+```
+
+### Example
+
+Use `add` to add FastjsDom to FastjsDomList.
+
+```javascript
+import { selector as $ } from 'fastjs-next';
+
+const list = new FastjsDomList();
+list.add($("div").getEl());
+
+// or
+$("div").each(list.add)
+```
+
+Use `delete` to delete FastjsDom from FastjsDomList.
+
+```javascript
+import { selector as $ } from 'fastjs-next';
+
+$("div").delete(0); // fastjsDomList without the first div
+
+// or
+$("div").delete(0, true); // fastjsDomList without the first div and remove it from the DOM
+```
+
+## Length
+
+### Prototype
+
+```typescript
+class fastjsDomList {
+    length: number
+}
+```
+
+### Example
+
+Use `length` to get the length of FastjsDomList.
+
+```html
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+```
+
+```javascript
+import { selector as $ } from 'fastjs-next';
+
+console.log($("div").length); // 4
+```
