@@ -60,7 +60,7 @@ export default {
       "items": [
         {
           "text": "Selecter",
-          "link": "/v1.x/selecter"
+          "link": "/v1.x/selector"
         },
         {
           "text": "Element",
@@ -107,7 +107,7 @@ export default {
       "items": [
         {
           "text": "v1.x",
-          "link": "/v1.x/selecter"
+          "link": "/v1.x/selector"
         }
       ]
     },
