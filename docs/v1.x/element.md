@@ -56,7 +56,7 @@ Use `val` to set or get the value of the `input`, `textarea` and `button` elemen
 import { selector as $ } from 'fastjs-next';
 
 $("input").val("Hello World");
-console.log($("input")[0].val()); // Hello World
+console.log($("input").val()); // Hello World
 ```
 
 

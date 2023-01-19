@@ -62,11 +62,11 @@ Small or Big letter is not important when you use `send` .
 import {FastjsAjax} from 'fastjs-next';
 
 const ajax = new FastjsAjax("https://fastjs.com.cn/");
-ajax.send("GET");
+ajax.send("get");
 
 // or
-new FastjsAjax("https://fastjs.com.cn/").send("GET")
-new FastjsAjax("https://fastjs.com.cn/").send("POST")
+new FastjsAjax("https://fastjs.com.cn/").send("get")
+new FastjsAjax("https://fastjs.com.cn/").send("post")
 ```
 
 ### Keep Alive <Badge text="Learn more" type="tip" />
@@ -94,9 +94,28 @@ Give an object to `data` to send data.
 import {FastjsAjax} from 'fastjs-next';
 
 const ajax = new FastjsAjax("https://demo.lalala.com/getUser.php", {
-    token: "iAmATokenHaHaHa(HaHaHa*100)"
+    token: "iAmAToken"
 });
 ajax.post();
+```
+
+### Data when send <Badge text="v1.3.0" type="tip" />
+
+After v1.3.0, you can give an object when sending a request.
+
+```javascript
+import {FastjsAjax} from 'fastjs-next';
+
+const ajax = new FastjsAjax("https://demo.lalala.com/getUser.php");
+ajax.post({
+  token: "iAmAToken"
+});
+ajax.get({
+  token: "iAmAToken"
+});
+ajax.send("post", {
+  token: "iAmAToken"
+})
 ```
 
 ### Headers

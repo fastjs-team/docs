@@ -1,7 +1,7 @@
 # Selecter
 
 :::tip Newest version
-Fastjs-next `v1.2.0` is now available. [Click here](../other/changelog.html) to view the changelog.
+Fastjs-next `v1.3.0` is now available. [Click here](../other/changelog.html) to view the changelog.
 :::
 
 ## Select element
