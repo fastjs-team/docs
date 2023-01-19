@@ -7,7 +7,7 @@ try {
     b.onload = () => {
         setInterval(() => {
             b.querySelectorAll(".VPDocAsideOutline .outline-link").forEach(el => {
-                el.innerHTML = el.innerHTML.replace(/v[0-9.]+/g, "")
+                el.innerHTML = el.innerHTML.replace(/(Fastjs[A-Za-z]*)? v[0-9.]+/g, "")
             })
         }, 100)
     }
