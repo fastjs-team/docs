@@ -2,10 +2,10 @@
 
 Here shows all the sponsors of fastjs-team, thank you all! :sparkling_heart:
 
-## Gold Sponsor
+## Sponsors
 
--  [Your name](/contribute/sponsor)
+- DDVD233
 
-## Silver Sponsor
+## Become a sponsor
 
-- [Your name](/contribute/sponsor)
+If you want to become a sponsor, please visit [here](https://github.com/sponsors/dy-xiaodong2022/dashboard).

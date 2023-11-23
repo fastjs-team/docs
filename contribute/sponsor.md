@@ -4,26 +4,32 @@ Can't participate in the project directly? You can still help us by sponsoring t
 
 ## Sponsor privileges
 
-:::tip Help us
-Can't pay that much? You can tell your friends or company to sponsor us!
-:::
+### Gold Sponsor <Badge text="$80 / month"/>
 
-### Gold Sponsor <Badge text="$100 / month" type="tip" vertical="middle"/>
-
-- Show your logo / name on our [website](https://fastjs.com.cn/)!
-- Show your name on [SPONSORS.md](https://github.com/fastjs-team/fastjs-next)
-- Show your name on our [docs](/other/sponsor)
+- Show your logo / name on our website and [docs](/other/sponsor)
+- Show your name on our [repository](https://github.com/fastjs-team/fastjs-next/)
 - Full technical support
 
-### Silver Sponsor <Badge text="$10 / month" type="tip" vertical="middle"/>
+### Silver Sponsor <Badge text="$20 / month"/>
 
-- Show your name on [SPONSORS.md](https://github.com/fastjs-team/fastjs-next)
-- Show your name on our [docs](/other/sponsor)
+- Show your logo / name on our website and [docs](/other/sponsor)
+- Show your name on our [repository](https://github.com/fastjs-team/fastjs-next/)
+- Technical support
+
+### Sponsor <Badge text="$10 / month"/>
+
+- Show your logo / name on our website and [docs](/other/sponsor)
+- Show your name on our [repository](https://github.com/fastjs-team/fastjs-next/)
+- Talk with us anytime
+
+### Backer <Badge text="$5 / month"/>
+
+- Show your logo / name on our website and [docs](/other/sponsor)
+- Show your name on our [repository](https://github.com/fastjs-team/fastjs-next/)
 
 ## Become a sponsor
 
 Contact us at these methods:
 
-- WeChat: [dy-xiaodong2022](https://wechat.com/)
-- Discord: [dy-xiaodong#3673](https://discord.com/)
+- Tencent QQ: [2661009083](https://im.qq.com/)
 - Email: [xiaodong@indouyin.cn](mailto:xiaodong@indouyin.cn)
