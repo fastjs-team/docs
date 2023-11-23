@@ -2,15 +2,20 @@
 
 ## What is it?
 
-Fastjs is a high availability, high performance JavaScript library.
+Fastjs-next is a useful, lightweight JavaScript library for any types of project.
 
-It is designed to be easy to use. Fastjs can be use like a library with any framework.
+It is designed to be easy to use. Fastjs can be with any framework or just pure JavaScript.
 
-Fastjs is a good choice for you to develop your project.
+## Contributors
 
-## Developer
+Thanks goes to these wonderful people, to let fastjs-next be better. 🙌
 
-Fastjs is developed by [Fastjs Team](https://github.com/fastjs-team).
+<a href="https://github.com/fastjs-team/fastjs-next/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=fastjs-team/fastjs-next" />
+</a>
 
-- [dy-xiaodong2022](https://xiaodong.indouyin.cn/)
-- Ivan-Adam (Community)
+## Sponsors
+
+<div align="center">
+  <img src="https://raw.githubusercontent.com/dy-xiaodong2022/sponsors/main/sponsors.svg" />
+</div>
