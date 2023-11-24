@@ -1,36 +1,14 @@
 const introduction = {
-  "text": "Introduction",
+  "text": "Getting Started",
   "items": [
     {
-      "text": "Description",
+      "text": "Introduction",
       "link": "/"
     },
     {
-      "text": "Version List",
-      "link": "/guide/version-list"
-    },
-    {
-      "text": "Getting Started",
-      "link": "/guide/getting-started"
+      "text": "Quick Start",
+      "link": "/guide/quick-start"
     }
-  ]
-}
-
-const contribute = {
-  "text": "Contribute",
-  "items": [
-    {
-      "text": "Become a Sponsor",
-      "link": "/community/sponsor"
-    },
-    {
-      "text": "Docs Contribution",
-      "link": "/community/docs"
-    },
-    {
-      "text": "Code Contribution",
-      "link": "/community/code"
-    },
   ]
 }
 
@@ -38,8 +16,12 @@ const other = {
   "text": "Other",
   "items": [
     {
-      "text": "Sponsors",
-      "link": "/other/sponsor"
+      "text": "Become a Sponsor",
+      "link": "/other/become-a-sponsor"
+    },
+    {
+      "text": "All Sponsors",
+      "link": "/other/sponsors"
     }
   ]
 }
@@ -47,7 +29,6 @@ const other = {
 export default {
   "/": [
     introduction,
-    contribute,
     other
   ]
 }
