@@ -7,25 +7,25 @@ Can't participate in the project directly? You can still help us by sponsoring t
 ### Gold Sponsor <Badge text="$80 / month"/>
 
 - Show your logo / name on our website and [docs](/other/sponsors)
-- Show your name on our [repository](https://github.com/fastjs-team/fastjs-next/)
+- Show your name on our [repository](https://github.com/fastjs-team/core/)
 - Full technical support
 
 ### Silver Sponsor <Badge text="$20 / month"/>
 
 - Show your logo / name on our website and [docs](/other/sponsors)
-- Show your name on our [repository](https://github.com/fastjs-team/fastjs-next/)
+- Show your name on our [repository](https://github.com/fastjs-team/core/)
 - Technical support
 
 ### Sponsor <Badge text="$10 / month"/>
 
 - Show your logo / name on our website and [docs](/other/sponsors)
-- Show your name on our [repository](https://github.com/fastjs-team/fastjs-next/)
+- Show your name on our [repository](https://github.com/fastjs-team/core/)
 - Talk with us anytime
 
 ### Backer <Badge text="$5 / month"/>
 
 - Show your logo / name on our website and [docs](/other/sponsors)
-- Show your name on our [repository](https://github.com/fastjs-team/fastjs-next/)
+- Show your name on our [repository](https://github.com/fastjs-team/core/)
 
 ## Become a sponsor
 
