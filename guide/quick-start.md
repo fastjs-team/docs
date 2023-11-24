@@ -1,22 +1,24 @@
-# Getting Started
+# Quick Start
 
 Fastjs-next support a lot of usage, you can use it in any way you want.
 
 ## With Bundler <Badge text="Recommended" />
 
-::: tip What is bundler?
+:::tip What is bundler?
 Bundler is a tool that can bundle your code into a single file, like [Webpack](https://webpack.js.org/), [Rollup](https://rollupjs.org/guide/en/), [Parcel](https://parceljs.org/), etc.
 
 If your project is created by [Vue CLI](https://cli.vuejs.org/), [Vite](https://vitejs.dev/), [Create React App](https://create-react-app.dev/), etc, you can use bundler version.
 :::
 
-::: tip Why bundler version is recommended?
+:::tip Why bundler version is recommended?
 Bundler version is recommended because it can reduce the size of your project, and it can let `fastjs-next` to be tree-shaked by bundler.
 :::
 
 We recommend you to use this version, it is super easy to use.
 
 ### Install
+
+
 
 ```bash
 npm i fastjs-next
@@ -46,7 +48,7 @@ const { yourModules } = window.fastjs
 
 ## With Node.js
 
-::: tip Production environment
+:::tip Production environment
 Fastjs-next should run in production mode in a right time, if it is not, check is `NODE_ENV` set to `production`.
 :::
 
