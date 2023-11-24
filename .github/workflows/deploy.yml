@@ -32,7 +32,7 @@ jobs:
 
       # mv dist to _site
       - name: Ready to Upload
-        run: mv dist _site
+        run: mv .vitepress/dist _site
 
       - name: Upload Artifact
         uses: actions/upload-pages-artifact@v2
