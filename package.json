@@ -1,6 +1,5 @@
 {
   "name": "fastjs-docs",
-  "version": "v2.0.0-alpha.1",
   "description": "This is fastjs official website.",
   "main": "index.js",
   "type": "module",
@@ -11,14 +10,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/fastjs-team/fastjs-docs.git"
+    "url": "git+https://github.com/fastjs-team/docs.git"
   },
   "author": "dy-xiaodong2022",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/fastjs-team/fastjs-docs/issues"
-  },
-  "homepage": "https://github.com/fastjs-team/fastjs-docs#readme",
+  "private": true,
   "dependencies": {
     "vite": "^5.0.2",
     "vitepress": "^1.0.0-rc.29",
