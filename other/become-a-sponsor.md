@@ -29,6 +29,8 @@ Can't participate in the project directly? You can still help us by sponsoring t
 
 ## Become a sponsor
 
+You can sponsor us on [GitHub Sponsors](https://github.com/sponsors/dy-xiaodong2022/dashboard).
+
 Contact us at these methods:
 
 - Tencent QQ: [2661009083](https://im.qq.com/)
