@@ -9,7 +9,7 @@ export default {
       "items": [
         {
           "text": "Code of Conduct",
-            "link": "/community/code-of-conduct"
+            "link": "/other/code-of-conduct"
         },
         {
           "text": "Contributing Guide",
