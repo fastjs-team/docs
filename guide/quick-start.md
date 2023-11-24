@@ -1,6 +1,6 @@
 # Quick Start
 
-Fastjs-next support a lot of usage, you can use it in any way you want.
+Fastjs support a lot of usage, you can use it in any way you want.
 
 ## With Bundler <Badge text="Recommended" />
 
@@ -11,7 +11,7 @@ If your project is created by [Vue CLI](https://cli.vuejs.org/), [Vite](https://
 :::
 
 :::tip Why bundler version is recommended?
-Bundler version is recommended because it can reduce the size of your project, and it can let `fastjs-next` to be tree-shaked by bundler.
+Bundler version is recommended because it can reduce the size of your project, and it can let fastjs to be tree-shaked by bundler.
 :::
 
 We recommend you to use this version, it is super easy to use.
@@ -21,13 +21,13 @@ We recommend you to use this version, it is super easy to use.
 
 
 ```bash
-npm i fastjs-next
+npm i @fastjs/core
 ```
 
 ### Usage
 
 ```js
-import { yourModules } from 'fastjs-next'
+import { yourModules } from '@fastjs/core'
 ```
 
 ## With CDN
@@ -37,9 +37,9 @@ Use it in browser directly or any other way you want.
 ### Usage
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/fastjs-next/dist/fastjs.global.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@fastjs/core/dist/fastjs.global.js"></script>
 <!-- or -->
-<script src="https://cdn.unpkg.com/fastjs-next/dist/fastjs.global.js"></script>
+<script src="https://cdn.unpkg.com/@fastjs/core/dist/fastjs.global.js"></script>
 ```
 
 ```js
@@ -49,7 +49,7 @@ const { yourModules } = window.fastjs
 ## With Node.js
 
 :::tip Production environment
-Fastjs-next should run in production mode in a right time, if it is not, check is `NODE_ENV` set to `production`.
+Fastjs should run in production mode in a right time, if it is not, check is `NODE_ENV` set to `production`.
 :::
 
 Use it in Node.js(CJS) environment.
@@ -57,13 +57,13 @@ Use it in Node.js(CJS) environment.
 ### Install
 
 ```bash
-npm i fastjs-next
+npm i @fastjs/core
 ```
 
 ### Usage
 
 ```js
-const { yourModules } = require('fastjs-next')
+const { yourModules } = require('@fastjs/core')
 ```
 
 ## With Browser ESM
@@ -74,8 +74,8 @@ Use it in browser ESM environment.
 
 ```html
 <script type="module">
-  import { yourModules } from 'https://cdn.jsdelivr.net/npm/fastjs-next/dist/fastjs.esm.js'
+  import { yourModules } from 'https://cdn.jsdelivr.net/npm/@fastjs/core/dist/fastjs.esm.js'
   // or
-  import { yourModules } from 'https://cdn.unpkg.com/fastjs-next/dist/fastjs.esm.js'
+  import { yourModules } from 'https://cdn.unpkg.com/@fastjs/core/dist/fastjs.esm.js'
 </script>
 ```
