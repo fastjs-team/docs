@@ -13,7 +13,7 @@ export default {
         },
         {
           "text": "Contributing Guide",
-          "link": "https://github.com/fastjs-team/docs/blob/.github/contributing.md"
+          "link": "https://github.com/fastjs-team/core/blob/main/.github/contributing.md"
         },
         {
           "text": "Docs Contribution",
