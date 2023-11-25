@@ -2,7 +2,7 @@
 import { useRoute } from 'vitepress'
 import {computed, provide, ref, useSlots, watch} from 'vue'
 import VPBackdrop from 'vitepress/dist/client/theme-default/components/VPBackdrop.vue'
-import VPContent from 'vitepress/dist/client/theme-default/components/VPContent.vue'
+import VPContent from './VPContent.vue'
 import VPFooter from 'vitepress/dist/client/theme-default/components/VPFooter.vue'
 import VPLocalNav from 'vitepress/dist/client/theme-default/components/VPLocalNav.vue'
 import VPNav from 'vitepress/dist/client/theme-default/components/VPNav.vue'
@@ -31,7 +31,12 @@ const heroImageSlotExists = computed(() => !!slots['home-hero-image'])
 provide('hero-image-slot-exists', heroImageSlotExists)
 
 const advanceMode = ref(true)
-const changeDocsMode = newVal => advanceMode.value = newVal
+const vpContentRef = ref()
+const changeDocsMode = newVal => {
+  localStorage.setItem('fastjs-docs-mode', newVal ? 'advance' : 'simple')
+  advanceMode.value = newVal
+  vpContentRef.value.docsModeChange(newVal)
+}
 </script>
 
 <template>
@@ -50,11 +55,12 @@ const changeDocsMode = newVal => advanceMode.value = newVal
     <VPLocalNav :open="isSidebarOpen" @open-menu="openSidebar" />
 
     <VPSidebar :open="isSidebarOpen">
-      <template #sidebar-nav-before><DocsModeSwitch @changeMode="changeDocsMode" /><slot name="sidebar-nav-before" /></template>
+      <template #sidebar-nav-before><DocsModeSwitch @changeMode="changeDocsMode"  /><slot name="sidebar-nav-before" /></template>
       <template #sidebar-nav-after><slot name="sidebar-nav-after" /></template>
     </VPSidebar>
+    <div ref="testRef">test</div>
 
-    <VPContent>
+    <VPContent :advanceMode="advanceMode"  ref="vpContentRef">
       <template #page-top><slot name="page-top" /></template>
       <template #page-bottom><slot name="page-bottom" /></template>
 
@@ -79,7 +85,6 @@ const changeDocsMode = newVal => advanceMode.value = newVal
       <template #aside-ads-before><slot name="aside-ads-before" /></template>
       <template #aside-ads-after><slot name="aside-ads-after" /></template>
     </VPContent>
-
     <VPFooter />
     <slot name="layout-bottom" />
   </div>
@@ -93,11 +98,11 @@ const changeDocsMode = newVal => advanceMode.value = newVal
   min-height: 100vh;
 }
 
-.simple-mode :deep(advance) {
+.simple-mode :deep(.advance-container) {
   display: none;
 }
 
-.advance-mode :deep(simple) {
+.advance-mode :deep(.simple-container) {
   display: none;
 }
 </style>
