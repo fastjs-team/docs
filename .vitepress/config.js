@@ -17,24 +17,25 @@ export default defineConfig({
             {icon: 'github', link: 'https://github.com/fastjs-team/core'},
             {icon: 'twitter', link: 'https://twitter.com/dy_xiaodong2022'}
         ],
+        outline: [2, 5],
     },
     markdown: {
         config: (md) => {
             md.use(container, {
                 name: 'advance',
                 openRender() {
-                    return `<Advance>`
+                    return `<div class="advance-container">`
                 },
                 closeRender() {
-                    return `</Advance>`
+                    return `</div>`
                 }
             }).use(container, {
                 name: 'simple',
                 openRender() {
-                    return `<Simple>`
+                    return `<div class="simple-container">`
                 },
                 closeRender() {
-                    return `</Simple>`
+                    return `</div>`
                 }
             })
         },
