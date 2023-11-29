@@ -10,8 +10,8 @@ const introduction = {
       "link": "/guide/quick-start"
     },
     {
-      "text": "How to use",
-        "link": "/guide/how-to-use"
+      "text": "Overview",
+        "link": "/guide/overview"
     }
   ]
 }
