@@ -11,11 +11,11 @@ permissions:
 
 jobs:
   invalid:
+    if: "${{ github.event.label.name == 'Resolution: Invalid'}}"
     runs-on: ubuntu-latest
     steps:
       - name: Reply to Pull Request
         uses: peter-evans/create-or-update-comment@v3
-        if: "${{ github.event.label.name == 'Resolution: Invalid'}}"
         with:
           issue-number: ${{ github.event.number }}
           body: |
@@ -33,11 +33,9 @@ jobs:
           script: |
             const pr = context.payload.pull_request;
             const label = context.payload.label;
-            if (label.name === 'Resolution: Invalid') {
-              github.rest.pulls.update({
-                pull_number: pr.number,
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                state: 'closed'
-              });
-            }
+            github.rest.pulls.update({
+              pull_number: pr.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'closed'
+            });
