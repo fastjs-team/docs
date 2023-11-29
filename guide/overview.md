@@ -1,26 +1,10 @@
 # Overview
 
 :::tip About this page
-This page is for quick overview of `@fastjs/core` modules. For more detailed information, please read the [API Reference](/api/) and each module's documentation.
+This page is for quick overview of `@fastjs/core` modules. For more detailed information, please read the API Reference and each module's documentation.
 :::
 
 Overview all the modules in `@fastjs/core` here.
-
-[//]: # (## Exports)
-
-[//]: # ()
-[//]: # (`@fastjs/core` exports these modules:)
-
-[//]: # ()
-[//]: # (- `array` - Runtime checking for JavaScript arrays, unexpected type error reporting, and more.)
-
-[//]: # (- `date` - Simplest date library for parsing, formatting dates.)
-
-[//]: # (- `dom` - DOM manipulation library with built-in support for selectors, events, and more.)
-
-[//]: # (- `request` - Powerful HTTP request library with built-in support for parsing and formatting URLs, handling global hooks, and more.)
-
-[//]: # (- `utils` - Utility functions for common tasks.)
 
 ## Modules
 
