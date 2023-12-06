@@ -6,8 +6,15 @@ import {container} from "@mdit/plugin-container";
 export default defineConfig({
     lang: 'en-US',
     title: 'Fastjs',
+    vite: {
+        assetsInclude: ['*.png']
+    },
+    head: [
+        ['link', {rel: 'icon', type: 'image/x-icon', href: '/icon.svg'}],
+    ],
     themeConfig: {
         nav: navbar.nav,
+        logo: '/icon.png',
         sidebar: sidebar,
         editLink: {
             pattern: "https://github.com/fastjs-team/docs/edit/main/:path",
