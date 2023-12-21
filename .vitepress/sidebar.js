@@ -21,7 +21,7 @@ const module = {
     "items": [
         {
             "text": "Module Structure",
-            "link": "/module/module-structure"
+            "link": "/guide/module-structure"
         }
     ]
 }

@@ -1,10 +1,10 @@
 # Overview
 
-:::tip About this page
-This page is for quick overview of `@fastjs/core` modules. For more detailed information, please read the API Reference and each module's documentation.
-:::
+::: tip About this page
+This page is for quick overview of `@fastjs-next/core` modules. For more detailed information, please read the API Reference and each module's documentation.
+::: 
 
-Overview all the modules in `@fastjs/core` here.
+Overview all the modules in `@fastjs-next/core` here.
 
 ## Modules
 
@@ -43,6 +43,12 @@ Fastjs DOM is a DOM manipulation library with built-in support for selectors, ev
 
 Fastjs DOM is designed to be simple and easy to use. It provides a lot of methods to manipulate DOM, let's see some examples:
 
+##### Task Queue
+
+In fastjs, we have a new word called `task queue`.
+
+It let 
+
 ##### Built-in api vs Fastjs DOM
 
 Add event listener:
@@ -73,16 +79,14 @@ document.body.appendChild(btn)
 
 // Fastjs DOM
 dom.newEl('button', {
-    classList: ['btn']
-}).text('Click me!').appendTo(document.body)
+    class: ['btn']
+}).text('Click me!').push()
 
 // Other possible ways in Fastjs DOM
-// - el.addAfter()
-// - el.addBefore()
-// - el.addFirst()
-// - el.append()
-// - el.appendTo()
-// - el.push()
+dom.newEl('button')
+    .addClass('btn')
+    .text('Click me!')
+    .push()
 ```
 
 ### Request

@@ -10,11 +10,11 @@ module-name/
 
 ## Entry file
 
-:::warning Import Module
-When you want to import a module, you should not import from `@fastjs/core/module-name`, you should import from `@fastjs/core`.
+::: warning Import Module
+When you want to import a module, you should not import from `@fastjs-next/core/module-name`, you should import from `@fastjs-next/core`.
 
 Importing modules with a wrong method will cause a lot of problems.
-:::
+::: 
 
 The entry file is `index.ts`. It is the only file that is exported from the module.
 
@@ -46,7 +46,7 @@ If you want to customize the usage, you can import the class and use it directly
 
 ## Other files
 
-Other files may includes:
+Other files may include:
 - classes
 - functions
 - interfaces
