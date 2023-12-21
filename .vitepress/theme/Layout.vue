@@ -58,7 +58,6 @@ const changeDocsMode = newVal => {
       <template #sidebar-nav-before><DocsModeSwitch @changeMode="changeDocsMode"  /><slot name="sidebar-nav-before" /></template>
       <template #sidebar-nav-after><slot name="sidebar-nav-after" /></template>
     </VPSidebar>
-    <div ref="testRef">test</div>
 
     <VPContent :advanceMode="advanceMode"  ref="vpContentRef">
       <template #page-top><slot name="page-top" /></template>
