@@ -21,5 +21,13 @@ export default {
         }
       ]
     },
+    {
+      "text": "Release",
+        "link": "https://npmjs.com/package/@fastjs-next/core"
+    },
+    {
+      "text": "Sponsor",
+        "link": "https://github.com/sponsors/dy-xiaodong2022"
+    }
   ]
 }
