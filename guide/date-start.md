@@ -68,7 +68,7 @@ These all return an `parseReturn` object, and this object contains a lot of info
 
 | Key           | Description                    | Example                  |
 |---------------|--------------------------------|--------------------------|
-| format        | format string                  | Y-M-D h:m:s              |
+| format        | format string                  | Y-M-D h\:m:s             |
 | date          | Date object                    | 2021-10-21T11:20:46.000Z |
 | string        | string of Date                 | 2021-10-21 19:20:46      |
 | dateString    | string of Date, same as string | 2021-10-21 19:20:46      |
