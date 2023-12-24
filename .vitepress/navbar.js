@@ -2,7 +2,7 @@ export default {
   "nav": [
     {
       "text": "Home",
-      "link": "https://fastjs.cc/"
+      "link": "https://fastjs.dev/"
     },
     {
       "text": "Community",

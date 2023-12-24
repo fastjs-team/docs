@@ -1,4 +1,4 @@
-# docs.fastjs.cc
+# docs.fastjs.dev
 
 ## Contributing
 
