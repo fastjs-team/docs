@@ -22,6 +22,10 @@ const module = {
         {
             "text": "Module Structure",
             "link": "/guide/module-structure"
+        },
+        {
+            "text": "Create a Date",
+            "link": "/guide/date-start"
         }
     ]
 }
