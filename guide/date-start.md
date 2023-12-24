@@ -64,6 +64,19 @@ date.parseTime(1666351246, "Y-M-D h:m:s")
 date.now("Y-M-D h:m:s")
 ```
 
+These all return an `parseReturn` object, and this object contains a lot of information.
+
+| Key           | Description                    | Example                  |
+|---------------|--------------------------------|--------------------------|
+| format        | format string                  | Y-M-D h:m:s              |
+| date          | Date object                    | 2021-10-21T11:20:46.000Z |
+| string        | string of Date                 | 2021-10-21 19:20:46      |
+| dateString    | string of Date, same as string | 2021-10-21 19:20:46      |
+| timestamp     | timestamp of Date              | 1666351246               |
+| utcDate       | Date object of UTC             | 2021-10-21T11:20:46.000Z |
+| utcTimestamp  | timestamp of UTC               | 1666351246               |
+| utcDateString | string of UTC                  | 2021-10-21 19:20:46      |
+
 :::advance
 ### Type Declaration
 
