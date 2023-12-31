@@ -6,7 +6,7 @@ With `FastjsDate`, you can do a lot of things with tiny code.
 
 A lot of projects need to get a time string from a specific format string, but this is not easy to do with built-in `Date` object.
 
-But with `FastjsDate`, you can do it easily, and it is super easy to use.
+But with `FastjsDate`, you can do it easily.
 
 :::tip Format string
 If you don't pass a format string, it will default to `Y-M-D h:m:s`.
