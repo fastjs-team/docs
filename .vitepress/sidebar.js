@@ -26,6 +26,10 @@ const module = {
         {
             "text": "Create a Date",
             "link": "/guide/date-start"
+        },
+        {
+            "text": "Using FastjsDate",
+            "link": "/guide/date-full"
         }
     ]
 }
