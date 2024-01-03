@@ -21,13 +21,13 @@ We recommend you to use this version, it is super easy to use.
 
 
 ```bash
-npm i @fastjs-next/core
+npm i jsfast
 ```
 
 ### Usage
 
 ```js
-import { yourModules } from '@fastjs-next/core'
+import { yourModules } from 'jsfast'
 ```
 
 ## With CDN
@@ -37,9 +37,9 @@ Use it in browser directly or any other way you want.
 ### Usage
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/@fastjs-next/core/dist/fastjs.global.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jsfast/dist/fastjs.global.js"></script>
 <!-- or -->
-<script src="https://cdn.unpkg.com/@fastjs-next/core/dist/fastjs.global.js"></script>
+<script src="https://cdn.unpkg.com/jsfast/dist/fastjs.global.js"></script>
 ```
 
 ```js
@@ -57,13 +57,13 @@ Use it in Node.js(CJS) environment.
 ### Install
 
 ```bash
-npm i @fastjs-next/core
+npm i jsfast
 ```
 
 ### Usage
 
 ```js
-const { yourModules } = require('@fastjs-next/core')
+const { yourModules } = require('jsfast')
 ```
 
 ## With Browser ESM
@@ -74,8 +74,8 @@ Use it in browser ESM environment.
 
 ```html
 <script type="module">
-  import { yourModules } from 'https://cdn.jsdelivr.net/npm/@fastjs-next/core/dist/fastjs.esm.js'
+  import { yourModules } from 'https://cdn.jsdelivr.net/npm/jsfast/dist/fastjs.esm.js'
   // or
-  import { yourModules } from 'https://cdn.unpkg.com/@fastjs-next/core/dist/fastjs.esm.js'
+  import { yourModules } from 'https://cdn.unpkg.com/jsfast/dist/fastjs.esm.js'
 </script>
 ```

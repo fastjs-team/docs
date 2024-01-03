@@ -11,7 +11,7 @@ module-name/
 ## Entry file
 
 ::: warning Import Module
-When you want to import a module, you should not import from `@fastjs-next/core/module-name`, you should import from `@fastjs-next/core`.
+When you want to import a module, you should not import from `jsfast/module-name`, you should import from `jsfast`.
 
 Importing modules with a wrong method will cause a lot of problems.
 ::: 

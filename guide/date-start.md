@@ -15,7 +15,7 @@ Scroll down to see the format string table.
 :::
 
 ```typescript
-import { date } from '@fastjs-next/core'
+import { date } from 'jsfast'
 
 date.string("Y-M-D h:m:s") // or
 date.now("Y-M-D h:m:s")
@@ -24,7 +24,7 @@ date.now("Y-M-D h:m:s")
 How about convert a timestamp to a time string?
 
 ```typescript
-import { date } from '@fastjs-next/core'
+import { date } from 'jsfast'
 
 date.string("Y-M-D h:m:s", 1666351246)
 ```
@@ -35,12 +35,12 @@ Exactly, it is super easy to use.
 ### Type Declaration
 
 ```typescript
-declare const _default: {
+declare const date: {
     string: (format: string, date?: number) => string;
     date: (format: string, date: string) => Date;
     reformat: (format: string, date: string, newFormat?: string) => string;
 };
-export default _default;
+export default date;
 ```
 :::
 
@@ -55,7 +55,7 @@ For more information about format string, scroll down to see the format string t
 Wow, that is so easy to use, but I want to get more information, how can I do it?
 
 ```typescript
-import { date } from '@fastjs-next/core'
+import { date } from 'jsfast'
 
 date.parse("2022-10-21 19:20:46", "Y-M-D h:m:s")
 date.parse(1666351246, "Y-M-D h:m:s")

@@ -3,7 +3,7 @@
 For some advanced usage, you can new a `FastjsDate` object and do what you want.
 
 ```typescript
-import { FastjsDate } from '@fastjs-next/core'
+import { FastjsDate } from 'jsfast'
 
 const date = new FastjsDate()
 console.log(date.toString())
@@ -12,7 +12,7 @@ console.log(date.toString())
 Or use the method in `date` module.
 
 ```typescript
-import { date } from '@fastjs-next/core'
+import { date } from 'jsfast'
 
 const date = date.create()
 console.log(date.toString())
@@ -49,7 +49,7 @@ If you want to get active time, you need to use `create` method or new a `Fastjs
 :::
 
 ```typescript
-import { FastjsDate } from '@fastjs-next/core'
+import { FastjsDate } from 'jsfast'
 
 const date = new FastjsDate()
 const str = date.toString()
@@ -149,7 +149,7 @@ With `FastjsDate`, you can switch between UTC and local time easily.
 ### Local time to UTC
 
 ```typescript
-import { FastjsDate } from '@fastjs-next/core'
+import { FastjsDate } from 'jsfast'
 
 const date = new FastjsDate()
 const utcDate = date.convertUTC("local")
@@ -159,7 +159,7 @@ sendToServer("finishTime", utcDate.toString())
 ### UTC to Local time
 
 ```typescript
-import { FastjsDate } from '@fastjs-next/core'
+import { FastjsDate } from 'jsfast'
 
 requestFromServer("finishTime").then((utcDate) => {
     const date = new FastjsDate("Y-M-D h:m:s", utcDate, true)
@@ -177,7 +177,7 @@ If you don't set a specific timezone, the default timezone will be user's browse
 When you want to set a specific timezone before you convert to UTC/local time, you can use `setZone` method.
 
 ```typescript
-import { FastjsDate } from '@fastjs-next/core'
+import { FastjsDate } from 'jsfast'
 
 const date = new FastjsDate()
 date.setZone(1)
@@ -198,7 +198,7 @@ When you just want to show current time like a clock(even refresh every second),
 When you want to refresh the creation time of date, you can use `refresh` method.
 
 ```typescript
-import { FastjsDate } from '@fastjs-next/core'
+import { FastjsDate } from 'jsfast'
 
 const date = new FastjsDate() // -> 2021-10-21 19:20:44
 setTimeout(() => {

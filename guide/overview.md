@@ -1,10 +1,10 @@
 # Overview
 
 ::: tip About this page
-This page is for quick overview of `@fastjs-next/core` modules. For more detailed information, please read the API Reference and each module's documentation.
+This page is for quick overview of `jsfast` modules. For more detailed information, please read the API Reference and each module's documentation.
 ::: 
 
-Overview all the modules in `@fastjs-next/core` here.
+Overview all the modules in `jsfast` here.
 
 ## Modules
 
