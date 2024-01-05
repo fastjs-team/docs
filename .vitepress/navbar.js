@@ -9,7 +9,7 @@ export default {
       "items": [
         {
           "text": "Code of Conduct",
-            "link": "/other/code-of-conduct"
+          "link": "/other/code-of-conduct"
         },
         {
           "text": "Contributing Guide",
@@ -17,17 +17,17 @@ export default {
         },
         {
           "text": "Docs Contribution",
-            "link": "https://github.com/fastjs-team/docs"
+          "link": "https://github.com/fastjs-team/docs"
         }
       ]
     },
     {
       "text": "Release",
-        "link": "https://npmjs.com/package/@fastjs-next/core"
+      "link": "https://npmjs.com/package/jsfast"
     },
     {
       "text": "Sponsor",
-        "link": "https://github.com/sponsors/dy-xiaodong2022"
+      "link": "https://github.com/sponsors/dy-xiaodong2022"
     }
   ]
 }
