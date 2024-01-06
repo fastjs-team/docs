@@ -1,6 +1,11 @@
-# Create a Date
+# Getting Start with Date
 
-With `FastjsDate`, you can do a lot of things with tiny code.
+## Advantages
+
+- Better solution for Function Encapsulation
+- Enhance your code Maintainability
+- Connect with other modules easily
+- Modular Design
 
 ## Get a time string
 
