@@ -1,5 +1,6 @@
 const introduction = {
     "text": "Getting Started",
+    "collapsed": false,
     "items": [
         {
             "text": "Introduction",
@@ -12,27 +13,29 @@ const introduction = {
         {
             "text": "Overview",
             "link": "/guide/overview"
+        },
+        {
+            "text": "Module Structure",
+            "link": "/guide/module-structure"
         }
     ]
 }
 
-const module = {
-    "text": "Module",
-    "items": [
-        {
-            "text": "Module Structure",
-            "link": "/guide/module-structure"
-        },
-        {
-            "text": "Create a Date",
-            "link": "/guide/date-start"
-        },
-        {
-            "text": "Using FastjsDate",
-            "link": "/guide/date-full"
-        }
-    ]
-}
+const modules = [
+    {
+        "text": "Date Module",
+        "items": [
+            {
+                "text": "Getting Started",
+                "link": "/guide/date-start"
+            },
+            {
+                "text": "Base Class",
+                "link": "/guide/date-class"
+            }
+        ]
+    }
+]
 
 const other = {
     "text": "Other",
@@ -51,7 +54,10 @@ const other = {
 export default {
     "/": [
         introduction,
-        module,
+        ...modules,
         other
-    ]
+    ].map((e) => {
+        e.collapsed = false
+        return e
+    })
 }
