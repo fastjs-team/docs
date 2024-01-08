@@ -5,7 +5,6 @@ import { useData } from 'vitepress/dist/client/theme-default/composables/data.js
 import { useSidebar } from 'vitepress/dist/client/theme-default/composables/sidebar.js'
 import VPDocAside from './VPDocAside.vue'
 import VPDocFooter from 'vitepress/dist/client/theme-default/components/VPDocFooter.vue'
-import VPDocOutlineDropdown from 'vitepress/dist/client/theme-default/components/VPDocOutlineDropdown.vue'
 import {ref} from "vue";
 
 const { theme } = useData()
@@ -56,7 +55,6 @@ defineExpose({
       <div class="content">
         <div class="content-container">
           <slot name="doc-before" />
-          <VPDocOutlineDropdown />
           <main class="main"
                 :advanceMode="advanceMode">
             <Content
@@ -85,16 +83,6 @@ defineExpose({
   width: 100%;
 }
 
-.VPDoc .VPDocOutlineDropdown {
-  display: none;
-}
-
-@media (min-width: 960px) and (max-width: 1279px) {
-  .VPDoc .VPDocOutlineDropdown {
-    display: block;
-  }
-}
-
 @media (min-width: 768px) {
   .VPDoc {
     padding: 48px 32px 128px;
@@ -103,7 +91,7 @@ defineExpose({
 
 @media (min-width: 960px) {
   .VPDoc {
-    padding: 32px 32px 0;
+    padding: 48px 32px 0;
   }
 
   .VPDoc:not(.has-sidebar) .container {
@@ -162,7 +150,7 @@ defineExpose({
 .aside-container {
   position: fixed;
   top: 0;
-  padding-top: calc(var(--vp-nav-height) + var(--vp-layout-top-height, 0px) + var(--vp-doc-top-height, 0px) + 32px);
+  padding-top: calc(var(--vp-nav-height) + var(--vp-layout-top-height, 0px) + var(--vp-doc-top-height, 0px) + 48px);
   width: 224px;
   height: 100vh;
   overflow-x: hidden;
@@ -186,7 +174,7 @@ defineExpose({
 .aside-content {
   display: flex;
   flex-direction: column;
-  min-height: calc(100vh - (var(--vp-nav-height) + var(--vp-layout-top-height, 0px) + 32px));
+  min-height: calc(100vh - (var(--vp-nav-height) + var(--vp-layout-top-height, 0px) + 48px));
   padding-bottom: 32px;
 }
 
@@ -216,10 +204,5 @@ defineExpose({
 
 .VPDoc.has-aside .content-container {
   max-width: 688px;
-}
-
-.external-link-icon-enabled :is(.vp-doc a[href*='://'], .vp-doc a[target='_blank'])::after {
-  content: '';
-  color: currentColor;
 }
 </style>

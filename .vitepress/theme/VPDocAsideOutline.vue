@@ -20,8 +20,6 @@ onContentUpdated(() => {
 
 const container = ref()
 const marker = ref()
-console.log('headers', headers)
-console.log('container', container)
 
 useActiveAnchor(container, marker)
 
@@ -91,9 +89,8 @@ defineExpose({
 }
 
 .outline-title {
-  letter-spacing: 0.4px;
-  line-height: 28px;
-  font-size: 13px;
+  line-height: 32px;
+  font-size: 14px;
   font-weight: 600;
 }
 </style>
