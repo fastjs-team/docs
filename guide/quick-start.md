@@ -4,16 +4,17 @@ Fastjs support a lot of usage, you can use it in any way you want.
 
 ## With Bundler <Badge text="Recommended" />
 
-::: tip What is bundler?
-Bundler is a tool that can bundle your code into a single file, like [Webpack](https://webpack.js.org/), [Rollup](https://rollupjs.org/guide/en/), [Parcel](https://parceljs.org/), etc.
+::::simple
 
-If your project is created by [Vue CLI](https://cli.vuejs.org/), [Vite](https://vitejs.dev/),
-[Create React App](https://create-react-app.dev/), etc., you can use a bundler version.
-::: 
+:::tip Is I using bundler?
+Common bundlers include `webpack`, `vite`, `rollup`.
+:::
 
-::: tip Why a bundler version is recommended?
+:::tip Why a bundler version is recommended?
 Bundler version is recommended because it can reduce the size of your project, and it can let fastjs to be tree-shaked by bundler.
-::: 
+:::
+
+::::
 
 Bundler version is recommended because it can reduce the size of your project,
 and it can let fastjs to be tree-shaked by bundler.
@@ -49,7 +50,7 @@ import { yourModules } from 'jsfast'
 
 Or any file you want to use Fastjs.
 
-Example:
+Example(Only in vue project):
 
 ```vue
 <template>
