@@ -34,6 +34,19 @@ const modules = [
                 "link": "/guide/date-class"
             }
         ]
+    },
+    {
+        "text": "Request Module",
+        "items": [
+            {
+                "text": "Getting Started",
+                "link": "/guide/request-start"
+            },
+            // {
+            //     "text": "Base Class",
+            //     "link": "/guide/request-class"
+            // }
+        ]
     }
 ]
 
