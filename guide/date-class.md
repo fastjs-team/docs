@@ -56,9 +56,47 @@ const str = date.toString()
 const activeStr = date.toActiveString()
 ```
 
+### Example
+
+Let's see an example of string conversion, including `toString` and `toActiveString`.
+
+```typescript
+import { FastjsDate } from 'jsfast'
+
+const date = new FastjsDate()
+setInterval(() => {
+    console.log(date.toString()) // This will not change
+    console.log(date.toActiveString()) // This will change every second
+}, 1000)
+```
+
+:::tip Use case
+This is just an example of active string, you can also use other methods to achieve the same effect. `e.g. date.string()`
+:::
+
+Good, display a clock with active string on your page.
+
+```vue
+<template>
+    <div>Now Time: {{ time }}</div>
+</template>
+
+<script setup>
+import { ref } from 'vue'
+import { FastjsDate } from 'jsfast'
+
+const date = new FastjsDate()
+const time = ref(date.toActiveString())
+
+setInterval(() => {
+    time.value = date.toActiveString()
+}, 1000)
+</script>
+```
+
 :::advance
 
-## FastjsDate.toString()
+### `FastjsDate.toString()`
 
 How does `FastjsDate.toString()` work?
 
@@ -75,21 +113,8 @@ class FastjsDate {
     }
 }
 ```
-:::
 
-### Relative - `FastjsDate.toNumber()`
-
-Use `FastjsDate.toNumber()` to get timestamp.
-
-```typescript
-class FastjsDate {
-    toNumber(): number {
-        return this._date;
-    }
-}
-```
-
-## FastjsDate.toActiveString()
+### `FastjsDate.toActiveString()`
 
 How does `FastjsDate.toActiveString()` work?
 
@@ -110,7 +135,45 @@ class FastjsDate {
 }
 ```
 
-### Relative - `FastjsDate.toActiveNumber()`
+:::
+
+## Convert to timestamp
+
+Use `FastjsDate.toNumber()` to get timestamp.
+
+```typescript
+import { FastjsDate } from 'jsfast'
+
+const date = new FastjsDate()
+const timestamp = date.toNumber()
+```
+
+Also, use `FastjsDate.toActiveNumber()` to get active timestamp.
+
+```typescript
+import { FastjsDate } from 'jsfast'
+
+const date = new FastjsDate()
+setInterval(() => {
+    console.log("Now Time:", date.toActiveNumber()) // This will change every second
+}, 1000)
+```
+
+:::advance
+
+### `FastjsDate.toNumber()`
+
+Use `FastjsDate.toNumber()` to get timestamp.
+
+```typescript
+class FastjsDate {
+    toNumber(): number {
+        return this._date;
+    }
+}
+```
+
+### `FastjsDate.toActiveNumber()`
 
 Use `FastjsDate.toActiveNumber()` to get active timestamp.
 
@@ -122,7 +185,7 @@ class FastjsDate {
 }
 ```
 
-### Difference to `toString`
+#### Difference to `toString`
 
 ```diff
 class FastjsDate {
@@ -141,6 +204,8 @@ class FastjsDate {
     }
 }
 ```
+
+:::
 
 ## UTC and Local time switch
 
