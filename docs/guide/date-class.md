@@ -7,24 +7,10 @@ const date: FastjsDate = date.create();
 console.log(date.toString());
 ```
 
-:::advance
-
-### Type Declaration
-
-```typescript
-declare function createFastjsDate(
-  format?: string,
-  date?: number | string | Date,
-  local?: boolean
-): FastjsDate;
-```
-
-:::
-
 ## Convert to string
 
 :::tip What is active time(active string)?
-When you're using `toActiveString`, the time will fly with real time.
+When you're using `toActiveString`, the time will fly with real time by calculating the `_createAt` and `_date`.
 :::
 
 :::tip Active time
@@ -255,4 +241,34 @@ setTimeout(() => {
     console.log(date.toString()); // output: 2021-10-21 19:20:46
   }, 1000);
 }, 1000);
+```
+
+## Type Declaration
+
+Here is the type declaration of `FastjsDate` module instance.
+
+### New Instance
+
+```typescript
+declare function createFastjsDate(
+  format?: string,
+  date?: number | string | Date,
+  local?: boolean
+): FastjsDate;
+```
+
+### Instance Properties
+
+:::tip Module API
+If you want to check the methods of module or more information of each properties, please refer to [Date API](./date-api.md) page.
+:::
+
+```typescript
+export interface FastjsDateAtom {
+  construct: "FastjsDate";
+  format: string;
+  _date: number;
+  _createAt: number;
+  timezoneDiff: number;
+}
 ```
