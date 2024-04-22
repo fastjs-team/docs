@@ -40,6 +40,7 @@ About the format string, see [Format Table](./date-start.html#format-table)
 :::
 
 The format of the date, it can be changed by [`changeFormat`](#fastjsdate-changeformat-format-string-fastjsdate) or cover when calling [`toString`](#fastjsdate-tostring) or [`toActiveString`](#fastjsdate-toactivestring).
+
 ```typescript
 type format = string;
 ```
@@ -176,7 +177,7 @@ date.toString(); // Get the date as a string, format = date._format
 #### `FastjsDate.toString(showAs: "utc" | "local" | number): string`
 
 :::warning Deprecated parameter
-You should just leave the parameter empty if you want to get utc time, parameter `showAs.utc` may be removed in the future. 
+You should just leave the parameter empty if you want to get utc time, parameter `showAs.utc` may be removed in the future.
 :::
 
 ```typescript
@@ -194,7 +195,7 @@ date.toString("YYYY-MM-DD"); // Get the date as a string with format "YYYY-MM-DD
 #### `FastjsDate.toString(showAs: "utc" | "local" | number, newFormat: string): string`
 
 :::warning Deprecated parameter
-You should just leave the parameter empty if you want to get utc time, parameter `showAs.utc` may be removed in the future. 
+You should just leave the parameter empty if you want to get utc time, parameter `showAs.utc` may be removed in the future.
 :::
 
 ```typescript
