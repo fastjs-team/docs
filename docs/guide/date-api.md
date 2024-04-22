@@ -10,6 +10,9 @@ export interface FastjsDateAtom {
   _createAt: number;
   timezoneDiff: number;
 }
+```
+
+```typescript
 export interface FastjsDateAPI {
   changeDate(time: number | string): FastjsDate;
   changeFormat(format: string): FastjsDate;
@@ -26,42 +29,42 @@ export interface FastjsDateAPI {
   toActiveString(newFormat: string): string;
   toActiveString(showAs: "utc" | "local" | number, newFormat: string): string;
 }
-export type FastjsDate = FastjsDateAtom & FastjsDateAPI & FastjsModuleBase;
 ```
 
 ## Properties
 
 ### `FastjsDate.format`
 
-The format of the date.
+:::tip
+About the format string, see [Format Table](./date-start.html#format-table)
+:::
 
+The format of the date, it can be changed by [`changeFormat`](#fastjsdate-changeformat-format-string-fastjsdate) or cover when calling [`toString`](#fastjsdate-tostring) or [`toActiveString`](#fastjsdate-toactivestring).
 ```typescript
-class FastjsDate {
-  format: string;
-}
+type format = string;
 ```
 
 ### `FastjsDate._date`
 
-The timestamp of the date.
+The timestamp of the date, it can be changed by [`changeDate`](#fastjsdate-changedate-time-number-string-fastjsdate).
 
 ```typescript
-class FastjsDate {
-  _date: number;
-}
+type _date = number;
 ```
 
 ### `FastjsDate._createAt`
 
-The timestamp of the date created.
+The timestamp of the date created, it can be reset by [`refresh`](#fastjsdate-refresh-fastjsdate).
 
 ```typescript
-class FastjsDate {
-  _createAt: number;
-}
+type _createAt = number;
 ```
 
 ### `FastjsDate.timezoneDiff`
+
+:::warning Readonly property
+You should not change this property, unless you really know what you are doing.
+:::
 
 The difference between the local time and UTC time.
 
@@ -167,10 +170,14 @@ class FastjsDate {
 #### `FastjsDate.toString(): string`
 
 ```typescript
-date.toString(); // Get the date as a string
+date.toString(); // Get the date as a string, format = date._format
 ```
 
 #### `FastjsDate.toString(showAs: "utc" | "local" | number): string`
+
+:::warning Deprecated parameter
+You should just leave the parameter empty if you want to get utc time, parameter `showAs.utc` may be removed in the future. 
+:::
 
 ```typescript
 date.toString("utc"); // Get the date as a string in UTC
@@ -186,6 +193,10 @@ date.toString("YYYY-MM-DD"); // Get the date as a string with format "YYYY-MM-DD
 
 #### `FastjsDate.toString(showAs: "utc" | "local" | number, newFormat: string): string`
 
+:::warning Deprecated parameter
+You should just leave the parameter empty if you want to get utc time, parameter `showAs.utc` may be removed in the future. 
+:::
+
 ```typescript
 date.toString("utc", "YYYY-MM-DD"); // Get the date as a string in UTC with format "YYYY-MM-DD"
 date.toString("local", "YYYY-MM-DD"); // Get the date as a string in local time with format "YYYY-MM-DD"
@@ -195,7 +206,7 @@ date.toString(8, "YYYY-MM-DD"); // Get the date as a string in UTC+8 with format
 ### `FastjsDate.toActiveString`
 
 :::tip
-About what does the props do, see [FastjsDate.toString](/guide/date-api.html#fastjsdate-tostring)
+About what does the props do, see [FastjsDate.toString](#fastjsdate-tostring)
 :::
 
 Get the active date as a string.
