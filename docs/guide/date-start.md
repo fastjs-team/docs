@@ -16,7 +16,7 @@ But with `FastjsDate`, you can do it easily.
 :::tip Format string
 If you don't pass a format string, it will default to `Y-M-D h:m:s`.
 
-Scroll down to see the format string table.
+For more information about date format, scroll down to see the [format string table](#format-table).
 :::
 
 ```typescript
@@ -66,7 +66,7 @@ date.parse();
 :::tip Format string
 If you don't pass a format string, it will default to `Y-M-D h:m:s`.
 
-For more information about format string, scroll down to see the [format string table](/guide/date-start.html#format-table).
+For more information about date format, scroll down to see the [format string table](#format-table).
 :::
 
 Function `parse` can parse a string or a timestamp to a `parseReturn` object.
@@ -135,8 +135,16 @@ export interface parseReturn {
 ## Reformatting a date string
 
 :::tip Format string
-This is a simplified version of the [`parse` function](/guide/date-start.html#parsing-a-date-string), it only returns a string of the date.
+This is a simplified version of the [`parse` function](#parsing-a-date-string), it only returns a string of the date.
 :::
+
+### Type Declaration
+
+```typescript
+declare const _default: {
+  reformat: (format: string, date: string, newFormat?: string) => string;
+};
+```
 
 ## Format Table
 
