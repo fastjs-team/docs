@@ -29,7 +29,7 @@ Can't participate in the project directly? You can still help us by sponsoring t
 
 ## Become a sponsor
 
-You can sponsor us on [GitHub Sponsors](https://github.com/sponsors/dy-xiaodong2022).
+You can sponsor us on [GitHub Sponsors](https://github.com/sponsors/xiaodong2008).
 
 Contact us at these methods:
 

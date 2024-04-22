@@ -37,5 +37,5 @@ Thanks go to these wonderful people, to let fastjs be better. 🙌
 ## Sponsors
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/dy-xiaodong2022/sponsors/main/sponsors.svg" />
+  <img src="https://raw.githubusercontent.com/xiaodong2008/sponsors/main/sponsors.svg" />
 </div>

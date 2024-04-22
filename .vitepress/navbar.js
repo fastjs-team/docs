@@ -27,7 +27,7 @@ export default {
     },
     {
       "text": "Sponsor",
-      "link": "https://github.com/sponsors/dy-xiaodong2022"
+      "link": "https://github.com/sponsors/xiaodong2008"
     }
   ]
 }

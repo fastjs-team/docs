@@ -18,7 +18,7 @@ Don't forget to read the [Contributing Guide](https://github.com/fastjs-team/cor
 ## Sponsors
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/dy-xiaodong2022/sponsors/main/sponsors.wide.svg" />
+  <img src="https://raw.githubusercontent.com/xiaodong2008/sponsors/main/sponsors.wide.svg" />
 </div>
 
 ## Contributors
@@ -29,5 +29,5 @@ Don't forget to read the [Contributing Guide](https://github.com/fastjs-team/cor
 
 ## Info
 
-- Author: dy-xiaodong2022
+- Author: xiaodong2008
 - License: under the [MIT License](https://opensource.org/licenses/MIT).
