@@ -49,25 +49,37 @@ export default date;
 ```
 :::
 
-## Full Return
+## Parsing a date string
+
+Some date picker libraries may return a string of date, but you need to convert it to a timestamp.
+
+We provide a function to parse a date string to a timestamp easily.
+
+```typescript
+date.parse()
+```
+
+### Using `parse` function
 
 :::tip Format string
 If you don't pass a format string, it will default to `Y-M-D h:m:s`.
 
-For more information about format string, scroll down to see the format string table.
+For more information about format string, scroll down to see the [format string table](/guide/date-start.html#format-table).
 :::
 
-Wow, that is so easy to use, but I want to get more information, how can I do it?
+Function `parse` can parse a string or a timestamp to a `parseReturn` object.
+
+There are some functions that help you to call `parse` easily, they all return a `parseReturn` object.
 
 ```typescript
-import { date } from 'jsfast'
-
 date.parse("2022-10-21 19:20:46", "Y-M-D h:m:s")
 date.parse(1666351246, "Y-M-D h:m:s")
 date.parseDate("2022-10-21 19:20:46", "Y-M-D h:m:s")
 date.parseTime(1666351246, "Y-M-D h:m:s")
 date.now("Y-M-D h:m:s")
 ```
+
+### Return Object
 
 These all return an `parseReturn` object, and this object contains a lot of information.
 
@@ -116,6 +128,12 @@ export interface parseReturn {
 ```
 :::
 
+## Reformatting a date string
+
+:::tip Format string
+This is a simplified version of the [`parse` function](/guide/date-start.html#parsing-a-date-string), it only returns a string of the date.
+:::
+
 ## Format Table
 
 | Format | Description | Example  |
@@ -124,11 +142,11 @@ export interface parseReturn {
 | M      | Month       | 01       |
 | D      | Day         | 01       |
 | h      | Hour        | 01       |
-| hh     | Hour        | 1        |
+| hh     | Hour with out prefix `0`       | 1        |
 | m      | Minute      | 01       |
-| mm     | Minute      | 1        |
+| mm     | Minute with out prefix `0`     | 1        |
 | s      | Second      | 01       |
-| ss     | Second      | 1        |
+| ss     | Second with out prefix `0`     | 1        |
 | S      | Millisecond | 613      |
 | H      | Hour(12h)   | 01       |
 | A      | AM/PM       | AM       |
