@@ -11,7 +11,7 @@ export default defineConfig({
         assetsInclude: ['*.png']
     },
     head: [
-        ['link', {rel: 'icon', type: 'image/x-icon', href: '/icon.svg'}],
+        ['link', {rel: 'icon', type: 'image/x-icon', href: '/icon.png'}],
     ],
     themeConfig: {
         nav: navbar.nav,
