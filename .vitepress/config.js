@@ -6,6 +6,7 @@ import {container} from "@mdit/plugin-container";
 export default defineConfig({
     lang: 'en-US',
     title: 'Fastjs',
+    srcDir: 'docs',
     vite: {
         assetsInclude: ['*.png']
     },
