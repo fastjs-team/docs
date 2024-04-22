@@ -32,6 +32,10 @@ const modules = [
             {
                 "text": "Base Class",
                 "link": "/guide/date-class"
+            },
+            {
+                "text": "Date API",
+                "link": "/guide/date-api"
             }
         ]
     },
@@ -42,10 +46,10 @@ const modules = [
                 "text": "Getting Started",
                 "link": "/guide/request-start"
             },
-            // {
-            //     "text": "Base Class",
-            //     "link": "/guide/request-class"
-            // }
+            {
+                "text": "Base Class",
+                "link": "/guide/request-class"
+            }
         ]
     }
 ]
