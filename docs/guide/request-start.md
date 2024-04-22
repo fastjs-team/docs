@@ -109,7 +109,7 @@ request
   .get("https://reqres.in/api/users", { page: 1 });
 ```
 
-For post request, it need to pass the data to the third argument, which is [`RequestConfig`]().
+For post request, it need to pass the data to the third argument, which is `RequestConfig`.
 
 ```typescript
 request.post(
