@@ -1,41 +1,24 @@
 # Using FastjsDate
 
-For some advanced usage, you can new a `FastjsDate` object and do what you want.
+For some advanced usage, you can create a `FastjsDate` object and do what you want.
 
 ```typescript
-import { FastjsDate } from 'jsfast'
-
-const date = new FastjsDate()
-console.log(date.toString())
-```
-
-Or use the method in `date` module.
-
-```typescript
-import { date } from 'jsfast'
-
-const date = date.create()
-console.log(date.toString())
+const date: FastjsDate = date.create();
+console.log(date.toString());
 ```
 
 :::advance
+
 ### Type Declaration
 
 ```typescript
-declare class FastjsDate extends FastjsBaseModule<FastjsDate> {
-    constructor(format: string, date: fDate);
-    constructor(format: string, date: number | string, isUTC?: boolean);
-}
+declare function createFastjsDate(
+  format?: string,
+  date?: number | string | Date,
+  local?: boolean
+): FastjsDate;
 ```
 
-```typescript
-declare function create(format: string, date: fDate): FastjsDate;
-declare function create(format: string, date: number | string, isUTC?: boolean): FastjsDate;
-
-declare const date: {
-    create: typeof create; // -> declare function create
-};
-```
 :::
 
 ## Convert to string
@@ -49,11 +32,11 @@ If you want to get active time, you need to use `create` method or new a `Fastjs
 :::
 
 ```typescript
-import { FastjsDate } from 'jsfast'
+import { FastjsDate } from "jsfast";
 
-const date = new FastjsDate()
-const str = date.toString()
-const activeStr = date.toActiveString()
+const date = new FastjsDate();
+const str = date.toString();
+const activeStr = date.toActiveString();
 ```
 
 ### Example
@@ -61,13 +44,13 @@ const activeStr = date.toActiveString()
 Let's see an example of string conversion, including `toString` and `toActiveString`.
 
 ```typescript
-import { FastjsDate } from 'jsfast'
+import { FastjsDate } from "jsfast";
 
-const date = new FastjsDate()
+const date = new FastjsDate();
 setInterval(() => {
-    console.log(date.toString()) // This will not change
-    console.log(date.toActiveString()) // This will change every second
-}, 1000)
+  console.log(date.toString()); // This will not change
+  console.log(date.toActiveString()); // This will change every second
+}, 1000);
 ```
 
 :::tip Use case
@@ -78,19 +61,19 @@ Good, display a clock with active string on your page.
 
 ```vue
 <template>
-    <div>Now Time: {{ time }}</div>
+  <div>Now Time: {{ time }}</div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import { FastjsDate } from 'jsfast'
+import { ref } from "vue";
+import { FastjsDate } from "jsfast";
 
-const date = new FastjsDate()
-const time = ref(date.toActiveString())
+const date = new FastjsDate();
+const time = ref(date.toActiveString());
 
 setInterval(() => {
-    time.value = date.toActiveString()
-}, 1000)
+  time.value = date.toActiveString();
+}, 1000);
 </script>
 ```
 
@@ -102,15 +85,15 @@ How does `FastjsDate.toString()` work?
 
 ```typescript
 class FastjsDate {
-    _date: number;
+  _date: number;
 
-    constructor(_a, date: number | string | fDate = Date.now(), _c) {
-        this._date = __changeToTimestamp(date);
-    }
+  constructor(_a, date: number | string | fDate = Date.now(), _c) {
+    this._date = __changeToTimestamp(date);
+  }
 
-    toString(newFormat?: string): string {
-        return __parseDate(this._date, newFormat || this.format);
-    }
+  toString(newFormat?: string): string {
+    return __parseDate(this._date, newFormat || this.format);
+  }
 }
 ```
 
@@ -120,18 +103,18 @@ How does `FastjsDate.toActiveString()` work?
 
 ```typescript
 class FastjsDate {
-    _date: number;
-    _createAt: number;
+  _date: number;
+  _createAt: number;
 
-    constructor(_a, date: number | string | fDate = Date.now(), _c) {
-        this._date = __changeToTimestamp(date);
-        this._createAt = Date.now();
-    }
+  constructor(_a, date: number | string | fDate = Date.now(), _c) {
+    this._date = __changeToTimestamp(date);
+    this._createAt = Date.now();
+  }
 
-    toActiveString(newFormat?: string): string {
-        const date = this._date + (Date.now() - this._createAt);
-        return __parseDate(date, newFormat || this.format);
-    }
+  toActiveString(newFormat?: string): string {
+    const date = this._date + (Date.now() - this._createAt);
+    return __parseDate(date, newFormat || this.format);
+  }
 }
 ```
 
@@ -142,21 +125,21 @@ class FastjsDate {
 Use `FastjsDate.toNumber()` to get timestamp.
 
 ```typescript
-import { FastjsDate } from 'jsfast'
+import { FastjsDate } from "jsfast";
 
-const date = new FastjsDate()
-const timestamp = date.toNumber()
+const date = new FastjsDate();
+const timestamp = date.toNumber();
 ```
 
 Also, use `FastjsDate.toActiveNumber()` to get active timestamp.
 
 ```typescript
-import { FastjsDate } from 'jsfast'
+import { FastjsDate } from "jsfast";
 
-const date = new FastjsDate()
+const date = new FastjsDate();
 setInterval(() => {
-    console.log("Now Time:", date.toActiveNumber()) // This will change every second
-}, 1000)
+  console.log("Now Time:", date.toActiveNumber()); // This will change every second
+}, 1000);
 ```
 
 :::advance
@@ -167,9 +150,9 @@ Use `FastjsDate.toNumber()` to get timestamp.
 
 ```typescript
 class FastjsDate {
-    toNumber(): number {
-        return this._date;
-    }
+  toNumber(): number {
+    return this._date;
+  }
 }
 ```
 
@@ -179,9 +162,9 @@ Use `FastjsDate.toActiveNumber()` to get active timestamp.
 
 ```typescript
 class FastjsDate {
-    toActiveNumber(): number {
-        return this._date + (Date.now() - this._createAt);
-    }
+  toActiveNumber(): number {
+    return this._date + (Date.now() - this._createAt);
+  }
 }
 ```
 
@@ -214,23 +197,23 @@ With `FastjsDate`, you can switch between UTC and local time easily.
 ### Local time to UTC
 
 ```typescript
-import { FastjsDate } from 'jsfast'
+import { FastjsDate } from "jsfast";
 
-const date = new FastjsDate()
-const utcDate = date.convertUTC("local")
-sendToServer("finishTime", utcDate.toString())
+const date = new FastjsDate();
+const utcDate = date.convertUTC("local");
+sendToServer("finishTime", utcDate.toString());
 ```
 
 ### UTC to Local time
 
 ```typescript
-import { FastjsDate } from 'jsfast'
+import { FastjsDate } from "jsfast";
 
 requestFromServer("finishTime").then((utcDate) => {
-    const date = new FastjsDate("Y-M-D h:m:s", utcDate, true)
-    const localDate = date.convertUTC("utc")
-    showToUser(localDate.toString())
-})
+  const date = new FastjsDate("Y-M-D h:m:s", utcDate, true);
+  const localDate = date.convertUTC("utc");
+  showToUser(localDate.toString());
+});
 ```
 
 ## Set Timezone
@@ -242,12 +225,12 @@ If you don't set a specific timezone, the default timezone will be user's browse
 When you want to set a specific timezone before you convert to UTC/local time, you can use `setZone` method.
 
 ```typescript
-import { FastjsDate } from 'jsfast'
+import { FastjsDate } from "jsfast";
 
-const date = new FastjsDate()
-date.setZone(1)
+const date = new FastjsDate();
+date.setZone(1);
 // 1 is the timezone offset(e.g. Germany, France)
-const utcDate = date.convertUTC("local").toString()
+const utcDate = date.convertUTC("local").toString();
 ```
 
 ## Refresh Create Time
@@ -263,13 +246,13 @@ When you just want to show current time like a clock(even refresh every second),
 When you want to refresh the creation time of date, you can use `refresh` method.
 
 ```typescript
-import { FastjsDate } from 'jsfast'
+import { FastjsDate } from "jsfast";
 
-const date = new FastjsDate() // -> 2021-10-21 19:20:44
+const date = new FastjsDate(); // -> 2021-10-21 19:20:44
 setTimeout(() => {
-    date.refresh()  // -> 2021-10-21 19:20:45
-    setTimeout(() => {
-        console.log(date.toString()) // output: 2021-10-21 19:20:46
-    }, 1000)
-}, 1000)
+  date.refresh(); // -> 2021-10-21 19:20:45
+  setTimeout(() => {
+    console.log(date.toString()); // output: 2021-10-21 19:20:46
+  }, 1000);
+}, 1000);
 ```
