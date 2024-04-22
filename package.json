@@ -1,7 +1,4 @@
 {
-  "name": "fastjs-docs",
-  "description": "This is fastjs official website.",
-  "main": "index.js",
   "type": "module",
   "scripts": {
     "dev": "vitepress dev",
@@ -9,21 +6,13 @@
     "serve": "vitepress serve",
     "update": "ncu --upgrade"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/fastjs-team/docs.git"
-  },
-  "author": "dy-xiaodong2022",
+  "author": "xiaodong2008",
   "license": "MIT",
-  "private": true,
   "dependencies": {
     "@mdit/plugin-container": "^0.8.0",
     "less": "^4.2.0",
     "vite": "^5.1.6",
     "vitepress": "^1.0.0-rc.45",
     "vue": "^3.4.21"
-  },
-  "devDependencies": {
-    "jsfast": "^1.0.0-alpha.3"
   }
 }
