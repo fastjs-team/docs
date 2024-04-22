@@ -47,9 +47,13 @@ const modules = [
                 "link": "/guide/request-start"
             },
             {
-                "text": "Base Class",
-                "link": "/guide/request-class"
-            }
+              "text": "Scaling up",
+              "link": "/guide/request-advanced"
+            },
+            // {
+            //     "text": "Base Class",
+            //     "link": "/guide/request-class"
+            // }
         ]
     }
 ]
