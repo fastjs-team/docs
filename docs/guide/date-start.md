@@ -7,7 +7,13 @@
 - Connect with other modules easily
 - Modular Design
 
-## Get a time string
+## Import Module
+
+```typescript
+import { date } from "jsfast";
+```
+
+## Getting a time string
 
 A lot of projects need to get a time string from a specific format string, but this is not easy to do with built-in `Date` object.
 
@@ -20,21 +26,11 @@ For more information about date format, scroll down to see the [format string ta
 :::
 
 ```typescript
-import { date } from "jsfast";
-
-date.string("Y-M-D h:m:s"); // or
-date.now("Y-M-D h:m:s");
+date.string("Y-M-D h:m:s"); // Get the current time string
+date.string("Y-M-D h:m:s", 1666351246); // Convert timestamp to string
 ```
 
-How about convert a timestamp to a time string?
-
-```typescript
-import { date } from "jsfast";
-
-date.string("Y-M-D h:m:s", 1666351246);
-```
-
-Exactly, it is super easy to use.
+As you can easy, it is super easy to use, we provide a [clearly user-friendly API name and a simple way to use it](/#why-fastjs), not only in this module but also in all modules.
 
 :::advance
 
@@ -58,7 +54,7 @@ Some date picker libraries may return a string of date, but you need to convert 
 We provide a function to parse a date string to a timestamp easily.
 
 ```typescript
-date.parse();
+date.parse(1666351246);
 ```
 
 ### Using `parse` function
@@ -67,6 +63,10 @@ date.parse();
 If you don't pass a format string, it will default to `Y-M-D h:m:s`.
 
 For more information about date format, scroll down to see the [format string table](#format-table).
+:::
+
+:::warning Misunderstanding
+The param `format` that you pass to `parse` function is the format of the **string you pass to the function**, **not** what you want to return.
 :::
 
 Function `parse` can parse a string or a timestamp to a `parseReturn` object.
