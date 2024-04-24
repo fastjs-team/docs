@@ -120,6 +120,6 @@ request.post(
   },
   {
     query: { page: 1 },
-  }
+  },
 );
 ```

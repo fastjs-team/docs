@@ -1,32 +1,31 @@
 <script setup lang="ts">
-import { useRoute } from 'vitepress'
-import { computed } from 'vue'
-import { useData } from 'vitepress/dist/client/theme-default/composables/data.js'
-import { useSidebar } from 'vitepress/dist/client/theme-default/composables/sidebar.js'
-import VPDocAside from './VPDocAside.vue'
-import VPDocFooter from 'vitepress/dist/client/theme-default/components/VPDocFooter.vue'
-import {ref} from "vue";
+import { useRoute } from "vitepress";
+import { computed } from "vue";
+import { useData } from "vitepress/dist/client/theme-default/composables/data.js";
+import { useSidebar } from "vitepress/dist/client/theme-default/composables/sidebar.js";
+import VPDocAside from "./VPDocAside.vue";
+import VPDocFooter from "vitepress/dist/client/theme-default/components/VPDocFooter.vue";
+import { ref } from "vue";
 
-const { theme } = useData()
+const { theme } = useData();
 
-const route = useRoute()
-const { hasSidebar, hasAside, leftAside } = useSidebar()
+const route = useRoute();
+const { hasSidebar, hasAside, leftAside } = useSidebar();
 
 const pageName = computed(() =>
-  route.path.replace(/[./]+/g, '_').replace(/_html$/, '')
-)
-const {advanceMode} = defineProps({
-  advanceMode: Boolean
-})
+  route.path.replace(/[./]+/g, "_").replace(/_html$/, ""),
+);
+const { advanceMode } = defineProps({
+  advanceMode: Boolean,
+});
 
-
-const vpDocAsideRef = ref(null)
+const vpDocAsideRef = ref(null);
 function docsModeChange(newVal) {
-  vpDocAsideRef.value.docsModeChange(newVal)
+  vpDocAsideRef.value.docsModeChange(newVal);
 }
 defineExpose({
-  docsModeChange
-})
+  docsModeChange,
+});
 </script>
 
 <template>
@@ -36,17 +35,25 @@ defineExpose({
   >
     <slot name="doc-top" />
     <div class="container">
-      <div v-if="hasAside" class="aside" :class="{'left-aside': leftAside}">
+      <div v-if="hasAside" class="aside" :class="{ 'left-aside': leftAside }">
         <div class="aside-curtain" />
         <div class="aside-container">
           <div class="aside-content">
             <VPDocAside ref="vpDocAsideRef">
               <template #aside-top><slot name="aside-top" /></template>
               <template #aside-bottom><slot name="aside-bottom" /></template>
-              <template #aside-outline-before><slot name="aside-outline-before" /></template>
-              <template #aside-outline-after><slot name="aside-outline-after" /></template>
-              <template #aside-ads-before><slot name="aside-ads-before" /></template>
-              <template #aside-ads-after><slot name="aside-ads-after" /></template>
+              <template #aside-outline-before
+                ><slot name="aside-outline-before"
+              /></template>
+              <template #aside-outline-after
+                ><slot name="aside-outline-after"
+              /></template>
+              <template #aside-ads-before
+                ><slot name="aside-ads-before"
+              /></template>
+              <template #aside-ads-after
+                ><slot name="aside-ads-after"
+              /></template>
             </VPDocAside>
           </div>
         </div>
@@ -55,19 +62,20 @@ defineExpose({
       <div class="content">
         <div class="content-container">
           <slot name="doc-before" />
-          <main class="main"
-                :advanceMode="advanceMode">
+          <main class="main" :advanceMode="advanceMode">
             <Content
               class="vp-doc"
               :class="[
                 pageName,
-                theme.externalLinkIcon && 'external-link-icon-enabled'
+                theme.externalLinkIcon && 'external-link-icon-enabled',
               ]"
               :property="advanceMode ? 'advanceMode' : 'simpleMode'"
             />
           </main>
           <VPDocFooter>
-            <template #doc-footer-before><slot name="doc-footer-before" /></template>
+            <template #doc-footer-before
+              ><slot name="doc-footer-before"
+            /></template>
           </VPDocFooter>
           <slot name="doc-after" />
         </div>
@@ -150,7 +158,10 @@ defineExpose({
 .aside-container {
   position: fixed;
   top: 0;
-  padding-top: calc(var(--vp-nav-height) + var(--vp-layout-top-height, 0px) + var(--vp-doc-top-height, 0px) + 48px);
+  padding-top: calc(
+    var(--vp-nav-height) + var(--vp-layout-top-height, 0px) +
+      var(--vp-doc-top-height, 0px) + 48px
+  );
   width: 224px;
   height: 100vh;
   overflow-x: hidden;
@@ -174,7 +185,9 @@ defineExpose({
 .aside-content {
   display: flex;
   flex-direction: column;
-  min-height: calc(100vh - (var(--vp-nav-height) + var(--vp-layout-top-height, 0px) + 48px));
+  min-height: calc(
+    100vh - (var(--vp-nav-height) + var(--vp-layout-top-height, 0px) + 48px)
+  );
   padding-bottom: 32px;
 }
 

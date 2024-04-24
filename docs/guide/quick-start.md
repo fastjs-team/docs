@@ -43,7 +43,7 @@ npm i jsfast
 Open `src/main.js` and add this line:
 
 ```js
-import { yourModules } from 'jsfast'
+import { yourModules } from "jsfast";
 
 // ...
 ```
@@ -58,13 +58,13 @@ Example(Only in vue project):
 </template>
 
 <script setup>
-  import {ref} from 'vue'
-  import {date} from 'jsfast'
+import { ref } from "vue";
+import { date } from "jsfast";
 
-  const dateStr = ref(date.string())
-  setInterval(() => {
-    dateStr.value = date.string()
-  }, 1000)
+const dateStr = ref(date.string());
+setInterval(() => {
+  dateStr.value = date.string();
+}, 1000);
 </script>
 ```
 
@@ -87,14 +87,14 @@ console.log(fastjs.date.string());
 or exclude `fastjs` namespace:
 
 ```js
-const { yourModules } = fastjs
+const { yourModules } = fastjs;
 ```
 
 ## With Node.js
 
 ::: tip Production environment
 Fastjs should run in production mode in a right time, if it is not, check is `NODE_ENV` set to `production`.
-::: 
+:::
 
 Use it in Node.js(CJS) environment.
 
@@ -107,7 +107,7 @@ npm i jsfast
 ### Usage
 
 ```js
-const { yourModules } = require('jsfast')
+const { yourModules } = require("jsfast");
 ```
 
 ## With Direct Import
@@ -118,8 +118,8 @@ Use it in browser ESM environment.
 
 ```html
 <script type="module">
-  import { yourModules } from 'https://cdn.jsdelivr.net/npm/jsfast/dist/fastjs.esm.js'
+  import { yourModules } from "https://cdn.jsdelivr.net/npm/jsfast/dist/fastjs.esm.js";
   // or
-  import { yourModules } from 'https://cdn.unpkg.com/jsfast/dist/fastjs.esm.js'
+  import { yourModules } from "https://cdn.unpkg.com/jsfast/dist/fastjs.esm.js";
 </script>
 ```

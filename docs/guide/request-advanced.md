@@ -1,7 +1,5 @@
 # Scaling up with request
 
-
-
 ## Set Request Header
 
 Set `config.headers` to pass headers to the request.
@@ -76,7 +74,7 @@ request.post(
         return true;
       },
     },
-  }
+  },
 );
 ```
 

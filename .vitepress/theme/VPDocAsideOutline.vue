@@ -1,36 +1,38 @@
 <script setup lang="ts">
-import { onContentUpdated } from 'vitepress'
-import { ref, shallowRef, nextTick } from 'vue'
-import { useData } from 'vitepress/dist/client/theme-default/composables/data.js'
+import { onContentUpdated } from "vitepress";
+import { ref, shallowRef, nextTick } from "vue";
+import { useData } from "vitepress/dist/client/theme-default/composables/data.js";
 import {
   getHeaders,
   resolveTitle,
   useActiveAnchor,
-  type MenuItem
-} from './composables/outline.js'
-import VPDocOutlineItem from 'vitepress/dist/client/theme-default/components/VPDocOutlineItem.vue'
+  type MenuItem,
+} from "./composables/outline.js";
+import VPDocOutlineItem from "vitepress/dist/client/theme-default/components/VPDocOutlineItem.vue";
 
-const { frontmatter, theme } = useData()
+const { frontmatter, theme } = useData();
 
-const headers = shallowRef<MenuItem[]>([])
+const headers = shallowRef<MenuItem[]>([]);
 
 onContentUpdated(() => {
-  headers.value = getHeaders(frontmatter.value.outline ?? theme.value.outline)
-})
+  headers.value = getHeaders(frontmatter.value.outline ?? theme.value.outline);
+});
 
-const container = ref()
-const marker = ref()
+const container = ref();
+const marker = ref();
 
-useActiveAnchor(container, marker)
+useActiveAnchor(container, marker);
 
 function docsModeChange(newVal) {
   nextTick(() => {
-    headers.value = getHeaders(frontmatter.value.outline ?? theme.value.outline)
-  })
+    headers.value = getHeaders(
+      frontmatter.value.outline ?? theme.value.outline,
+    );
+  });
 }
 defineExpose({
-  docsModeChange
-})
+  docsModeChange,
+});
 </script>
 
 <template>
@@ -43,7 +45,9 @@ defineExpose({
     <div class="content">
       <div class="outline-marker" ref="marker" />
 
-      <div class="outline-title" role="heading" aria-level="2">{{ resolveTitle(theme) }}</div>
+      <div class="outline-title" role="heading" aria-level="2">
+        {{ resolveTitle(theme) }}
+      </div>
 
       <nav aria-labelledby="doc-outline-aria-label">
         <span class="visually-hidden" id="doc-outline-aria-label">

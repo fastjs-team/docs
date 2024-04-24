@@ -1,51 +1,49 @@
-import {defineConfig} from 'vitepress'
-import navbar from './navbar.js'
-import sidebar from './sidebar.js'
-import {container} from "@mdit/plugin-container";
+import { defineConfig } from "vitepress";
+import navbar from "./navbar.js";
+import sidebar from "./sidebar.js";
+import { container } from "@mdit/plugin-container";
 
 export default defineConfig({
-    lang: 'en-US',
-    title: 'Fastjs',
-    srcDir: 'docs',
-    vite: {
-        assetsInclude: ['*.png']
+  lang: "en-US",
+  title: "Fastjs",
+  srcDir: "docs",
+  vite: {
+    assetsInclude: ["*.png"],
+  },
+  head: [["link", { rel: "icon", type: "image/x-icon", href: "/icon.png" }]],
+  themeConfig: {
+    nav: navbar.nav,
+    logo: "/icon.png",
+    sidebar: sidebar,
+    editLink: {
+      pattern: "https://github.com/fastjs-team/docs/edit/main/:path",
+      text: "Edit this page on GitHub",
     },
-    head: [
-        ['link', {rel: 'icon', type: 'image/x-icon', href: '/icon.png'}],
+    socialLinks: [
+      { icon: "github", link: "https://github.com/fastjs-team/core" },
+      { icon: "twitter", link: "https://twitter.com/dy_xiaodong2022" },
     ],
-    themeConfig: {
-        nav: navbar.nav,
-        logo: '/icon.png',
-        sidebar: sidebar,
-        editLink: {
-            pattern: "https://github.com/fastjs-team/docs/edit/main/:path",
-            text: "Edit this page on GitHub",
+    outline: [2, 5],
+  },
+  markdown: {
+    config: (md) => {
+      md.use(container, {
+        name: "advance",
+        openRender() {
+          return `<div class="advance-container">`;
         },
-        socialLinks: [
-            {icon: 'github', link: 'https://github.com/fastjs-team/core'},
-            {icon: 'twitter', link: 'https://twitter.com/dy_xiaodong2022'}
-        ],
-        outline: [2, 5],
-    },
-    markdown: {
-        config: (md) => {
-            md.use(container, {
-                name: 'advance',
-                openRender() {
-                    return `<div class="advance-container">`
-                },
-                closeRender() {
-                    return `</div>`
-                }
-            }).use(container, {
-                name: 'simple',
-                openRender() {
-                    return `<div class="simple-container">`
-                },
-                closeRender() {
-                    return `</div>`
-                }
-            })
+        closeRender() {
+          return `</div>`;
         },
+      }).use(container, {
+        name: "simple",
+        openRender() {
+          return `<div class="simple-container">`;
+        },
+        closeRender() {
+          return `</div>`;
+        },
+      });
     },
-})
+  },
+});

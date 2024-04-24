@@ -1,19 +1,19 @@
 <script setup lang="ts">
-import { useData } from 'vitepress/dist/client/theme-default/composables/data.js'
-import VPDocAsideOutline from './VPDocAsideOutline.vue'
-import VPDocAsideCarbonAds from 'vitepress/dist/client/theme-default/components/VPDocAsideCarbonAds.vue'
+import { useData } from "vitepress/dist/client/theme-default/composables/data.js";
+import VPDocAsideOutline from "./VPDocAsideOutline.vue";
+import VPDocAsideCarbonAds from "vitepress/dist/client/theme-default/components/VPDocAsideCarbonAds.vue";
 
-import {ref} from "vue";
+import { ref } from "vue";
 
-const { theme } = useData()
+const { theme } = useData();
 
-const vpDocAsideOutlineRef = ref(null)
+const vpDocAsideOutlineRef = ref(null);
 function docsModeChange(newVal) {
-  vpDocAsideOutlineRef.value.docsModeChange(newVal)
+  vpDocAsideOutlineRef.value.docsModeChange(newVal);
 }
 defineExpose({
-  docsModeChange
-})
+  docsModeChange,
+});
 </script>
 
 <template>

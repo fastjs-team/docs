@@ -1,36 +1,36 @@
 <script>
-import VPSwitch from "vitepress/dist/client/theme-default/components/VPSwitch.vue"
-import VPSidebarItem from "vitepress/dist/client/theme-default/components/VPSidebarItem.vue"
+import VPSwitch from "vitepress/dist/client/theme-default/components/VPSwitch.vue";
+import VPSidebarItem from "vitepress/dist/client/theme-default/components/VPSidebarItem.vue";
 
 export default {
   name: "docs-mode-switch",
   components: {
     VPSwitch,
-    VPSidebarItem
+    VPSidebarItem,
   },
   data() {
     return {
-      enable: true
-    }
+      enable: true,
+    };
   },
   methods: {
     changeMode() {
-      this.enable = !this.enable
-      this.$emit('changeMode', this.enable)
-    }
+      this.enable = !this.enable;
+      this.$emit("changeMode", this.enable);
+    },
   },
-  emits: ['changeMode']
-}
+  emits: ["changeMode"],
+};
 </script>
 
 <template>
-    <div class="docs-mode-switch" :data-advanced="enable">
-      <span class="option-text" :class="{active: !enable}">Easy</span>
-      <VPSwitch class="modeSwitch" :aria-checked="enable" @click="changeMode">
-      </VPSwitch>
-      <span class="option-text" :class="{active: enable}">Advanced</span>
-    </div>
-    <div class="docs-mode-switch-divider"></div>
+  <div class="docs-mode-switch" :data-advanced="enable">
+    <span class="option-text" :class="{ active: !enable }">Easy</span>
+    <VPSwitch class="modeSwitch" :aria-checked="enable" @click="changeMode">
+    </VPSwitch>
+    <span class="option-text" :class="{ active: enable }">Advanced</span>
+  </div>
+  <div class="docs-mode-switch-divider"></div>
 </template>
 
 <style lang="less" scoped>
