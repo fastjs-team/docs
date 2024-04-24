@@ -50,10 +50,10 @@ const modules = [
         text: "Scaling up",
         link: "/guide/request-advanced",
       },
-      // {
-      //     "text": "Base Class",
-      //     "link": "/guide/request-class"
-      // }
+      {
+        text: "Create a Instance",
+        link: "/guide/request-class",
+      },
     ],
   },
 ];
