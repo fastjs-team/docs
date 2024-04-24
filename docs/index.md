@@ -8,11 +8,31 @@ It is designed to be easy to use. Fastjs can be with any framework or just pure 
 
 ## Why Fastjs?
 
-This project is an open-source npm library designed to consolidate common utilities needed for everyday development into a single, cohesive package. In the current landscape, developers often find themselves installing multiple disjointed libraries for different tasks – one for date formatting, another for making HTTP requests, and so on.
+Fastjs contains a collection of utilities that are commonly used in JavaScript development, we put different functions into different modules, so you can use them separately.
 
-The quality of these individual libraries can vary widely, and some are limited to only front-end or back-end use. Fastjs aims to solve these problems by providing a well-curated and consistent set of tools that can be used across the full stack. This not only streamlines the development process by reducing the number of dependencies but also ensures higher quality and better interaction, especially for tasks like date-time manipulation and data transmission between the front-end and back-end environments.
+Fastjs have it's own design rules, every module follows the same design rules, so you can learn one module, and you can use all of them.
 
-In essence, it's an all-in-one utility belt that's rigorously designed to be robust, versatile, and developer-friendly for both client-side and server-side programming.
+Fastjs API is designed to be easy to use, you can just learning them with just the type hints in your IDE, even don't need to read the document.
+
+## Why not other libraries?
+
+We consider the needs of users from many aspects from the user's perspective, and we have a clear design goal.
+
+### Installation
+
+We believe that the installation process should be as simple as possible, so fastjs is a all-in-one library, it includes a lot of features that commonly used in JavaScript development.
+
+### API Design
+
+We know that a clear and easy-to-use API is very important, so we design the API to be easy to use, and the function names are easy to understand.
+
+### TypeScript Support
+
+We provide full TypeScript support, and we export almost all types that you may need when using fastjs, to help you getting strong type hints in your IDE.
+
+### Environment Support
+
+Fastjs is a powerful library, we believe that user in different environments may choose to use fastjs, so fastjs can run in anywhere.
 
 ## What is our goal?
 
