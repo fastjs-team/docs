@@ -4,8 +4,10 @@ Here shows all the sponsors of fastjs-team, thank you all! :sparkling_heart:
 
 ## Sponsors
 
-- DDVD233
+<div align="center">
+  <img src="https://raw.githubusercontent.com/xiaodong2008/sponsors/main/sponsors.wide.svg" />
+</div>
 
 ## Become a sponsor
 
-If you want to become a sponsor, please visit [here](https://github.com/sponsors/xiaodong2008).
+To let fastjs be better, please considering [sponsor us](https://github.com/sponsors/xiaodong2008).
