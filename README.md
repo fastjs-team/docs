@@ -29,5 +29,5 @@ Don't forget to read the [Contributing Guide](https://github.com/fastjs-team/cor
 
 ## Info
 
-- Author: xiaodong2008
+- Author: [xiaodong2008](https://github.com/xiaodong2008)
 - License: under the [MIT License](https://opensource.org/licenses/MIT).
