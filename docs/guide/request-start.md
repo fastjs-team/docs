@@ -123,3 +123,31 @@ request.post(
   },
 );
 ```
+
+## Failed Request
+
+When the request failed, it will throw an error, you can catch it with `.catch()`.
+
+```typescript
+request
+  .get("https://reqres.in/api/unknown")
+  .then((data: any) => {
+    console.log(data);
+  })
+  .catch((e: FailedParams) => {
+    // 404
+    console.error(e);
+  });
+```
+
+### Type Declaration
+
+```typescript
+export interface FailedParams<T extends Error | number | null> {
+  error: T;
+  request: FastjsRequest;
+  intercept: boolean;
+  hook: RequestHooks | null;
+  response: RequestReturn | null;
+}
+```
