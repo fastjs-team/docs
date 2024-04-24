@@ -15,5 +15,8 @@
     "vite": "^5.1.6",
     "vitepress": "^1.0.0-rc.45",
     "vue": "^3.4.21"
+  },
+  "devDependencies": {
+    "prettier": "^3.2.5"
   }
 }
