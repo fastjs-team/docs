@@ -30,7 +30,7 @@ const modules = [
                 "link": "/guide/date-start"
             },
             {
-                "text": "Base Class",
+                "text": "Create a Instance",
                 "link": "/guide/date-class"
             },
             {

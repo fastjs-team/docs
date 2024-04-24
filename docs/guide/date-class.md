@@ -1,4 +1,4 @@
-# Using FastjsDate
+# Create a Instance
 
 For some advanced usage, you can create a `FastjsDate` object and do what you want.
 
