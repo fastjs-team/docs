@@ -4,6 +4,7 @@
     "dev": "vitepress dev",
     "build": "vitepress build",
     "serve": "vitepress serve",
+    "format": "prettier --check . --ignore-path .prettierignore",
     "update": "ncu --upgrade"
   },
   "author": "xiaodong2008",
