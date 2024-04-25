@@ -23,12 +23,6 @@ and it can let fastjs to be tree-shaked by bundler.
 
 Fastjs recommend you to use `vite` to create a new project.
 
-<!-- ```bash
-npm create vite@latest your-project-name --template vanilla # Clean project without any framework
-npm create vite@latest your-project-name --template react # Project with React
-npm create vite@latest your-project-name --template vue # Project with Vue
-``` -->
-
 :::code-group
 
 ```bash [npm]
@@ -77,17 +71,11 @@ bun add jsfast
 
 ### Usage
 
-Open `src/main.js` and add this line:
+Open `src/main.js` and try this example:
 
 ```js
 import { date } from "jsfast";
 
-// ...
-```
-
-Example(Only in vue project):
-
-```javascript
 console.log(date.string());
 ```
 
