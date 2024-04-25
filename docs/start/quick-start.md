@@ -23,49 +23,72 @@ and it can let fastjs to be tree-shaked by bundler.
 
 Fastjs recommend you to use `vite` to create a new project.
 
-```bash
+<!-- ```bash
 npm create vite@latest your-project-name --template vanilla # Clean project without any framework
 npm create vite@latest your-project-name --template react # Project with React
 npm create vite@latest your-project-name --template vue # Project with Vue
+``` -->
+
+:::code-group
+
+```bash [npm]
+npm create vite@latest fastjs-project
 ```
+
+```bash [yarn]
+yarn create vite@latest fastjs-project
+```
+
+```bash [pnpm]
+pnpm create vite@latest fastjs-project
+```
+
+```bash [bun]
+bun create vite@latest fastjs-project
+```
+
+:::
 
 ### Install Fastjs
 
-```bash
-# If you are not in your project folder(usually it is the folder you created by bundler), run this command first.
-cd your-project-name
-# Install Fastjs
+:::code-group
+
+```bash [npm]
+cd fastjs-project
 npm i jsfast
 ```
+
+```bash [yarn]
+cd fastjs-project
+yarn add jsfast
+```
+
+```bash [pnpm]
+cd fastjs-project
+pnpm add jsfast
+```
+
+```bash [bun]
+cd fastjs-project
+bun add jsfast
+```
+
+:::
 
 ### Usage
 
 Open `src/main.js` and add this line:
 
 ```js
-import { yourModules } from "jsfast";
+import { date } from "jsfast";
 
 // ...
 ```
 
-Or any file you want to use Fastjs.
-
 Example(Only in vue project):
 
-```vue
-<template>
-  <span>{{ date }}</span>
-</template>
-
-<script setup>
-import { ref } from "vue";
-import { date } from "jsfast";
-
-const dateStr = ref(date.string());
-setInterval(() => {
-  dateStr.value = date.string();
-}, 1000);
-</script>
+```javascript
+console.log(date.string());
 ```
 
 ## With CDN
@@ -87,7 +110,7 @@ console.log(fastjs.date.string());
 or exclude `fastjs` namespace:
 
 ```js
-const { yourModules } = fastjs;
+const { date } = fastjs;
 ```
 
 ## With Node.js
@@ -107,7 +130,7 @@ npm i jsfast
 ### Usage
 
 ```js
-const { yourModules } = require("jsfast");
+const { date } = require("jsfast");
 ```
 
 ## With Direct Import
@@ -118,8 +141,8 @@ Use it in browser ESM environment.
 
 ```html
 <script type="module">
-  import { yourModules } from "https://cdn.jsdelivr.net/npm/jsfast/dist/fastjs.esm.js";
+  import { date } from "https://cdn.jsdelivr.net/npm/jsfast/dist/fastjs.esm.js";
   // or
-  import { yourModules } from "https://cdn.unpkg.com/jsfast/dist/fastjs.esm.js";
+  import { date } from "https://cdn.unpkg.com/jsfast/dist/fastjs.esm.js";
 </script>
 ```
