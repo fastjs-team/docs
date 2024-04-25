@@ -24,6 +24,14 @@ export default defineConfig({
       { icon: "twitter", link: "https://twitter.com/dy_xiaodong2022" },
     ],
     outline: [2, 5],
+    search: {
+      provider: "algolia",
+      options: {
+        appId: 'NJNQH9E5XC',
+        apiKey: '99c195cd5bb8691f49998d4a921982dc',
+        indexName: 'fastjs'
+      }
+    }
   },
   markdown: {
     config: (md) => {
