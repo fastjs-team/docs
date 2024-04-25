@@ -1,6 +1,7 @@
-const introduction = {
+import type { DefaultTheme } from "vitepress";
+
+const introduction: DefaultTheme.SidebarItem = {
   text: "Getting Started",
-  collapsed: false,
   items: [
     {
       text: "Introduction",
@@ -21,7 +22,7 @@ const introduction = {
   ],
 };
 
-const modules = [
+const modules: DefaultTheme.SidebarItem[] = [
   {
     text: "Date Module",
     items: [
@@ -58,7 +59,7 @@ const modules = [
   },
 ];
 
-const other = {
+const other: DefaultTheme.SidebarItem = {
   text: "Other",
   items: [
     {

@@ -12,7 +12,7 @@ export default defineConfig({
   },
   head: [["link", { rel: "icon", type: "image/x-icon", href: "/icon.png" }]],
   themeConfig: {
-    nav: navbar.nav,
+    nav: navbar,
     logo: "/icon.png",
     sidebar: sidebar,
     editLink: {
@@ -27,11 +27,11 @@ export default defineConfig({
     search: {
       provider: "algolia",
       options: {
-        appId: 'NJNQH9E5XC',
-        apiKey: '99c195cd5bb8691f49998d4a921982dc',
-        indexName: 'fastjs'
-      }
-    }
+        appId: "NJNQH9E5XC",
+        apiKey: "99c195cd5bb8691f49998d4a921982dc",
+        indexName: "fastjs",
+      },
+    },
   },
   markdown: {
     config: (md) => {
