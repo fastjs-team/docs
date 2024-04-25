@@ -7,16 +7,16 @@ const introduction = {
       link: "/",
     },
     {
+      text: "Comparing",
+      link: "/start/compare",
+    },
+    {
       text: "Quick Start",
-      link: "/guide/quick-start",
+      link: "/start/quick-start",
     },
     {
       text: "Overview",
-      link: "/guide/overview",
-    },
-    {
-      text: "Module Structure",
-      link: "/guide/module-structure",
+      link: "/start/overview",
     },
   ],
 };
