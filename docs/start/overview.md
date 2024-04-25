@@ -8,16 +8,6 @@ Overview all the modules in `jsfast` here.
 
 ## Modules
 
-### Array
-
-Fastjs Array provides runtime checking for JavaScript arrays, unexpected type error reporting, and more.
-
-#### Why we need it
-
-JavaScript is a dynamic language, which means that the type of a variable is not fixed. This is a good thing, but it also brings some problems.
-
-Fastjs Array provides a clear output of the error message when the type of the array is not as expected, which is very helpful for debugging.
-
 ### Date
 
 Fastjs Date is the simplest date library for parsing, formatting dates.
@@ -63,7 +53,7 @@ btn.addEventListener("click", () => {
 // ...
 
 // Fastjs DOM
-const btn = dom.selector(".btn").on("click", () => {
+const btn = dom.select(".btn").addEvent("click", () => {
   // do something
 });
 // ...
@@ -99,9 +89,9 @@ Fastjs Request is a powerful HTTP request library with built-in support for pars
 Fastjs Request is designed to be simple and easy to use. It provides a lot of powerful features, let's see some examples:
 
 - Global hooks
-- In-class hooks
+- Instance scope hooks
 - Request time control
-- Auto retry
+- Multi callback
 - And more...
 
 ### Utils
