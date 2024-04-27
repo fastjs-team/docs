@@ -36,7 +36,7 @@ export interface FastjsDateAPI {
 ### `FastjsDate.format`
 
 :::tip
-About the format string, see [Format Table](./date-start.html#format-table)
+About the format string, see [Format Table](./#format-table)
 :::
 
 The format of the date, it can be changed by [`changeFormat`](#fastjsdate-changeformat-format-string-fastjsdate) or cover when calling [`toString`](#fastjsdate-tostring) or [`toActiveString`](#fastjsdate-toactivestring).

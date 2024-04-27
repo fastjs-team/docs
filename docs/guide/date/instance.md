@@ -215,7 +215,7 @@ declare function createFastjsDate(
 ### Instance Properties
 
 :::tip Module API
-If you want to check the methods of module or more information of each properties, please refer to [Date API](./date-api.md) page.
+If you want to check the methods of module or more information of each properties, please refer to [Date API](./api) page.
 :::
 
 ```typescript

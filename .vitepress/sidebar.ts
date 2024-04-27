@@ -28,15 +28,15 @@ const modules: DefaultTheme.SidebarItem[] = [
     items: [
       {
         text: "Getting Started",
-        link: "/guide/date-start",
+        link: "/guide/date/",
       },
       {
         text: "Create a Instance",
-        link: "/guide/date-class",
+        link: "/guide/date/instance",
       },
       {
         text: "Date API",
-        link: "/guide/date-api",
+        link: "/guide/date/api",
       },
     ],
   },
