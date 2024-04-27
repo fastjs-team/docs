@@ -45,15 +45,19 @@ const modules: DefaultTheme.SidebarItem[] = [
     items: [
       {
         text: "Getting Started",
-        link: "/guide/request-start",
+        link: "/guide/request/",
       },
       {
         text: "Scaling up",
-        link: "/guide/request-advanced",
+        link: "/guide/request/advance",
+      },
+      {
+        text: "Add Hooks",
+        link: "/guide/request/hooks",
       },
       {
         text: "Create a Instance",
-        link: "/guide/request-class",
+        link: "/guide/request/instance",
       },
     ],
   },
