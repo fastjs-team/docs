@@ -109,7 +109,7 @@ request.config.hooks.init = (request: FastjsRequest) => {
 #### Success
 
 :::tip Type Declaration
-Check the [type declaration](./request-start.md#type-declaration) of `RequestReturn`.
+Check the [type declaration](./#type-declaration) of `RequestReturn`.
 :::
 
 This hook only triggers when the request is successful.
@@ -123,7 +123,7 @@ request.config.hooks.success = (response: RequestReturn) => {
 #### Failed
 
 :::tip Type Declaration
-Check the [type declaration](./request-start.md#type-declaration) of `RequestReturn`.
+Check the [type declaration](./#type-declaration) of `RequestReturn`.
 :::
 
 This hook only triggers when the request is failed.

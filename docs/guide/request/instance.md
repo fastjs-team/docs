@@ -5,7 +5,7 @@ With a request that need to be sent multiple times and likely to have the same c
 ## Send Multiple Requests
 
 :::tip Request Hooks
-You should learned about request hooks before, if you haven't, please read [Request Hooks](./request-advanced.md).
+You should learned about request hooks before, if you haven't, please read [Request Hooks](./hooks).
 :::
 
 For example, we have a api for testing ping, because every time we need to send a request to the same url, we can create a instance to reduce the configuration.
