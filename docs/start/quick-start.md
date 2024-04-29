@@ -22,7 +22,7 @@ and it can let fastjs to be tree-shaked by bundler.
 ### Create a new project
 
 :::tip Fastjs CLI is now available!
-We just released a new CLI tool for Fastjs, [Click here](/cli) to build a new project with Fastjs really fast!
+We just released a new CLI tool for Fastjs, [Click here](./cli) to build a new project with Fastjs really fast!
 :::
 
 Fastjs recommend you to use `vite` to create a new project.
