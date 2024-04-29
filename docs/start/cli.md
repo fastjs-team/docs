@@ -1,6 +1,6 @@
 # Fastjs CLI
 
-Fastjs CLI is a offficail CLI tool by Fastjs to create a new project with Fastjs just in a few seconds.
+Fastjs CLI is a official CLI tool by Fastjs Team to create a new project with Fastjs just in a few seconds.
 
 ## Basic Usage
 
