@@ -12,12 +12,12 @@ const introduction: DefaultTheme.SidebarItem = {
       link: "/start/compare",
     },
     {
-      text: "Quick Start",
+      text: "Setup Project",
       link: "/start/quick-start",
     },
     {
-      text: "Overview",
-      link: "/start/overview",
+      text: "Setup with Fastjs CLI",
+      link: "/start/cli",
     },
   ],
 };
