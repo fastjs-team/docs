@@ -62,14 +62,14 @@ const modules: DefaultTheme.SidebarItem[] = [
     ],
   },
   {
-    "text": "Cookie Module",
-    "items": [
+    text: "Cookie Module",
+    items: [
       {
-        "text": "Getting Started",
-        "link": "/guide/cookie/"
-      }
-    ]
-  }
+        text: "Getting Started",
+        link: "/guide/cookie/",
+      },
+    ],
+  },
 ];
 
 const other: DefaultTheme.SidebarItem = {
