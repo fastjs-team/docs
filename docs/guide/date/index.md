@@ -148,18 +148,18 @@ declare const _default: {
 
 ## Format Table
 
-| Format | Description                | Example |
-| ------ | -------------------------- | ------- |
-| Y      | Year                       | 2021    |
-| M      | Month                      | 01      |
-| D      | Day                        | 01      |
-| h      | Hour                       | 01      |
+| Format | Description               | Example |
+| ------ | ------------------------- | ------- |
+| Y      | Year                      | 2021    |
+| M      | Month                     | 01      |
+| D      | Day                       | 01      |
+| h      | Hour                      | 01      |
 | hh     | Hour without prefix `0`   | 1       |
-| m      | Minute                     | 01      |
+| m      | Minute                    | 01      |
 | mm     | Minute without prefix `0` | 1       |
-| s      | Second                     | 01      |
+| s      | Second                    | 01      |
 | ss     | Second without prefix `0` | 1       |
-| S      | Millisecond                | 613     |
-| H      | Hour(12h)                  | 01      |
-| A      | AM/PM                      | AM      |
-| a      | am/pm                      | am      |
+| S      | Millisecond               | 613     |
+| H      | Hour(12h)                 | 01      |
+| A      | AM/PM                     | AM      |
+| a      | am/pm                     | am      |
