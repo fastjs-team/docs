@@ -154,11 +154,11 @@ declare const _default: {
 | M      | Month                      | 01      |
 | D      | Day                        | 01      |
 | h      | Hour                       | 01      |
-| hh     | Hour with out prefix `0`   | 1       |
+| hh     | Hour without prefix `0`   | 1       |
 | m      | Minute                     | 01      |
-| mm     | Minute with out prefix `0` | 1       |
+| mm     | Minute without prefix `0` | 1       |
 | s      | Second                     | 01      |
-| ss     | Second with out prefix `0` | 1       |
+| ss     | Second without prefix `0` | 1       |
 | S      | Millisecond                | 613     |
 | H      | Hour(12h)                  | 01      |
 | A      | AM/PM                      | AM      |
