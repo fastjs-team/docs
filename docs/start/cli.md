@@ -7,19 +7,19 @@ Fastjs CLI is a official CLI tool by Fastjs Team to create a new project with Fa
 :::code-group
 
 ```bash [pnpm]
-pnpm create vite@latest fastjs-project
+pnpm create fastjs
 ```
 
 ```bash [yarn]
-yarn create vite@latest fastjs-project
+yarn create fastjs
 ```
 
 ```bash [npm]
-npm create vite@latest fastjs-project
+npm create fastjs
 ```
 
 ```bash [bun]
-bun create vite@latest fastjs-project
+bun create fastjs
 ```
 
 :::
