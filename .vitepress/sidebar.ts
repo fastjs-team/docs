@@ -24,6 +24,19 @@ const introduction: DefaultTheme.SidebarItem = {
 
 const modules: DefaultTheme.SidebarItem[] = [
   {
+    text: "Dom Module",
+    items: [
+      {
+        text: "Getting Started",
+        link: "/guide/dom/",
+      },
+      {
+        text: "More about Dom API",
+        link: "/guide/dom/api",
+      },
+    ],
+  },
+  {
     text: "Date Module",
     items: [
       {
