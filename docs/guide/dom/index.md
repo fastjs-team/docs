@@ -9,7 +9,7 @@ Fastjs redesigned a lot of API to help you write in different ways, and we provi
 ## Import Module
 
 ```typescript
-import { dom } from "jsfast"
+import { dom } from "jsfast";
 ```
 
 ## Select a element
@@ -119,4 +119,3 @@ dom.create("div", {
   class: ["class1", "class2"],
 });
 ```
-

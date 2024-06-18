@@ -276,25 +276,26 @@ dom.select("#id")!.setAttr({
 Push the element to a target element.
 
 ```typescript
-type PushTarget = number
- | "firstElementChild"
- | "lastElementChild"
- | "randomElementChild"
- | "beforeElement" 
- | "afterElement" 
- | "replaceElement"
+type PushTarget =
+  | number
+  | "firstElementChild"
+  | "lastElementChild"
+  | "randomElementChild"
+  | "beforeElement"
+  | "afterElement"
+  | "replaceElement";
 
 function push<T extends PushTarget>(
   el: HTMLElement | FastjsDomList | FastjsDom,
   target: T,
-  clone?: boolean
-  ): PushReturn<T>;
+  clone?: boolean,
+): PushReturn<T>;
 ```
 
 Example:
 
 ```typescript
-dom.create("div").push(dom.select("#app"), "lastElementChild")
+dom.create("div").push(dom.select("#app"), "lastElementChild");
 ```
 
 It will return a `PushReturn<T>` object.
@@ -308,7 +309,7 @@ type PushReturn<T> = {
   el: FastjsDom;
   origin: FastjsDom;
   father: FastjsDom | null;
-}
+};
 ```
 
 ## FastjsDom.insert
@@ -316,19 +317,19 @@ type PushReturn<T> = {
 Insert a element to it.
 
 ```typescript
-type InsertTarget = number | "after" | "before" | "first" | "last" | "random"
+type InsertTarget = number | "after" | "before" | "first" | "last" | "random";
 
 function insert<T extends InsertTarget>(
   el: HTMLElement | FastjsDomList | FastjsDom,
   target: T,
-  clone?: boolean
+  clone?: boolean,
 ): InsertReturn;
 ```
 
 Example:
 
 ```typescript
-dom.select("#app").insert(dom.create("div"), "last")
+dom.select("#app").insert(dom.create("div"), "last");
 ```
 
 It will return a `InsertReturn` object.
@@ -338,6 +339,5 @@ type InsertReturn = {
   index: number;
   added: FastjsDom;
   origin: FastjsDom;
-}
+};
 ```
-
