@@ -33,15 +33,49 @@ import type { FastjsDom, FastjsDomList } from "jsfast";
 
 const idElement = dom.select<FastjsDom>("#id");
 const classElement = dom.select<FastjsDomList>(".class");
-const tagElement = dom.select<FastjsDomList>("tag");
+const spanElement = dom.select<FastjsDomList>("span");
+```
+
+Or even better with defining the type of the element.
+
+```typescript
+import type { FastjsDom, FastjsDomList } from "jsfast";
+
+const idElement = dom.select<FastjsDom<HTMLDivElement>>("#id");
+const classElement = dom.select<FastjsDomList<HTMLAnchorElement>>(".class");
+const tagElement = dom.select<FastjsDomList<HTMLSpanElement>>("span");
 ```
 
 ## Operate a element
 
-After you select a element, you can operate it with some [methods](./api.md).
+Either you select a single element or a list of elements, you can operate them with some [methods](./api.md).
+
+### Using FastjsDom
+
+After you select a **FastjsDom** element, you can operate it with some [methods](./api.md).
 
 ```typescript
 dom.select("h1")!.html("Hello World");
+```
+
+### Using FastjsDomList
+
+:::tip
+If there are a same method in **FastjsDom** and **FastjsDomList**, fastjs will use the method of **FastjsDomList**.
+
+For example, `each` method is in both **FastjsDom** and **FastjsDomList**, but when you use `each` method on **FastjsDomList**, `FastjsDomList.each` will be called.
+:::
+
+There are some special methods for **FastjsDomList**. But you can also use the methods of **FastjsDom**.
+
+When you are using the methods of **FastjsDom** on **FastjsDomList**, it will apply to all elements in the list one by one.
+
+```typescript
+import { dom } from "jsfast";
+
+dom(".class")!.html("Hello World");
+// equals to
+dom(".class")!.each((element: FastjsDom) => element.html("Hello World"));
 ```
 
 ## Create a element
