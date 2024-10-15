@@ -1,10 +1,10 @@
-# Getting Start with Dom
+# Getting Started with Dom
 
-With Fastjs's dom module, you can operate dom elements with simple codes.
+With Fastjs's dom module, you can operate on DOM elements with simple codes.
 
-Some API of Fastjs's dom module looks like jQuery, but not fully the same way.
+Some APIs of Fastjs's dom module look like jQuery, but not fully the same way.
 
-Fastjs redesigned a lot of API to help you write in different ways, and we provide strongly type support without any extra packages.
+Fastjs redesigned a lot of APIs to help you write in different ways, and we provide strongly typed support without any extra packages.
 
 ## Import Module
 
@@ -12,13 +12,13 @@ Fastjs redesigned a lot of API to help you write in different ways, and we provi
 import { dom } from "jsfast";
 ```
 
-## Select a element
+## Select an element
 
-:::tip Different with jQuery
+:::tip Different from jQuery
 Fastjs doesn't register a global variable `$` to select elements, import `dom` and use `dom.select()` to select elements.
 :::
 
-Select a element to operate is usually the things you need to do first, you can do this easliy with `dom.select()`
+Selecting an element to operate on is usually the first thing you need to do, you can do this easily with `dom.select()`
 
 ```typescript
 dom.select("#id"); // FastjsDom | null
@@ -26,7 +26,7 @@ dom.select(".class"); // FastjsDomList | null
 dom.select("tag"); // FastjsDomList | null
 ```
 
-With strongly type support with your typescript project, you can define the return type of `dom.select()`.
+With strongly type support in your TypeScript project, you can define the return type of `dom.select()`.
 
 ```typescript
 import type { FastjsDom, FastjsDomList } from "jsfast";
@@ -48,11 +48,11 @@ const tagElement = dom.select<FastjsDomList<HTMLSpanElement>>("span");
 
 ## Operate a element
 
-Either you select a single element or a list of elements, you can operate them with some [methods](./api.md).
+Either you select a single element or a list of elements, you can operate on them with some [methods](./api.md).
 
 ### Using FastjsDom
 
-After you select a **FastjsDom** element, you can operate it with some [methods](./api.md).
+After you select a **FastjsDom** element, you can operate on it with some [methods](./api.md).
 
 ```typescript
 dom.select("h1")!.html("Hello World");
@@ -61,7 +61,7 @@ dom.select("h1")!.html("Hello World");
 ### Using FastjsDomList
 
 :::tip
-If there are a same method in **FastjsDom** and **FastjsDomList**, fastjs will use the method of **FastjsDomList**.
+If there is a same method in **FastjsDom** and **FastjsDomList**, fastjs will use the method of **FastjsDomList**.
 
 For example, `each` method is in both **FastjsDom** and **FastjsDomList**, but when you use `each` method on **FastjsDomList**, `FastjsDomList.each` will be called.
 :::
@@ -78,9 +78,9 @@ dom(".class")!.html("Hello World");
 dom(".class")!.each((element: FastjsDom) => element.html("Hello World"));
 ```
 
-## Create a element
+## Create an element
 
-You can create a element with `dom.create()`.
+You can create an element with `dom.create()`.
 
 ```typescript
 dom.create("div");
@@ -127,7 +127,7 @@ dom.create("div", {
 
 ### Set Content
 
-You can set content to the element by setting the `text` or `html` or `val` key.
+You can set content to the element by setting the `text`, `html`, or `val` key.
 
 ```typescript
 dom.create("div", {
