@@ -68,7 +68,7 @@ setInterval(() => {
 ### Learn More
 
 :::tip
-The real code to implement `toString` is [more complex](https://github.com/fastjs-team/core/blob/main/src/date/date-methods.ts#L46) than you think, the code below is a simplified version for you to understand.
+The real code to implement `toString` is [more complex](https://github.com/fastjs-team/core/blob/main/packages/core/src/date/date-methods.ts#L46) than you think, the code below is a simplified version for you to understand.
 :::
 
 How does `FastjsDate.toString()` work?
