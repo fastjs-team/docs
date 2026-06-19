@@ -1,102 +1,114 @@
-# Create a Instance
+# Create a Date Instance
 
-For some advanced usage, you can create a `FastjsDate` object and do what you want.
+For more advanced workflows you can create a `FastjsDate` and reuse it across calls.
+
+:::warning Not a class
+`FastjsDate` is **a TypeScript type only**. The runtime constructor is `date.create(...)` (a.k.a. the internal `createFastjsDate`). Do **not** write `new FastjsDate()` — there is no exported class.
+:::
 
 ```typescript
-const date: FastjsDate = date.create();
-console.log(date.toString());
+import { date } from "jsfast";
+import type { FastjsDate } from "jsfast";
+
+const d: FastjsDate = date.create();
+console.log(d.toString());
 ```
+
+`date.create` accepts three optional arguments:
+
+- `format` (default `"Y-M-D h:m:s"`) — the format used when reading / writing strings.
+- `date` (default `Date.now()`) — initial value. Strings are parsed against `format`; a `Date` is reduced to its timestamp.
+- `local` (default `false`) — set to `true` to shift the **internally stored** UTC timestamp by the current timezone offset. Useful when the input value is already "local wall-clock time".
+
+:::advance
+
+#### Type Declaration
+
+```typescript
+function create(
+  format?: string,
+  date?: number | string | Date,
+  local?: boolean,
+): FastjsDate;
+```
+
+:::
 
 ## Convert to string
 
-:::tip What is active time(active string)?
-When you're using `toActiveString`, the time will fly with real time by calculating the time difference between the creation time and the current time.
-:::
-
-:::tip Active time
-If you want to get active time, you need to use `create` method to create a new instance.
+:::tip What is active time?
+The "active" variants (`toActiveString` / `toActiveNumber`) keep ticking based on the wall clock. They add the difference between **now** and the moment the instance was created (or last `refresh()`-ed) to the stored timestamp.
 :::
 
 ```typescript
-import { FastjsDate } from "jsfast";
-
-const date = new FastjsDate();
-const str = date.toString();
-const activeStr = date.toActiveString();
+const d = date.create();
+d.toString();        // frozen snapshot
+d.toActiveString();  // changes as real time passes
 ```
 
-### Example
-
-Let's see an example of string conversion, including `toString` and `toActiveString`.
+### Example: a ticking clock
 
 ```typescript
-import { FastjsDate } from "jsfast";
+import { date } from "jsfast";
 
-const date = new FastjsDate();
+const clock = date.create();
 setInterval(() => {
-  console.log(date.toString()); // This will not change
-  console.log(date.toActiveString()); // This will change every second
+  console.log(clock.toString());       // does NOT change
+  console.log(clock.toActiveString()); // ticks every second
 }, 1000);
 ```
 
 :::tip Use case
-This is just an example of active string, you can also use other methods to achieve the same effect. `e.g. date.string()`
+This is just one way to display a clock; `date.string()` works too if you don't care about creating an instance.
 :::
 
-Good, display a clock with active string on your page.
+Wiring it up in Vue:
 
 ```vue
 <template>
-  <div>Now Time: {{ time }}</div>
+  <div>Now: {{ time }}</div>
 </template>
 
 <script setup>
 import { ref } from "vue";
-import { FastjsDate } from "jsfast";
+import { date } from "jsfast";
 
-const date = new FastjsDate();
-const time = ref(date.toActiveString());
+const clock = date.create();
+const time = ref(clock.toActiveString());
 
 setInterval(() => {
-  time.value = date.toActiveString();
+  time.value = clock.toActiveString();
 }, 1000);
 </script>
 ```
 
 ::::advance
 
-### Learn More
+### How does `toString` work?
 
-:::tip
-The real code to implement `toString` is [more complex](https://github.com/fastjs-team/core/blob/main/packages/core/src/date/date-methods.ts#L46) than you think, the code below is a simplified version for you to understand.
-:::
-
-How does `FastjsDate.toString()` work?
+The real implementation is [a bit more involved](https://github.com/fastjs-team/core/blob/main/packages/core/src/date/date-methods.ts), but conceptually:
 
 ```typescript
-function createDate(
-  format?: string,
-  date?: number | string | Date,
-): FastjsDate {
+function createDate(format, time) {
   return {
-    _date: __changeToTimestamp(date),
-    toString(newFormat?: string): string {
-      return __parseDate(this._date, newFormat || format);
+    _date: toTimestamp(time),
+    toString(newFormat) {
+      return formatTimestamp(this._date, newFormat || format);
     },
   };
 }
 ```
 
-Different to `toString`, `toActiveString` will calculate the time with `_createAt` to get the active time.
+`toActiveString` additionally uses `_createAt` to compute the elapsed time:
 
 ```typescript
 return {
-  _date: __changeToTimestamp(date),
+  _date: toTimestamp(time),
   _createAt: Date.now(),
-  toString(newFormat?: string): string,
-  toActiveString(newFormat?: string): string {
-    const date = this._date + (Date.now() - this._createAt);
-    return __parseDate(date, newFormat || format);
+  toString(newFormat) { /* ... */ },
+  toActiveString(newFormat) {
+    const live = this._date + (Date.now() - this._createAt);
+    return formatTimestamp(live, newFormat || format);
   },
 };
 ```
@@ -105,29 +117,18 @@ return {
 
 ## Convert to timestamp
 
-Use `FastjsDate.toNumber()` to get timestamp.
+Use `toNumber()` for the stored timestamp and `toActiveNumber()` for the "ticking" one.
 
 ```typescript
-import { FastjsDate } from "jsfast";
+const d = date.create();
+const frozen = d.toNumber();
 
-const date = new FastjsDate();
-const timestamp = date.toNumber();
-```
-
-Also, use `FastjsDate.toActiveNumber()` to get active timestamp.
-
-```typescript
-import { FastjsDate } from "jsfast";
-
-const date = new FastjsDate();
 setInterval(() => {
-  console.log("Now Time:", date.toActiveNumber()); // This will change every second
+  console.log(d.toActiveNumber()); // increases by ~1000 each call
 }, 1000);
 ```
 
-### Example
-
-Let's see an example, use `toNumber` and `toActiveNumber` to achieve the same effect.
+### Example: refresh-on-click vs live timer
 
 ```html
 <div>
@@ -136,87 +137,90 @@ Let's see an example, use `toNumber` and `toActiveNumber` to achieve the same ef
 </div>
 ```
 
-#### Original
+**Refresh on click:**
 
 ```typescript
 import { date, dom } from "jsfast";
 
-dom.select("#btn").addEvent("click", () => {
-  dom.select("#time").text(date.toNumber());
+dom.select("#btn")!.addEvent("click", () => {
+  dom.select("#time")!.text(String(date.now().timestamp));
 });
 ```
 
-#### Active
+**Live ticking (use `toActiveNumber`):**
 
 ```typescript
 import { date, dom } from "jsfast";
 
-const instance = date.create();
-dom.select("#btn").addEvent("click", () => {
-  dom.select("#time").text(instance.toActiveNumber());
+const live = date.create();
+dom.select("#btn")!.addEvent("click", () => {
+  dom.select("#time")!.text(String(live.toActiveNumber()));
 });
 ```
 
-## Set Timezone
+## Set the timezone
 
 :::tip Default timezone
-If you don't set a specific timezone, the default timezone will be user's browser timezone.
+If you don't override anything, the instance is initialised with the **browser's** timezone offset.
 :::
 
-When you want to set a specific timezone before you convert to UTC/local time, you can use `setZone` method.
+`setZone(offset)` sets the **timezone offset in hours** (e.g. `8` for UTC+8, `0` for UTC). It affects `toNumber(false)` and `toString("local")`:
 
 ```typescript
-import { FastjsDate } from "jsfast";
+const d = date.create("Y-M-D h:m:s", "2025-06-19 09:00:00");
 
-const date = new FastjsDate();
-date.setZone(1);
-// 1 is the timezone offset(e.g. Germany, France)
-const utcDate = date.convertUTC("local").toString();
+// Display the same instant under UTC+8 wall clock:
+d.setZone(8);
+d.toString("local"); // "2025-06-19 09:00:00" (wall clock in UTC+8)
+d.toString();        // UTC representation of the same instant
 ```
 
-## Refresh Create Time
-
-:::tip Use case
-You can use this skill to reset FastjsDate to current time.
-:::
-
-:::warning Misunderstanding
-When you just want to show current time like a clock(even refresh every second), you don't need to use this skill, just use `toActiveString` method.
-:::
-
-When you want to refresh the creation time of date, you can use `refresh` method.
+`toString` also accepts the offset directly without mutating the instance:
 
 ```typescript
-import { FastjsDate } from "jsfast";
+date.create().toString(8);          // UTC+8 wall clock for "now"
+date.create().toString("local");    // browser timezone
+```
 
-const date = new FastjsDate(); // -> 2021-10-21 19:20:44
+## Refresh the create time
+
+:::tip Use case
+Use this when you want `toActive*` to count from a fresh "now". You don't need it just to print the current time – use `toActiveString` directly.
+:::
+
+```typescript
+import { date } from "jsfast";
+
+const d = date.create(); // 2025-06-19 09:20:00
 setTimeout(() => {
-  date.refresh(); // -> 2021-10-21 19:20:45
+  d.refresh();           // baseline reset to 09:20:01
   setTimeout(() => {
-    console.log(date.toString()); // output: 2021-10-21 19:20:46
+    console.log(d.toActiveString()); // 09:20:02
   }, 1000);
 }, 1000);
 ```
 
-## Type Declaration
+## Type Reference
 
-Here is the type declaration of `FastjsDate` module instance.
+:::tip Module API
+For the per-method docs, see [Date API](./api).
+:::
 
-### New Instance
+Every `FastjsDate` is the intersection of an atom (raw state), the API methods, and the common [`FastjsModuleBase`](../common/module-base.md) helpers (`setCustomProp`, `then`, `setCustomEvent`, …).
+
+:::advance
+
+The runtime constructor:
 
 ```typescript
-declare function createFastjsDate(
+function createFastjsDate(
   format?: string,
   date?: number | string | Date,
   local?: boolean,
 ): FastjsDate;
 ```
 
-### Instance Properties
-
-:::tip Module API
-If you want to check the methods of module or more information of each properties, please refer to [Date API](./api) page.
-:::
+The instance structure (atomic part):
 
 ```typescript
 export interface FastjsDateAtom {
@@ -226,4 +230,8 @@ export interface FastjsDateAtom {
   _createAt: number;
   timezoneDiff: number;
 }
+
+export type FastjsDate = FastjsDateAtom & FastjsDateAPI & FastjsModuleBase;
 ```
+
+:::

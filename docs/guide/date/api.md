@@ -1,8 +1,16 @@
-# Date API
+# FastjsDate API
 
-This shows all the methods and properties of the `FastjsDate` class.
+This page lists every property and method on a `FastjsDate` instance.
+
+A `FastjsDate` is the intersection of `FastjsDateAtom`, `FastjsDateAPI` and [`FastjsModuleBase`](../common/module-base.md), so methods like `setCustomProp`, `then`, `setCustomEvent` are also available on every instance.
+
+:::advance
+
+#### Type Declaration
 
 ```typescript
+import type { FastjsDate } from "jsfast";
+
 export interface FastjsDateAtom {
   construct: "FastjsDate";
   format: string;
@@ -10,20 +18,21 @@ export interface FastjsDateAtom {
   _createAt: number;
   timezoneDiff: number;
 }
-```
 
-```typescript
 export interface FastjsDateAPI {
   changeDate(time: number | string): FastjsDate;
   changeFormat(format: string): FastjsDate;
   setZone(zone: number): FastjsDate;
   refresh(): FastjsDate;
+
   toNumber(utc?: boolean): number;
   toActiveNumber(utc?: boolean): number;
+
   toString(): string;
   toString(showAs: "utc" | "local" | number): string;
   toString(newFormat: string): string;
   toString(showAs: "utc" | "local" | number, newFormat: string): string;
+
   toActiveString(): string;
   toActiveString(showAs: "utc" | "local" | number): string;
   toActiveString(newFormat: string): string;
@@ -31,15 +40,17 @@ export interface FastjsDateAPI {
 }
 ```
 
+:::
+
 ## Properties
 
 ### `FastjsDate.format`
 
 :::tip
-About the format string, see [Format Table](./#format-table)
+For the token reference, see [Format Table](./#format-table).
 :::
 
-The format of the date, it can be changed by [`changeFormat`](#fastjsdate-changeformat-format-string-fastjsdate) or cover when calling [`toString`](#fastjsdate-tostring) or [`toActiveString`](#fastjsdate-toactivestring).
+Default format used by [`toString`](#fastjsdate-tostring) / [`toActiveString`](#fastjsdate-toactivestring). Mutate it with [`changeFormat`](#fastjsdate-changeformat) or override per call.
 
 ```typescript
 type format = string;
@@ -47,7 +58,7 @@ type format = string;
 
 ### `FastjsDate._date`
 
-The timestamp of the date, it can be changed by [`changeDate`](#fastjsdate-changedate-time-number-string-fastjsdate).
+Internal UTC timestamp (milliseconds). Mutate it with [`changeDate`](#fastjsdate-changedate).
 
 ```typescript
 type _date = number;
@@ -55,7 +66,7 @@ type _date = number;
 
 ### `FastjsDate._createAt`
 
-The timestamp of the date created, it can be reset by [`refresh`](#fastjsdate-refresh-fastjsdate).
+Timestamp of the moment the instance was created. Used by `toActive*` to compute elapsed time. Reset with [`refresh`](#fastjsdate-refresh).
 
 ```typescript
 type _createAt = number;
@@ -63,160 +74,155 @@ type _createAt = number;
 
 ### `FastjsDate.timezoneDiff`
 
-:::warning Readonly property
-You should not change this property, unless you really know what you are doing.
+:::warning Treat as read-only
+Set it with [`setZone`](#fastjsdate-setzone). Touching the field directly is allowed but discouraged.
 :::
 
-The difference between the local time and UTC time.
+Stored offset between UTC and the instance's "local" view, expressed in **milliseconds**. Defaults to the browser's `getTimezoneOffset()` at construction time.
 
 ```typescript
-class FastjsDate {
-  timezoneDiff: number;
-}
+type timezoneDiff = number;
 ```
 
 ## Methods
 
-### `FastjsDate.changeDate(time: number | string): FastjsDate`
+### `FastjsDate.changeDate`
 
-Change the date of the instance.
+Replace the stored time. A `string` is parsed against the current `format`. Also resets `_createAt`, so `toActive*` starts ticking from "now" again.
 
 ```typescript
-class FastjsDate {
-  changeDate(time: number | string): FastjsDate;
-}
-
-date.changeDate("2021-01-01 00:00:00"); // Change the date to "2021-01-01 00:00:00"
+date.create().changeDate("2025-01-01 00:00:00");
+date.create().changeDate(Date.now());
 ```
 
-### `FastjsDate.changeFormat(format: string): FastjsDate`
-
-:::warning
-It will effect to the return value of `toString` and `toActiveString`.
+:::advance
+```typescript
+changeDate(time: number | string): FastjsDate;
+```
 :::
 
-Change the format of the date.
-
-```typescript
-class FastjsDate {
-  changeFormat(format: string): FastjsDate;
-}
-
-date.changeFormat("YYYY-MM-DD"); // Change the format to "YYYY-MM-DD"
-```
-
-### `FastjsDate.setZone(zone: number): FastjsDate`
-
-Set the timezone difference.
-
-```typescript
-class FastjsDate {
-  setZone(zone: number): FastjsDate;
-}
-
-date.setZone(8); // Set the timezone difference to UTC+8
-```
-
-### `FastjsDate.refresh(): FastjsDate`
+### `FastjsDate.changeFormat`
 
 :::warning
-It will effect to the return value of `toActiveString` and `toActiveNumber`.
+Affects every subsequent `toString` / `toActiveString` and `changeDate(string)` call.
 :::
 
-Refresh the create time of the instance.
-
 ```typescript
-class FastjsDate {
-  refresh(): FastjsDate;
-}
+date.create().changeFormat("Y/M/D h:m");
 ```
 
-### `FastjsDate.toNumber(utc?: boolean): number`
+:::advance
+```typescript
+changeFormat(format: string): FastjsDate;
+```
+:::
 
-Get the timestamp of the date.
+### `FastjsDate.setZone`
+
+Set the offset between UTC and the instance's "local" view, in **hours**. `8` means UTC+8, `0` means UTC, `-5` means UTC-5.
 
 ```typescript
-class FastjsDate {
-  toNumber(utc?: boolean): number;
-}
-
-date.toNumber(); // Get the timestamp of the date
+date.create().setZone(8); // UTC+8
+date.create().setZone(0); // UTC
 ```
 
-### `FastjsDate.toActiveNumber(utc?: boolean): number`
-
-Get the active timestamp of the date.
-
+:::advance
 ```typescript
-class FastjsDate {
-  toActiveNumber(utc?: boolean): number;
-}
-
-date.toActiveNumber(); // Get the active timestamp of the date
+setZone(zone: number): FastjsDate;
 ```
+:::
+
+### `FastjsDate.refresh`
+
+:::warning
+Affects `toActiveString` / `toActiveNumber` – they will start counting from "now" again.
+:::
+
+Reset `_createAt` to the current time.
+
+:::advance
+```typescript
+refresh(): FastjsDate;
+```
+:::
+
+### `FastjsDate.toNumber`
+
+Return the stored timestamp.
+
+| `utc` | Returns |
+| --- | --- |
+| `true` (default) | The raw UTC timestamp |
+| `false` | The timestamp shifted by `timezoneDiff` (i.e. how the instance "looks" locally) |
+
+:::advance
+```typescript
+toNumber(utc?: boolean): number;
+```
+:::
+
+### `FastjsDate.toActiveNumber`
+
+Same as `toNumber`, but adds `(Date.now() - _createAt)` so the value keeps ticking forward. Use it to build clocks or stopwatches that don't drift.
+
+:::advance
+```typescript
+toActiveNumber(utc?: boolean): number;
+```
+:::
 
 ### `FastjsDate.toString`
 
-Get the date as a string.
+Format the stored time as a string. Overloads:
+
+| Call | Behaviour |
+| --- | --- |
+| `toString()` | Use the default `format`, render in **UTC**. |
+| `toString("utc")` | Same as the no-arg form. |
+| `toString("local")` | Apply `timezoneDiff` first, then format. |
+| `toString(8)` | Treat `8` as a manual UTC+8 offset (hours). |
+| `toString("Y/M/D")` | Override the format string only. |
+| `toString("local", "Y/M/D")` | Combine timezone + override format. |
 
 ```typescript
-class FastjsDate {
-  toString(): string;
-  toString(showAs: "utc" | "local" | number): string;
-  toString(newFormat: string): string;
-  toString(showAs: "utc" | "local" | number, newFormat: string): string;
-}
+const d = date.create();
+d.toString();                  // UTC
+d.toString("local");           // browser timezone
+d.toString(8);                 // UTC+8
+d.toString("Y/M/D h:m");       // custom format, UTC
+d.toString("local", "Y/M/D");  // custom format + local timezone
 ```
 
-#### `FastjsDate.toString(): string`
+:::advance
+
+#### Type Declaration
 
 ```typescript
-date.toString(); // Get the date as a string, format = date._format
+toString(): string;
+toString(showAs: "utc" | "local" | number): string;
+toString(newFormat: string): string;
+toString(showAs: "utc" | "local" | number, newFormat: string): string;
 ```
 
-#### `FastjsDate.toString(showAs: "utc" | "local" | number): string`
-
-:::warning Deprecated parameter
-You should just leave the parameter empty if you want to get utc time, parameter `showAs.utc` may be removed in the future.
 :::
-
-```typescript
-date.toString("utc"); // Get the date as a string in UTC
-date.toString("local"); // Get the date as a string in local time
-date.toString(8); // Get the date as a string in UTC+8
-```
-
-#### `FastjsDate.toString(newFormat: string): string`
-
-```typescript
-date.toString("YYYY-MM-DD"); // Get the date as a string with format "YYYY-MM-DD"
-```
-
-#### `FastjsDate.toString(showAs: "utc" | "local" | number, newFormat: string): string`
-
-:::warning Deprecated parameter
-You should just leave the parameter empty if you want to get utc time, parameter `showAs.utc` may be removed in the future.
-:::
-
-```typescript
-date.toString("utc", "YYYY-MM-DD"); // Get the date as a string in UTC with format "YYYY-MM-DD"
-date.toString("local", "YYYY-MM-DD"); // Get the date as a string in local time with format "YYYY-MM-DD"
-date.toString(8, "YYYY-MM-DD"); // Get the date as a string in UTC+8 with format "YYYY-MM-DD"
-```
 
 ### `FastjsDate.toActiveString`
 
+Same overloads as `toString`, but the underlying time is `toActiveNumber()` instead of `toNumber()`, so the result moves forward in real time.
+
 :::tip
-About what does the props do, see [FastjsDate.toString](#fastjsdate-tostring)
+See [Convert to string](./instance.md#convert-to-string) for a worked example (clock + stopwatch).
 :::
 
-Get the active date as a string.
+:::advance
+
+#### Type Declaration
 
 ```typescript
-class FastjsDate {
-  toActiveString(): string;
-  toActiveString(showAs: "utc" | "local" | number): string;
-  toActiveString(newFormat: string): string;
-  toActiveString(showAs: "utc" | "local" | number, newFormat: string): string;
-}
+toActiveString(): string;
+toActiveString(showAs: "utc" | "local" | number): string;
+toActiveString(newFormat: string): string;
+toActiveString(showAs: "utc" | "local" | number, newFormat: string): string;
 ```
+
+:::
