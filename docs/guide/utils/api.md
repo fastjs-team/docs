@@ -14,9 +14,9 @@ Random number in `[min, max]` (**both** ends inclusive).
 - Swapped bounds (`min > max`) are auto-corrected.
 
 ```typescript
-rand(0, 9);     // → 0–9 integer
-rand(0, 1, 2);  // → "0.00"–"1.00"
-rand(10, 1);    // → same as rand(1, 10)
+rand(0, 9); // → 0–9 integer
+rand(0, 1, 2); // → "0.00"–"1.00"
+rand(10, 1); // → same as rand(1, 10)
 ```
 
 :::advance
@@ -36,10 +36,10 @@ function rand(min: number, max: number, decimal?: number): number;
 Build a random string of `length` characters from a configurable alphabet.
 
 ```typescript
-randString(10);                                      // 10 lowercase letters
-randString(10, { upper: true, lower: false });       // 10 uppercase letters
-randString(10, { number: true, letter: false });     // 10 digits
-randString(10, { custom: "!@#$" });                  // lowercase + 4 symbols
+randString(10); // 10 lowercase letters
+randString(10, { upper: true, lower: false }); // 10 uppercase letters
+randString(10, { number: true, letter: false }); // 10 digits
+randString(10, { custom: "!@#$" }); // lowercase + 4 symbols
 randString(16, { number: true, upper: true, secure: true });
 ```
 
@@ -55,14 +55,14 @@ Without options you get a 10-character lowercase string. Set `number: true` to m
 
 #### `RandStringOptions`
 
-| Option | Default | Description |
-| --- | --- | --- |
-| `max` | – | When set, the resulting length is randomised in `[length, max]` |
-| `number` | `false` | Include digits `0–9` |
-| `letter` | `true` | Include letters at all |
-| `upper` | `false` | Include uppercase letters (only when `letter`) |
-| `lower` | `true` | Include lowercase letters (only when `letter`) |
-| `custom` | – | Extra characters to draw from (`string` or `string[]`) |
+| Option   | Default | Description                                                               |
+| -------- | ------- | ------------------------------------------------------------------------- |
+| `max`    | –       | When set, the resulting length is randomised in `[length, max]`           |
+| `number` | `false` | Include digits `0–9`                                                      |
+| `letter` | `true`  | Include letters at all                                                    |
+| `upper`  | `false` | Include uppercase letters (only when `letter`)                            |
+| `lower`  | `true`  | Include lowercase letters (only when `letter`)                            |
+| `custom` | –       | Extra characters to draw from (`string` or `string[]`)                    |
 | `secure` | `false` | Use `crypto.getRandomValues` with rejection sampling for an unbiased draw |
 
 `secure: true` requires `crypto.getRandomValues` to be available; otherwise it falls back to `Math.random` and logs a development-mode warning.
@@ -70,7 +70,10 @@ Without options you get a 10-character lowercase string. Set `number: true` to m
 #### Type Declaration
 
 ```typescript
-function randString(length: number, options?: Partial<RandStringOptions>): string;
+function randString(
+  length: number,
+  options?: Partial<RandStringOptions>,
+): string;
 
 interface RandStringOptions {
   max: number;
@@ -137,10 +140,14 @@ function copy(text: string): Promise<boolean>;
 Call `func` every `timeout` milliseconds until it returns a truthy value. Useful for polling.
 
 ```typescript
-await callUntilEnd(async () => {
-  const data = await fetchSomething();
-  return data.ready; // truthy → stop
-}, 500, true);
+await callUntilEnd(
+  async () => {
+    const data = await fetchSomething();
+    return data.ready; // truthy → stop
+  },
+  500,
+  true,
+);
 ```
 
 - `immediate = true` runs the first call right away; otherwise the first call waits for `timeout`.
@@ -168,7 +175,10 @@ function callUntilEnd(
 Run `func`, capture any thrown / rejected error, and either delegate to `onError` or `console.error`.
 
 ```typescript
-catchError(() => JSON.parse(maybeJson), (err) => toast(err.message));
+catchError(
+  () => JSON.parse(maybeJson),
+  (err) => toast(err.message),
+);
 const data = await catchError(async () => api.get("/posts"));
 ```
 

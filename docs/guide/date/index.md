@@ -24,9 +24,9 @@ The complete list of tokens is in the [Format Table](#format-table) below.
 :::
 
 ```typescript
-date.string("Y-M-D h:m:s");                 // current time
-date.string("Y-M-D h:m:s", 1666351246000);  // convert a timestamp
-date.string();                              // same as date.string("Y-M-D h:m:s")
+date.string("Y-M-D h:m:s"); // current time
+date.string("Y-M-D h:m:s", 1666351246000); // convert a timestamp
+date.string(); // same as date.string("Y-M-D h:m:s")
 ```
 
 :::advance
@@ -63,8 +63,8 @@ The `format` you pass to `parse` describes the **input string**, not the output 
 date.parse("2022-10-21 19:20:46", "Y-M-D h:m:s");
 date.parse(1666351246000);
 date.parseDate("2022-10-21 19:20:46", "Y-M-D h:m:s"); // alias for "input is a string"
-date.parseTime(1666351246000, "Y-M-D h:m:s");          // alias for "input is a timestamp"
-date.now("Y-M-D h:m:s");                               // current time as parseReturn
+date.parseTime(1666351246000, "Y-M-D h:m:s"); // alias for "input is a timestamp"
+date.now("Y-M-D h:m:s"); // current time as parseReturn
 ```
 
 :::tip Missing fields
@@ -75,16 +75,16 @@ When the input string only covers part of the format (for example just `"2024"` 
 
 `parse` and its friends all return a `parseReturn`:
 
-| Key             | Description                              | Example                  |
-| --------------- | ---------------------------------------- | ------------------------ |
-| `format`        | format string actually used              | `Y-M-D h:m:s`            |
-| `date`          | local `Date` object                      | `2022-10-21T11:20:46.000Z` |
-| `string`        | formatted local string (same as `dateString`) | `2022-10-21 19:20:46` |
-| `dateString`    | formatted local string                   | `2022-10-21 19:20:46`    |
-| `timestamp`     | UTC timestamp (milliseconds)             | `1666351246000`          |
-| `utcDate`       | `Date` shifted by the current timezone   | `2022-10-21T19:20:46.000Z` |
-| `utcTimestamp`  | timestamp shifted by the current timezone | `1666380046000` |
-| `utcDateString` | formatted string from `utcTimestamp`     | `2022-10-21 19:20:46`    |
+| Key             | Description                                   | Example                    |
+| --------------- | --------------------------------------------- | -------------------------- |
+| `format`        | format string actually used                   | `Y-M-D h:m:s`              |
+| `date`          | local `Date` object                           | `2022-10-21T11:20:46.000Z` |
+| `string`        | formatted local string (same as `dateString`) | `2022-10-21 19:20:46`      |
+| `dateString`    | formatted local string                        | `2022-10-21 19:20:46`      |
+| `timestamp`     | UTC timestamp (milliseconds)                  | `1666351246000`            |
+| `utcDate`       | `Date` shifted by the current timezone        | `2022-10-21T19:20:46.000Z` |
+| `utcTimestamp`  | timestamp shifted by the current timezone     | `1666380046000`            |
+| `utcDateString` | formatted string from `utcTimestamp`          | `2022-10-21 19:20:46`      |
 
 :::advance
 
@@ -152,9 +152,10 @@ function reformat(format: string, date: string, newFormat?: string): string;
 | `<...>` | Literal segment, kept verbatim, not parsed | `<Now>` |
 
 :::warning Common pitfalls
+
 - `H` parses as 12-hour and **requires** `A` or `a` to disambiguate, otherwise an error is thrown in development mode.
 - Two `parse`-relevant tokens cannot sit next to each other in the same format string (e.g. `"hh"` is treated as the same token, but `"hm"` two distinct tokens). For ambiguous outputs add a separator (e.g. `"h:m"`).
-:::
+  :::
 
 ### Literal segments with `< >`
 

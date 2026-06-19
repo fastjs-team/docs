@@ -88,8 +88,8 @@ const userApi = request
     (data) => {
       if (!data.loggedIn) userApi.post({ email: "x", password: "y" });
     },
-    true,   // repeat on every dispatch
-    "GET",  // only for GET responses
+    true, // repeat on every dispatch
+    "GET", // only for GET responses
   )
   .then(
     () => {
@@ -147,8 +147,8 @@ interface FastjsRequestAtom {
   data: RequestData;
   config: RequestConfig;
   callback: RequestCallback;
-  request?: Request;           // built right before fetch()
-  response?: Response;         // populated after fetch()
+  request?: Request; // built right before fetch()
+  response?: Response; // populated after fetch()
   wait?: ReturnType<typeof setTimeout> | null; // debounce timer
   abortController?: AbortController;
 }

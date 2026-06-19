@@ -44,11 +44,12 @@ Attach arbitrary keys onto the instance.
 ```typescript
 import { dom } from "jsfast";
 
-const card = dom.newEl("div")
+const card = dom
+  .newEl("div")
   .setCustomProp("itemId", 42)
   .setCustomProps({ rowId: 1, draft: true });
 
-card.itemId;            // 42 (direct read works)
+card.itemId; // 42 (direct read works)
 card.getCustomProp("itemId"); // 42 (semantic helper)
 ```
 
@@ -88,9 +89,7 @@ greeter.setCustomEvent("autoinit", (self) => self.refresh(), true);
 Trigger a registered event explicitly. Equivalent to `instance[name](...)`, but returns the instance so it composes with other chain methods:
 
 ```typescript
-greeter
-  .callCustomEvent("hello", "Bob")
-  .callCustomEvent("hello", "Carol");
+greeter.callCustomEvent("hello", "Bob").callCustomEvent("hello", "Carol");
 ```
 
 ## Delay with `then(func, time = 0)`
@@ -113,29 +112,35 @@ dom("#tip")
 import { dom } from "jsfast";
 
 function makeToast(text: string, duration = 2000) {
-  return dom.newEl("div", {
-    text,
-    class: ["toast"],
-    css: {
-      position: "fixed",
-      bottom: "32px",
-      left: "50%",
-      transform: "translateX(-50%)",
-      padding: "8px 16px",
-      borderRadius: "8px",
-      background: "#222",
-      color: "white",
-      opacity: "0",
-      transition: "opacity .2s",
-    },
-  }).setCustomEvent("show", (self) => {
-    self.push(document.body);
-    self.then((el) => el.setStyle({ opacity: "1" }), 0);
-    self.then((el) => {
-      el.setStyle({ opacity: "0" });
-      el.then((e) => e.remove(), 300);
-    }, duration);
-  }, true); // setup=true: trigger immediately
+  return dom
+    .newEl("div", {
+      text,
+      class: ["toast"],
+      css: {
+        position: "fixed",
+        bottom: "32px",
+        left: "50%",
+        transform: "translateX(-50%)",
+        padding: "8px 16px",
+        borderRadius: "8px",
+        background: "#222",
+        color: "white",
+        opacity: "0",
+        transition: "opacity .2s",
+      },
+    })
+    .setCustomEvent(
+      "show",
+      (self) => {
+        self.push(document.body);
+        self.then((el) => el.setStyle({ opacity: "1" }), 0);
+        self.then((el) => {
+          el.setStyle({ opacity: "0" });
+          el.then((e) => e.remove(), 300);
+        }, duration);
+      },
+      true,
+    ); // setup=true: trigger immediately
 }
 
 makeToast("Saved", 1500);

@@ -39,14 +39,14 @@ Fastjs is built to run anywhere modern: bundlers, browsers (IIFE / native ESM), 
 
 ## Module overview
 
-| Module | Description |
-| --- | --- |
-| [`dom`](./guide/dom/) | Select / build / manipulate DOM elements. `FastjsDom`, `FastjsDomList`. |
-| [`date`](./guide/date/) | Parse / format dates, `FastjsDate` instance with timezone and "active time" support. |
-| [`request`](./guide/request/) | Lightweight `fetch` wrapper with hooks, path params, debounce, cancellation. |
-| [`cookie`](./guide/cookie/) | Safe browser cookie read / write with `SameSite`, `Max-Age`, scoped instances. |
-| [`utils`](./guide/utils/) | Random number / string / UUID, clipboard `copy`, polling, error helpers, type guards. |
-| [`FastjsModuleBase`](./guide/common/module-base) | Methods every Fastjs instance inherits. |
+| Module                                           | Description                                                                           |
+| ------------------------------------------------ | ------------------------------------------------------------------------------------- |
+| [`dom`](./guide/dom/)                            | Select / build / manipulate DOM elements. `FastjsDom`, `FastjsDomList`.               |
+| [`date`](./guide/date/)                          | Parse / format dates, `FastjsDate` instance with timezone and "active time" support.  |
+| [`request`](./guide/request/)                    | Lightweight `fetch` wrapper with hooks, path params, debounce, cancellation.          |
+| [`cookie`](./guide/cookie/)                      | Safe browser cookie read / write with `SameSite`, `Max-Age`, scoped instances.        |
+| [`utils`](./guide/utils/)                        | Random number / string / UUID, clipboard `copy`, polling, error helpers, type guards. |
+| [`FastjsModuleBase`](./guide/common/module-base) | Methods every Fastjs instance inherits.                                               |
 
 ## Goals
 

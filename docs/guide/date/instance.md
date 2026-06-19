@@ -42,8 +42,8 @@ The "active" variants (`toActiveString` / `toActiveNumber`) keep ticking based o
 
 ```typescript
 const d = date.create();
-d.toString();        // frozen snapshot
-d.toActiveString();  // changes as real time passes
+d.toString(); // frozen snapshot
+d.toActiveString(); // changes as real time passes
 ```
 
 ### Example: a ticking clock
@@ -53,7 +53,7 @@ import { date } from "jsfast";
 
 const clock = date.create();
 setInterval(() => {
-  console.log(clock.toString());       // does NOT change
+  console.log(clock.toString()); // does NOT change
   console.log(clock.toActiveString()); // ticks every second
 }, 1000);
 ```
@@ -105,7 +105,9 @@ function createDate(format, time) {
 return {
   _date: toTimestamp(time),
   _createAt: Date.now(),
-  toString(newFormat) { /* ... */ },
+  toString(newFormat) {
+    /* ... */
+  },
   toActiveString(newFormat) {
     const live = this._date + (Date.now() - this._createAt);
     return formatTimestamp(live, newFormat || format);
@@ -172,14 +174,14 @@ const d = date.create("Y-M-D h:m:s", "2025-06-19 09:00:00");
 // Display the same instant under UTC+8 wall clock:
 d.setZone(8);
 d.toString("local"); // "2025-06-19 09:00:00" (wall clock in UTC+8)
-d.toString();        // UTC representation of the same instant
+d.toString(); // UTC representation of the same instant
 ```
 
 `toString` also accepts the offset directly without mutating the instance:
 
 ```typescript
-date.create().toString(8);          // UTC+8 wall clock for "now"
-date.create().toString("local");    // browser timezone
+date.create().toString(8); // UTC+8 wall clock for "now"
+date.create().toString("local"); // browser timezone
 ```
 
 ## Refresh the create time
@@ -193,7 +195,7 @@ import { date } from "jsfast";
 
 const d = date.create(); // 2025-06-19 09:20:00
 setTimeout(() => {
-  d.refresh();           // baseline reset to 09:20:01
+  d.refresh(); // baseline reset to 09:20:01
   setTimeout(() => {
     console.log(d.toActiveString()); // 09:20:02
   }, 1000);

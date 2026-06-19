@@ -36,7 +36,7 @@ In development mode a warning is logged when the target property is not writable
 Read or write the element's `textContent`.
 
 ```typescript
-dom.select("#title")!.text();             // "Hello"
+dom.select("#title")!.text(); // "Hello"
 dom.select("#title")!.text("Hello World"); // returns FastjsDom
 ```
 
@@ -88,12 +88,12 @@ dom.select("#input")!.focus();
 
 ## Tree navigation
 
-| Method | Description | Return |
-| --- | --- | --- |
-| `first()` | First **element** child | `FastjsDom \| null` |
-| `last()` | Last **element** child | `FastjsDom \| null` |
-| `father()` | `parentElement` wrapped | `FastjsDom \| null` |
-| `children()` | All direct element children | `FastjsDomList` |
+| Method            | Description                                          | Return                               |
+| ----------------- | ---------------------------------------------------- | ------------------------------------ |
+| `first()`         | First **element** child                              | `FastjsDom \| null`                  |
+| `last()`          | Last **element** child                               | `FastjsDom \| null`                  |
+| `father()`        | `parentElement` wrapped                              | `FastjsDom \| null`                  |
+| `children()`      | All direct element children                          | `FastjsDomList`                      |
 | `next(selector?)` | Re-query **inside** this element. Defaults to `"*"`. | `FastjsDom \| FastjsDomList \| null` |
 
 ```typescript
@@ -119,8 +119,8 @@ dom.select("#tree")!.each((el, raw, index) => {
 ### `FastjsDom.getStyle`
 
 ```typescript
-dom.select("#x")!.getStyle();         // a reactive style Proxy
-dom.select("#x")!.getStyle("color");  // string
+dom.select("#x")!.getStyle(); // a reactive style Proxy
+dom.select("#x")!.getStyle("color"); // string
 dom.select("#x")!.getStyle((style, el) => console.log(style));
 ```
 
@@ -139,7 +139,9 @@ style.backgroundColor = "tomato"; // same as setStyle('background-color', 'tomat
 ```typescript
 function getStyle(): StyleObj; // reactive Proxy
 function getStyle(key: keyof CSSStyleDeclaration): string;
-function getStyle(callback: (style: StyleObj, dom: FastjsDom) => void): FastjsDom;
+function getStyle(
+  callback: (style: StyleObj, dom: FastjsDom) => void,
+): FastjsDom;
 ```
 
 :::
@@ -160,26 +162,31 @@ dom.select("#card")!.setStyle("display", "none", true); // !important
 
 ```typescript
 function setStyle(style: SetStyleObj): FastjsDom; // batch; null values are ignored
-function setStyle(style: string): FastjsDom;      // direct cssText
-function setStyle(key: StyleObjKeys, val: string, important?: boolean): FastjsDom;
+function setStyle(style: string): FastjsDom; // direct cssText
+function setStyle(
+  key: StyleObjKeys,
+  val: string,
+  important?: boolean,
+): FastjsDom;
 ```
 
 :::
 
 ## Classes
 
-| Method | Description |
-| --- | --- |
-| `getClass()` | Returns a copy of `classList` as `string[]` |
-| `getClass(callback)` | Same array passed to the callback (no return value) |
-| `setClass(name, value?)` | Toggle one class. `value` defaults to `true` |
-| `setClass({ [name]: boolean })` | Toggle many at once |
-| `addClass(...names)` / `addClass(names[])` | Add one or many classes; spaces in a string are split |
-| `removeClass(...names)` / `removeClass(names[])` | Remove one or many classes |
-| `clearClass()` | Reset `className` to an empty string |
+| Method                                           | Description                                           |
+| ------------------------------------------------ | ----------------------------------------------------- |
+| `getClass()`                                     | Returns a copy of `classList` as `string[]`           |
+| `getClass(callback)`                             | Same array passed to the callback (no return value)   |
+| `setClass(name, value?)`                         | Toggle one class. `value` defaults to `true`          |
+| `setClass({ [name]: boolean })`                  | Toggle many at once                                   |
+| `addClass(...names)` / `addClass(names[])`       | Add one or many classes; spaces in a string are split |
+| `removeClass(...names)` / `removeClass(names[])` | Remove one or many classes                            |
+| `clearClass()`                                   | Reset `className` to an empty string                  |
 
 ```typescript
-dom.select("#nav")!
+dom
+  .select("#nav")!
   .addClass("primary", "fixed")
   .removeClass("hidden")
   .setClass({ active: true, disabled: false });
@@ -190,10 +197,10 @@ dom.select("#nav")!.clearClass(); // empty className
 ## Attributes
 
 ```typescript
-dom.select("a")!.getAttr();             // { href: "/home", ... }
-dom.select("a")!.getAttr("href");       // "/home" or null
+dom.select("a")!.getAttr(); // { href: "/home", ... }
+dom.select("a")!.getAttr("href"); // "/home" or null
 dom.select("a")!.setAttr({ href: "/home", target: "_blank" });
-dom.select("a")!.setAttr("rel", null);  // removes rel
+dom.select("a")!.setAttr("rel", null); // removes rel
 ```
 
 - `getAttr()` returns a Proxy: read attribute names off it, or assign to mutate the DOM.
@@ -244,20 +251,20 @@ addEvent(
 
 Four overloads to cover the most common removal patterns:
 
-| Call | Removes |
-| --- | --- |
-| `removeEvent()` | **All** listeners registered by Fastjs on this element |
-| `removeEvent(type)` | Every listener of the given event type |
-| `removeEvent(callback)` | Every entry whose `callback === callback` |
-| `removeEvent(type, key)` | The entry at `_events[key]` for the given type |
+| Call                     | Removes                                                |
+| ------------------------ | ------------------------------------------------------ |
+| `removeEvent()`          | **All** listeners registered by Fastjs on this element |
+| `removeEvent(type)`      | Every listener of the given event type                 |
+| `removeEvent(callback)`  | Every entry whose `callback === callback`              |
+| `removeEvent(type, key)` | The entry at `_events[key]` for the given type         |
 
 ```typescript
 const handler = () => console.log("hi");
 const el = dom.select("button")!;
 el.addEvent("click", handler);
-el.removeEvent(handler);     // by callback
-el.removeEvent("click");     // by type
-el.removeEvent();            // wipe everything
+el.removeEvent(handler); // by callback
+el.removeEvent("click"); // by type
+el.removeEvent(); // wipe everything
 ```
 
 ## Insertion
@@ -278,7 +285,8 @@ el.removeEvent();            // wipe everything
 - A numeric `target` inserts the element at position `target` of `el.children`.
 
 ```typescript
-dom.newEl("div", { text: "Hi" })
+dom
+  .newEl("div", { text: "Hi" })
   .push(dom.select("#container")!, "firstElementChild");
 ```
 
@@ -355,20 +363,20 @@ interface InsertReturn<ElementType extends ElementList> {
 
 `FastjsDomList` also behaves like an array (`list[0]`, `list.length`, `Array.prototype` methods) and forwards `FastjsDom` calls to every member. In addition, it exposes a few list-only helpers:
 
-| Method | Description |
-| --- | --- |
-| `add(el)` | Push a `FastjsDom` onto the list |
-| `delete(key, deleteDom = true)` | Remove the entry at `key`; also detaches the element by default |
-| `each(callback)` | `(el, raw, index) => void` over each member |
-| `el(key = 0)` / `getElement(key = 0)` | Get the underlying DOM node at index |
-| `getDom(key = 0)` | Get the `FastjsDom` at index |
-| `next(selector?)` | Re-query inside **all** elements; defaults to `"*"` |
-| `toArray()` | Return the internal array reference (still a `FastjsDomList`) |
-| `toElArray()` | Return a copy of the underlying DOM nodes |
+| Method                                | Description                                                     |
+| ------------------------------------- | --------------------------------------------------------------- |
+| `add(el)`                             | Push a `FastjsDom` onto the list                                |
+| `delete(key, deleteDom = true)`       | Remove the entry at `key`; also detaches the element by default |
+| `each(callback)`                      | `(el, raw, index) => void` over each member                     |
+| `el(key = 0)` / `getElement(key = 0)` | Get the underlying DOM node at index                            |
+| `getDom(key = 0)`                     | Get the `FastjsDom` at index                                    |
+| `next(selector?)`                     | Re-query inside **all** elements; defaults to `"*"`             |
+| `toArray()`                           | Return the internal array reference (still a `FastjsDomList`)   |
+| `toElArray()`                         | Return a copy of the underlying DOM nodes                       |
 
 ```typescript
 dom(".item")!
   .each((el, _, i) => el.setAttr("data-i", String(i)))
-  .delete(0)              // remove the first one
+  .delete(0) // remove the first one
   .next<FastjsDomList>("img");
 ```

@@ -6,7 +6,15 @@
 
 ```typescript
 // Recommended: named imports, tree-shake friendly
-import { rand, randString, uuid, copy, callUntilEnd, catchError, secureCall } from "jsfast";
+import {
+  rand,
+  randString,
+  uuid,
+  copy,
+  callUntilEnd,
+  catchError,
+  secureCall,
+} from "jsfast";
 
 // Namespace form (every helper is also on `utils`)
 import { utils } from "jsfast";
@@ -32,12 +40,12 @@ Every helper exported on `utils.*` is also available as a top-level named export
 ```typescript
 import { rand, randString, uuid, copy, secureCall } from "jsfast";
 
-rand(1, 100);                    // integer in [1, 100]
-rand(0, 1, 2);                   // two-decimal-places number in [0, 1]
+rand(1, 100); // integer in [1, 100]
+rand(0, 1, 2); // two-decimal-places number in [0, 1]
 randString(8, { number: true }); // 8 lowercase letters + digits
-uuid();                          // RFC 4122 v4 UUID
+uuid(); // RFC 4122 v4 UUID
 
-await copy("Copied!");           // returns true on success
+await copy("Copied!"); // returns true on success
 
 const [json, err] = await secureCall(() => JSON.parse(input));
 ```

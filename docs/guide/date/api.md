@@ -96,9 +96,11 @@ date.create().changeDate(Date.now());
 ```
 
 :::advance
+
 ```typescript
 changeDate(time: number | string): FastjsDate;
 ```
+
 :::
 
 ### `FastjsDate.changeFormat`
@@ -112,9 +114,11 @@ date.create().changeFormat("Y/M/D h:m");
 ```
 
 :::advance
+
 ```typescript
 changeFormat(format: string): FastjsDate;
 ```
+
 :::
 
 ### `FastjsDate.setZone`
@@ -127,9 +131,11 @@ date.create().setZone(0); // UTC
 ```
 
 :::advance
+
 ```typescript
 setZone(zone: number): FastjsDate;
 ```
+
 :::
 
 ### `FastjsDate.refresh`
@@ -141,24 +147,28 @@ Affects `toActiveString` / `toActiveNumber` – they will start counting from "n
 Reset `_createAt` to the current time.
 
 :::advance
+
 ```typescript
 refresh(): FastjsDate;
 ```
+
 :::
 
 ### `FastjsDate.toNumber`
 
 Return the stored timestamp.
 
-| `utc` | Returns |
-| --- | --- |
-| `true` (default) | The raw UTC timestamp |
-| `false` | The timestamp shifted by `timezoneDiff` (i.e. how the instance "looks" locally) |
+| `utc`            | Returns                                                                         |
+| ---------------- | ------------------------------------------------------------------------------- |
+| `true` (default) | The raw UTC timestamp                                                           |
+| `false`          | The timestamp shifted by `timezoneDiff` (i.e. how the instance "looks" locally) |
 
 :::advance
+
 ```typescript
 toNumber(utc?: boolean): number;
 ```
+
 :::
 
 ### `FastjsDate.toActiveNumber`
@@ -166,31 +176,33 @@ toNumber(utc?: boolean): number;
 Same as `toNumber`, but adds `(Date.now() - _createAt)` so the value keeps ticking forward. Use it to build clocks or stopwatches that don't drift.
 
 :::advance
+
 ```typescript
 toActiveNumber(utc?: boolean): number;
 ```
+
 :::
 
 ### `FastjsDate.toString`
 
 Format the stored time as a string. Overloads:
 
-| Call | Behaviour |
-| --- | --- |
-| `toString()` | Use the default `format`, render in **UTC**. |
-| `toString("utc")` | Same as the no-arg form. |
-| `toString("local")` | Apply `timezoneDiff` first, then format. |
-| `toString(8)` | Treat `8` as a manual UTC+8 offset (hours). |
-| `toString("Y/M/D")` | Override the format string only. |
-| `toString("local", "Y/M/D")` | Combine timezone + override format. |
+| Call                         | Behaviour                                    |
+| ---------------------------- | -------------------------------------------- |
+| `toString()`                 | Use the default `format`, render in **UTC**. |
+| `toString("utc")`            | Same as the no-arg form.                     |
+| `toString("local")`          | Apply `timezoneDiff` first, then format.     |
+| `toString(8)`                | Treat `8` as a manual UTC+8 offset (hours).  |
+| `toString("Y/M/D")`          | Override the format string only.             |
+| `toString("local", "Y/M/D")` | Combine timezone + override format.          |
 
 ```typescript
 const d = date.create();
-d.toString();                  // UTC
-d.toString("local");           // browser timezone
-d.toString(8);                 // UTC+8
-d.toString("Y/M/D h:m");       // custom format, UTC
-d.toString("local", "Y/M/D");  // custom format + local timezone
+d.toString(); // UTC
+d.toString("local"); // browser timezone
+d.toString(8); // UTC+8
+d.toString("Y/M/D h:m"); // custom format, UTC
+d.toString("local", "Y/M/D"); // custom format + local timezone
 ```
 
 :::advance

@@ -44,12 +44,12 @@ dom(); // FastjsDom (defaults to body)
 
 The same call may return either a single `FastjsDom` or a `FastjsDomList`, depending on the selector:
 
-| Selector form | Return |
-| --- | --- |
-| `body` / `head` | `FastjsDom` |
-| `#id` or `tag#id` (single id selector) | `FastjsDom` |
+| Selector form                                       | Return                                                |
+| --------------------------------------------------- | ----------------------------------------------------- |
+| `body` / `head`                                     | `FastjsDom`                                           |
+| `#id` or `tag#id` (single id selector)              | `FastjsDom`                                           |
 | Anything else (`.class`, `tag`, compound selectors) | `FastjsDomList` (even if it matched only one element) |
-| No match | `null` |
+| No match                                            | `null`                                                |
 
 :::advance
 
@@ -185,7 +185,8 @@ dom.newEl("div", { class: ["card", "card--primary"] });
 `dom.newEl` only creates the node; mount it with `push` or `insert`:
 
 ```typescript
-dom.newEl("button", { text: "OK" })
+dom
+  .newEl("button", { text: "OK" })
   .push(dom.select("#app")!, "lastElementChild");
 ```
 

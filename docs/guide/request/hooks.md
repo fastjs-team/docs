@@ -38,12 +38,16 @@ Hooks may return a `Promise<boolean | undefined>`; `await`ed by Fastjs.
 
 ```typescript
 namespace RequestHooks {
-  type BeforeSend = (request: FastjsRequest) =>
-    boolean | undefined | Promise<boolean | undefined>;
-  type RequestSuccess = (response: RequestReturn) =>
-    boolean | undefined | Promise<boolean | undefined>;
-  type RequestFailed = (error: Error | number, request: FastjsRequest) =>
-    boolean | undefined | Promise<boolean | undefined>;
+  type BeforeSend = (
+    request: FastjsRequest,
+  ) => boolean | undefined | Promise<boolean | undefined>;
+  type RequestSuccess = (
+    response: RequestReturn,
+  ) => boolean | undefined | Promise<boolean | undefined>;
+  type RequestFailed = (
+    error: Error | number,
+    request: FastjsRequest,
+  ) => boolean | undefined | Promise<boolean | undefined>;
 }
 ```
 
@@ -195,7 +199,7 @@ request.config.hooks.failed = async (err, req) => {
     refreshing = refreshToken().finally(() => (refreshing = null));
     await refreshing;
     req.resend?.(); // re-run the original call
-    return false;  // suppress the original failure
+    return false; // suppress the original failure
   }
 };
 ```
@@ -208,9 +212,9 @@ request.config.hooks.failed = async (err, req) => {
 
 ```typescript
 interface RequestReturn {
-  headers: FastjsHeaders;          // native Headers + toArray() / toObject()
-  response: Response;              // native Response
-  data: RequestReturnData;         // parsed body, same as .then's first arg
+  headers: FastjsHeaders; // native Headers + toArray() / toObject()
+  response: Response; // native Response
+  data: RequestReturnData; // parsed body, same as .then's first arg
   status: number;
   request: FastjsRequest;
   resend: () => FastjsRequest;

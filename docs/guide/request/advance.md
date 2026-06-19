@@ -47,13 +47,11 @@ request.config.timeout = 10_000;
 ```typescript
 import { dom, request } from "jsfast";
 
-dom
-  .newEl("button", { text: "Click me" })
-  .addEvent("click", () => {
-    request
-      .get("https://reqres.in/api/users", null, { wait: 1000 })
-      .then((data) => console.log(data));
-  });
+dom.newEl("button", { text: "Click me" }).addEvent("click", () => {
+  request
+    .get("https://reqres.in/api/users", null, { wait: 1000 })
+    .then((data) => console.log(data));
+});
 ```
 
 ## Cancelling a request
@@ -98,7 +96,10 @@ interface GlobalConfig {
   timeout: number;
   hooks: RequestHookParam;
   handler: {
-    handleResponse: (response: Response, request: FastjsRequest) => Promise<any>;
+    handleResponse: (
+      response: Response,
+      request: FastjsRequest,
+    ) => Promise<any>;
     responseCode: (code: number, request: FastjsRequest) => boolean;
   };
   check: {

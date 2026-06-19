@@ -16,7 +16,7 @@ import { cookie } from "jsfast";
 
 ```typescript
 cookie.set("name", "value");
-cookie.set("name", "value", { maxAge: 3600 });            // 1 hour
+cookie.set("name", "value", { maxAge: 3600 }); // 1 hour
 cookie.set("name", "value", { expires: 1000 * 60 * 60 }); // 1 hour (ms)
 cookie.set("name", "value", { expires: new Date("2030-01-01") });
 cookie.set("name", "value", {
@@ -61,23 +61,23 @@ The browser keys cookies by `(name, path, domain)`. To delete a cookie you previ
 ```typescript
 const adminCookie = cookie.create("/admin", ".example.com");
 
-adminCookie.set("token", "abc");      // path=/admin; domain=.example.com
-adminCookie.remove("token");          // same scope
-adminCookie.get("token");             // reads from document.cookie globally
+adminCookie.set("token", "abc"); // path=/admin; domain=.example.com
+adminCookie.remove("token"); // same scope
+adminCookie.get("token"); // reads from document.cookie globally
 ```
 
 `set` / `remove` on the instance still accept per-call `options` that **override** the defaults.
 
 ## `CookieOptions`
 
-| Field | Type | Notes |
-| --- | --- | --- |
-| `expires` | `number \| Date` | Number = ms from now; Date = absolute expiry; missing = session cookie |
-| `maxAge` | `number` | `Max-Age` in **seconds** (takes precedence over `expires` when both are set) |
-| `path` | `string` | Path scope |
-| `domain` | `string` | Domain scope (use `.example.com` to include subdomains) |
-| `secure` | `boolean` | Send only over HTTPS |
-| `sameSite` | `"Strict" \| "Lax" \| "None"` | `"None"` automatically appends `Secure` |
+| Field      | Type                          | Notes                                                                        |
+| ---------- | ----------------------------- | ---------------------------------------------------------------------------- |
+| `expires`  | `number \| Date`              | Number = ms from now; Date = absolute expiry; missing = session cookie       |
+| `maxAge`   | `number`                      | `Max-Age` in **seconds** (takes precedence over `expires` when both are set) |
+| `path`     | `string`                      | Path scope                                                                   |
+| `domain`   | `string`                      | Domain scope (use `.example.com` to include subdomains)                      |
+| `secure`   | `boolean`                     | Send only over HTTPS                                                         |
+| `sameSite` | `"Strict" \| "Lax" \| "None"` | `"None"` automatically appends `Secure`                                      |
 
 :::advance
 

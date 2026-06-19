@@ -28,11 +28,9 @@ Unlike `axios`, you do **not** need to write `res.data` to read the body – the
 ```typescript
 import type { RequestReturn } from "jsfast";
 
-request
-  .get("https://reqres.in/api/users")
-  .then((data, res: RequestReturn) => {
-    console.log(res.status); // 200
-  });
+request.get("https://reqres.in/api/users").then((data, res: RequestReturn) => {
+  console.log(res.status); // 200
+});
 ```
 
 ### `RequestReturn`
@@ -61,12 +59,12 @@ posts.getFullReturn().status; // 200
 
 ```typescript
 interface RequestReturn {
-  headers: FastjsHeaders;          // native Headers + toArray() / toObject()
-  response: Response;              // the original Response
-  data: RequestReturnData;         // same value passed to .then's first arg
+  headers: FastjsHeaders; // native Headers + toArray() / toObject()
+  response: Response; // the original Response
+  data: RequestReturnData; // same value passed to .then's first arg
   status: number;
-  request: FastjsRequest;          // the originating request instance
-  resend: () => FastjsRequest;     // re-send the same request
+  request: FastjsRequest; // the originating request instance
+  resend: () => FastjsRequest; // re-send the same request
 }
 
 interface FastjsHeaders extends Headers {
@@ -143,12 +141,12 @@ request.delete("https://example.com/posts/:id", { id: 2 });
 
 ### Body serialisation
 
-| `data` type | Behaviour |
-| --- | --- |
-| Plain object | `JSON.stringify`; sets `Content-Type: application/json` if you didn't |
-| `string` | Sent as-is, `Content-Type` untouched |
-| `FormData` / `Blob` / `URLSearchParams` / `ArrayBuffer` / `TypedArray` / `ReadableStream` | Passed through to `fetch` directly |
-| `null` / `undefined` | No body |
+| `data` type                                                                               | Behaviour                                                             |
+| ----------------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| Plain object                                                                              | `JSON.stringify`; sets `Content-Type: application/json` if you didn't |
+| `string`                                                                                  | Sent as-is, `Content-Type` untouched                                  |
+| `FormData` / `Blob` / `URLSearchParams` / `ArrayBuffer` / `TypedArray` / `ReadableStream` | Passed through to `fetch` directly                                    |
+| `null` / `undefined`                                                                      | No body                                                               |
 
 ## Failed requests
 
@@ -197,14 +195,15 @@ interface FailedParams<T extends Error | number> {
 Each shorthand accepts a generic for the response body. The type is reflected on both `.then` callback parameters:
 
 ```typescript
-interface Post { id: number; title: string }
+interface Post {
+  id: number;
+  title: string;
+}
 
-request
-  .get<Post[]>("https://reqres.in/api/users")
-  .then((data, res) => {
-    data.forEach((p) => console.log(p.title));
-    console.log(res.status);
-  });
+request.get<Post[]>("https://reqres.in/api/users").then((data, res) => {
+  data.forEach((p) => console.log(p.title));
+  console.log(res.status);
+});
 ```
 
 ## Where to next
