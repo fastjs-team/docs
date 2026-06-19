@@ -83,7 +83,30 @@ const modules: DefaultTheme.SidebarItem[] = [
       },
     ],
   },
+  {
+    text: "Utils Module",
+    items: [
+      {
+        text: "Getting Started",
+        link: "/guide/utils/",
+      },
+      {
+        text: "Utils API",
+        link: "/guide/utils/api",
+      },
+    ],
+  },
 ];
+
+const common: DefaultTheme.SidebarItem = {
+  text: "Common",
+  items: [
+    {
+      text: "FastjsModuleBase",
+      link: "/guide/common/module-base",
+    },
+  ],
+};
 
 const other: DefaultTheme.SidebarItem = {
   text: "Other",
@@ -100,7 +123,7 @@ const other: DefaultTheme.SidebarItem = {
 };
 
 export default {
-  "/": [introduction, ...modules, other].map((e) => {
+  "/": [introduction, ...modules, common, other].map((e) => {
     e.collapsed = false;
     return e;
   }),
