@@ -1,10 +1,9 @@
 # Getting Started with Dom
 
-With Fastjs's dom module, you can operate on DOM elements with simple codes.
+With Fastjs's dom module, you can operate on DOM elements with simple, type-safe code.
 
-Some APIs of Fastjs's dom module look like jQuery, but not fully the same way.
-
-Fastjs redesigned a lot of APIs to help you write in different ways, and we provide strongly typed support without any extra packages.
+Some APIs of Fastjs's dom module look like jQuery, but they don't behave the same way.
+Fastjs redesigned the surface so the same chain works across single elements and lists, and so TypeScript can give you strong type hints without any extra packages.
 
 ## Import Module
 
@@ -12,144 +11,196 @@ Fastjs redesigned a lot of APIs to help you write in different ways, and we prov
 import { dom } from "jsfast";
 ```
 
+::::simple
+
+:::tip One module, two return types
+`dom()` may return either a single element wrapper (`FastjsDom`) or a list wrapper (`FastjsDomList`). Both expose the same chainable surface, so most of the time you don't have to care which one you got — Fastjs will dispatch the call correctly.
+:::
+
+::::
+
+:::advance
+
+> The `dom` module relies on `document` and `window`. In non-browser environments it will warn in development mode and throw on actual access. Use [type guards](../utils/api#type-guards) such as `isDom` / `isDomList` if you need to discriminate at runtime.
+
+:::
+
 ## Select an element
 
 :::tip Different from jQuery
-Fastjs doesn't register a global variable `$` to select elements, import `dom` and use `dom.select()` to select elements.
+Fastjs does not register a global `$`. Import `dom` and call `dom()` or `dom.select()` to query the DOM.
 :::
 
-Selecting an element to operate on is usually the first thing you need to do, you can do this easily with `dom.select()`
+`dom()` is callable and also has helper methods on it. `dom.select` is an alias of `dom()`.
 
 ```typescript
-dom.select("#id"); // FastjsDom | null
-dom.select(".class"); // FastjsDomList | null
-dom.select("tag"); // FastjsDomList | null
+dom("#id"); // FastjsDom | null
+dom(".class"); // FastjsDomList | null
+dom("tag"); // FastjsDomList | null
+dom(); // FastjsDom (defaults to body)
 ```
 
-With strongly type support in your TypeScript project, you can define the return type of `dom.select()`.
+### Return value rules
+
+The same call may return either a single `FastjsDom` or a `FastjsDomList`, depending on the selector:
+
+| Selector form | Return |
+| --- | --- |
+| `body` / `head` | `FastjsDom` |
+| `#id` or `tag#id` (single id selector) | `FastjsDom` |
+| Anything else (`.class`, `tag`, compound selectors) | `FastjsDomList` (even if it matched only one element) |
+| No match | `null` |
+
+:::advance
+
+You can constrain the return type with a generic when using TypeScript:
 
 ```typescript
 import type { FastjsDom, FastjsDomList } from "jsfast";
 
 const idElement = dom.select<FastjsDom>("#id");
-const classElement = dom.select<FastjsDomList>(".class");
-const spanElement = dom.select<FastjsDomList>("span");
+const classElements = dom.select<FastjsDomList>(".class");
 ```
 
-Or even better with defining the type of the element.
+Even better, pass the underlying element type to get full property type-hints:
 
 ```typescript
 import type { FastjsDom, FastjsDomList } from "jsfast";
 
-const idElement = dom.select<FastjsDom<HTMLDivElement>>("#id");
-const classElement = dom.select<FastjsDomList<HTMLAnchorElement>>(".class");
-const tagElement = dom.select<FastjsDomList<HTMLSpanElement>>("span");
+const input = dom.select<FastjsDom<HTMLInputElement>>("#search");
+input?.set("placeholder", "Search…"); // strongly typed against HTMLInputElement
 ```
 
-## Operate a element
-
-Either you select a single element or a list of elements, you can operate on them with some [methods](./api.md).
-
-### Using FastjsDom
-
-After you select a **FastjsDom** element, you can operate on it with some [methods](./api.md).
-
-```typescript
-dom.select("h1")!.html("Hello World");
-```
-
-### Using FastjsDomList
-
-:::tip
-If there is a same method in **FastjsDom** and **FastjsDomList**, fastjs will use the method of **FastjsDomList**.
-
-For example, `each` method is in both **FastjsDom** and **FastjsDomList**, but when you use `each` method on **FastjsDomList**, `FastjsDomList.each` will be called.
 :::
 
-There are some special methods for **FastjsDomList**. But you can also use the methods of **FastjsDom**.
+### Limit the search scope
 
-When you are using the methods of **FastjsDom** on **FastjsDomList**, it will apply to all elements in the list one by one.
+You can pass a parent element (or `FastjsDom` / `FastjsDomList`) as the second argument:
+
+```typescript
+const list = dom("#list");
+dom(".item", list); // search inside #list only
+dom.select("img", document.head);
+```
+
+## Operate on an element
+
+Whatever you selected, you can use the same chainable methods – see [the full list](./api.md).
+
+### Using `FastjsDom`
+
+After you selected a single `FastjsDom`, you can operate on it:
+
+```typescript
+dom("#title")!.html("Hello World");
+```
+
+### Using `FastjsDomList`
+
+:::tip Method dispatch
+When the same method exists on both `FastjsDom` and `FastjsDomList`, the list’s own implementation is used (for example `each`). Otherwise the call is forwarded to **every** member of the list.
+:::
+
+`FastjsDomList` has a few list-specific methods (`add`, `delete`, `each`, `getDom`, …) and forwards anything else to every `FastjsDom` in it.
 
 ```typescript
 import { dom } from "jsfast";
 
 dom(".class")!.html("Hello World");
-// equals to
-dom(".class")!.each((element: FastjsDom) => element.html("Hello World"));
+// equivalent to
+dom(".class")!.each((el) => el.html("Hello World"));
 ```
 
 ## Create an element
 
-You can create an element with `dom.create()`.
+Use `dom.newEl()` (also exposed as `createFastjsDom` internally) to create a brand-new element that is **detached** from the document until you mount it with `push` / `insert`.
 
 ```typescript
-dom.create("div");
+dom.newEl("div");
 ```
 
-### Set Properties
+### Set properties
 
-You can set properties to the element by passing an object to the second parameter.
+The second argument is an object that mixes a few special keys with any **writable** property on the underlying element.
 
 ```typescript
-dom.create("div", {
-  id: "id",
-  innerText: "Hello World",
+dom.newEl("div", {
+  id: "card",
+  textContent: "Hello World",
 });
 ```
 
-### Set Styles
+### Set styles
 
-You can set styles to the element by different ways.
+`css` accepts either a `CSSStyleDeclaration`-like object or a raw `cssText` string.
 
 ```typescript
-dom.create("div", {
+dom.newEl("div", {
   css: {
     color: "red",
     backgroundColor: "black",
   },
 });
-dom.create("div", {
+
+dom.newEl("div", {
   css: "color: red; background-color: black;",
 });
 ```
 
-### Set Attributes
+### Set attributes
 
-You can set attributes by passing an object to the `attr` key.
+`attr` accepts an object whose values are `string | null` (use `null` to remove an attribute).
 
 ```typescript
-dom.create("div", {
+dom.newEl("a", {
   attr: {
-    "data-id": "id",
+    href: "/home",
+    "data-id": "1",
+    rel: null, // explicitly removes the attribute
   },
 });
 ```
 
-### Set Content
+### Set content
 
-You can set content to the element by setting the `text`, `html`, or `val` key.
+Three short-hands for the most common content writes:
 
 ```typescript
-dom.create("div", {
-  text: "Hello World",
-});
-dom.create("div", {
-  html: "<h1>Hello World</h1>",
-});
-dom.create("input", {
-  val: "Hello World",
-});
+dom.newEl("div", { text: "Hello World" });
+dom.newEl("div", { html: "<h1>Hello World</h1>" });
+dom.newEl("input", { val: "Hello World" });
 ```
 
-### Set Class
+### Set classes
 
-You can set class to the element by setting the `class` key.
+`class` accepts a string (space-separated) or an array.
 
 ```typescript
-dom.create("div", {
-  class: "class1 class2",
-});
-dom.create("div", {
-  class: ["class1", "class2"],
-});
+dom.newEl("div", { class: "card card--primary" });
+dom.newEl("div", { class: ["card", "card--primary"] });
+```
+
+### Mounting the element
+
+`dom.newEl` only creates the node; mount it with `push` or `insert`:
+
+```typescript
+dom.newEl("button", { text: "OK" })
+  .push(dom.select("#app")!, "lastElementChild");
+```
+
+See [`push`](./api.md#fastjsdom-push) and [`insert`](./api.md#fastjsdom-insert) for the full options.
+
+## Create a list
+
+Wrap an array of nodes / `FastjsDom` into a `FastjsDomList` with `dom.newElList`. `null` / `undefined` are skipped automatically.
+
+```typescript
+const list = dom.newElList([
+  dom.newEl("li", { text: "A" }),
+  dom.newEl("li", { text: "B" }),
+  document.querySelector("li.existing"),
+]);
+
+list.addClass("item").push(dom.select("#list")!);
 ```

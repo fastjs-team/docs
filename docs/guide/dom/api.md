@@ -1,343 +1,374 @@
 # FastjsDom API
 
-This page list all the API of FastjsDom.
+This page lists every method exposed by `FastjsDom`. All write methods return the same `FastjsDom` (or `FastjsDomList` when called through one) so they can be chained.
 
-## FastjsDom.get
-
-Get a property of the element.
+> Looking for the list-level methods? They are documented inline at the end of this page – see [`FastjsDomList` extras](#fastjsdomlist-extras).
 
 ```typescript
-dom.select("#id")!.get("innerText");
+import { dom } from "jsfast";
+import type { FastjsDom, FastjsDomList } from "jsfast";
 ```
 
-## FastjsDom.set
+## Content
 
-Set a property of the element.
+### `FastjsDom.get`
+
+Read any property from the underlying element. Typed via the element generic.
 
 ```typescript
-dom.select("#id")!.set("innerText", "Hello World");
+dom.select<FastjsDom<HTMLInputElement>>("#name")!.get("value");
 ```
 
-## FastjsDom.text
+### `FastjsDom.set`
 
-### Get text
-
-Get the text of the element.
+Write any **writable** property of the underlying element.
 
 ```typescript
-dom.select("#id")!.text();
+dom.select("#title")!.set("textContent", "Hello World");
 ```
 
-### Set text
+:::advance
+In development mode a warning is logged when the target property is not writable; in production the assignment is silently skipped.
+:::
 
-Set the text of the element.
+### `FastjsDom.text`
+
+Read or write the element's `textContent`.
 
 ```typescript
-dom.select("#id")!.text("Hello World");
+dom.select("#title")!.text();             // "Hello"
+dom.select("#title")!.text("Hello World"); // returns FastjsDom
 ```
 
-## FastjsDom.html
+### `FastjsDom.html`
 
-### Get html
-
-Get the html of the element.
+Read or write the element's `innerHTML`.
 
 ```typescript
-dom.select("#id")!.html();
+dom.select("#card")!.html();
+dom.select("#card")!.html("<h1>Hello World</h1>");
 ```
 
-### Set html
+### `FastjsDom.val`
 
-Set the html of the element.
+Read or write the live `value` of form controls (`<input>`, `<textarea>`, `<select>`).
 
 ```typescript
-dom.select("#id")!.html("<h1>Hello World</h1>");
+dom.select<FastjsDom<HTMLInputElement>>("#name")!.val();
+dom.select<FastjsDom<HTMLInputElement>>("#name")!.val("admin");
 ```
 
-## FastjsDom.val
+> `val()` returns the user's current input. Use `text()` only when you want the initial markup content.
 
-### Get value
+### `FastjsDom.el`
 
-Get the value of the element.
+Return the underlying DOM node.
 
 ```typescript
-dom.select("#id")!.val();
+dom.select("#root")!.el(); // HTMLElement
 ```
 
-### Set value
+## Node lifecycle
 
-Set the value of the element.
+### `FastjsDom.remove`
+
+Detach the element from the document.
 
 ```typescript
-dom.select("#id")!.val("Hello World");
+dom.select("#tip")!.remove();
 ```
 
-## FastjsDom.el
+### `FastjsDom.focus`
 
-Get the element.
+Call the underlying element's `focus()`.
 
 ```typescript
-dom.select("#id")!.el();
+dom.select("#input")!.focus();
 ```
 
-## FastjsDom.remove
+## Tree navigation
 
-Remove the element.
+| Method | Description | Return |
+| --- | --- | --- |
+| `first()` | First **element** child | `FastjsDom \| null` |
+| `last()` | Last **element** child | `FastjsDom \| null` |
+| `father()` | `parentElement` wrapped | `FastjsDom \| null` |
+| `children()` | All direct element children | `FastjsDomList` |
+| `next(selector?)` | Re-query **inside** this element. Defaults to `"*"`. | `FastjsDom \| FastjsDomList \| null` |
 
 ```typescript
-dom.select("#id")!.remove();
+const root = dom.select("#root")!;
+root.first()?.text("first child");
+root.children().each((el) => el.addClass("item"));
+
+const img = root.next<FastjsDom>("img.hero");
 ```
 
-## FastjsDom.focus
+### `FastjsDom.each`
 
-Focus the element.
-
-```typescript
-dom.select("#id")!.focus();
-```
-
-## FastjsDom.first
-
-Get the first child element.
+Iterate over direct children. Pass `true` as the second argument to walk the whole subtree.
 
 ```typescript
-dom.select("#id")!.first();
-```
-
-## FastjsDom.last
-
-Get the last child element.
-
-```typescript
-dom.select("#id")!.last();
-```
-
-## FastjsDom.father
-
-Get the father element.
-
-```typescript
-dom.select("#id")!.father();
-```
-
-## FastjsDom.children
-
-Get the children elements. Return FastjsDomList.
-
-```typescript
-dom.select("#id")!.children();
-```
-
-## FastjsDom.next
-
-Select inside the element.
-
-```typescript
-dom.select("#id")!.next(".class");
-```
-
-## FastjsDom.each
-
-Loop the children elements.
-
-```typescript
-dom.select("#id")!.each((element) => {
-  console.log(element);
-});
-// deep loop
-dom.select("#id")!.each((element) => {
-  console.log(element);
+dom.select("#tree")!.each((el, raw, index) => {
+  el.setAttr("data-index", String(index));
 }, true);
 ```
 
-## FastjsDom.addEvent
+## Styles
 
-Add event listener to the element.
+### `FastjsDom.getStyle`
 
 ```typescript
-dom.select("#id")!.addEvent("click", (el: FastjsDom, e: Event) => {
-  console.log("click");
+dom.select("#x")!.getStyle();         // a reactive style Proxy
+dom.select("#x")!.getStyle("color");  // string
+dom.select("#x")!.getStyle((style, el) => console.log(style));
+```
+
+The Proxy reads inline styles first and falls back to `getComputedStyle`. Writing into the Proxy forwards to `setStyle`, so you can set inline styles directly:
+
+```typescript
+const style = dom.select("#x")!.getStyle();
+console.log(style.color);
+style.backgroundColor = "tomato"; // same as setStyle('background-color', 'tomato')
+```
+
+:::advance
+
+#### Type Declaration
+
+```typescript
+function getStyle(): StyleObj; // reactive Proxy
+function getStyle(key: keyof CSSStyleDeclaration): string;
+function getStyle(callback: (style: StyleObj, dom: FastjsDom) => void): FastjsDom;
+```
+
+:::
+
+### `FastjsDom.setStyle`
+
+```typescript
+dom.select("#card")!.setStyle({ color: "white", backgroundColor: "#333" });
+dom.select("#card")!.setStyle("color: red; padding: 8px;");
+dom.select("#card")!.setStyle("display", "none", true); // !important
+```
+
+> CamelCase keys are converted to kebab-case automatically.
+
+:::advance
+
+#### Type Declaration
+
+```typescript
+function setStyle(style: SetStyleObj): FastjsDom; // batch; null values are ignored
+function setStyle(style: string): FastjsDom;      // direct cssText
+function setStyle(key: StyleObjKeys, val: string, important?: boolean): FastjsDom;
+```
+
+:::
+
+## Classes
+
+| Method | Description |
+| --- | --- |
+| `getClass()` | Returns a copy of `classList` as `string[]` |
+| `getClass(callback)` | Same array passed to the callback (no return value) |
+| `setClass(name, value?)` | Toggle one class. `value` defaults to `true` |
+| `setClass({ [name]: boolean })` | Toggle many at once |
+| `addClass(...names)` / `addClass(names[])` | Add one or many classes; spaces in a string are split |
+| `removeClass(...names)` / `removeClass(names[])` | Remove one or many classes |
+| `clearClass()` | Reset `className` to an empty string |
+
+```typescript
+dom.select("#nav")!
+  .addClass("primary", "fixed")
+  .removeClass("hidden")
+  .setClass({ active: true, disabled: false });
+
+dom.select("#nav")!.clearClass(); // empty className
+```
+
+## Attributes
+
+```typescript
+dom.select("a")!.getAttr();             // { href: "/home", ... }
+dom.select("a")!.getAttr("href");       // "/home" or null
+dom.select("a")!.setAttr({ href: "/home", target: "_blank" });
+dom.select("a")!.setAttr("rel", null);  // removes rel
+```
+
+- `getAttr()` returns a Proxy: read attribute names off it, or assign to mutate the DOM.
+- `setAttr` with `null` removes the attribute.
+
+:::advance
+
+#### Type Declaration
+
+```typescript
+function getAttr(): { [key: string]: string };
+function getAttr(key: string): string | null;
+function getAttr(callback: (attrs, dom: FastjsDom) => void): FastjsDom;
+
+function setAttr(attrs: { [key: string]: string | null }): FastjsDom;
+function setAttr(key: string, val: string | null): FastjsDom;
+```
+
+:::
+
+## Events
+
+### `FastjsDom.addEvent`
+
+The callback receives the `FastjsDom` first so it can keep chaining inside the handler.
+
+```typescript
+dom.select("button")!.addEvent("click", (el, e) => {
+  el.setClass("active", !el.getClass().includes("active"));
+  console.log(e.type);
 });
 ```
 
-## FastjsDom.removeEvent
+:::advance
 
-Remove event listener from the element by key or function.
-
-```typescript
-const fn = (el: FastjsDom, e: Event) => {
-  console.log("click");
-};
-dom.select("#id")!.addEvent("click", fn);
-// remove by these ways
-dom.select("#id")!.removeEvent("click");
-dom.select("#id")!.removeEvent("click", 0);
-dom.select("#id")!.removeEvent(fn);
-```
-
-## FastjsDom.getStyle
-
-Get the style of the element.
+#### Type Declaration
 
 ```typescript
-dom.select("#id")!.getStyle(); // CSSStyleObject
-dom.select("#id")!.getStyle("color"); // string
-dom.select("#id")!.getStyle((style, dom: FastjsDom) => {
-  console.log(style); // CSSStyleObject
-});
+addEvent(
+  type: keyof HTMLElementEventMap,
+  callback: (el: FastjsDom, event: Event) => void,
+): FastjsDom;
 ```
 
-## FastjsDom.setStyle
+:::
 
-Set the style of the element.
+### `FastjsDom.removeEvent`
+
+Four overloads to cover the most common removal patterns:
+
+| Call | Removes |
+| --- | --- |
+| `removeEvent()` | **All** listeners registered by Fastjs on this element |
+| `removeEvent(type)` | Every listener of the given event type |
+| `removeEvent(callback)` | Every entry whose `callback === callback` |
+| `removeEvent(type, key)` | The entry at `_events[key]` for the given type |
 
 ```typescript
-dom.select("#id")!.setStyle({
-  color: "red",
-  backgroundColor: "black",
-});
-dom.select("#id")!.setStyle("color", "red");
-dom.select("#id")!.setStyle("color", "red", true); // important
+const handler = () => console.log("hi");
+const el = dom.select("button")!;
+el.addEvent("click", handler);
+el.removeEvent(handler);     // by callback
+el.removeEvent("click");     // by type
+el.removeEvent();            // wipe everything
 ```
 
-## FastjsDom.getClass
+## Insertion
 
-Get the class of the element.
+`push` and `insert` are the two complementary insertion APIs:
+
+- `a.push(b, target)` → "place `a` somewhere relative to `b`"
+- `a.insert(b, target)` → "place `b` somewhere relative to `a`"
+
+### `FastjsDom.push`
+
+`target` is one of `"firstElementChild" | "lastElementChild" | "randomElementChild" | "beforeElement" | "afterElement" | "replaceElement" | number`.
+
+- `el` defaults to `document.body`.
+- `target` defaults to `"lastElementChild"`.
+- `clone = true` inserts a clone, leaving the original in place.
+- `"replaceElement"` ignores `el` and replaces the **current** element with itself (used together with `clone: true` to swap in a fresh copy).
+- A numeric `target` inserts the element at position `target` of `el.children`.
 
 ```typescript
-dom.select("#id")!.getClass(); // string[]
-dom.select("#id")!.getClass((list: string[], dom: FastjsDom) => {
-  console.log(classList); // ["class1", "class2"]
-});
+dom.newEl("div", { text: "Hi" })
+  .push(dom.select("#container")!, "firstElementChild");
 ```
 
-## FastjsDom.setClass
+:::advance
 
-Set the class of the element.
-
-```typescript
-dom.select("#id")!.setClass("class", true); // default is true
-dom.select("#id")!.setClass({
-  class1: true,
-  class2: false,
-});
-```
-
-## FastjsDom.addClass
-
-Add class to the element.
-
-```typescript
-dom.select("#id")!.addClass("class1", "class2");
-dom.select("#id")!.addClass("class1 class2", "class3");
-dom.select("#id")!.addClass(["class1", "class2"]);
-```
-
-## FastjsDom.removeClass
-
-Remove class from the element.
-
-```typescript
-dom.select("#id")!.removeClass("class1", "class2");
-dom.select("#id")!.removeClass("class1 class2", "class3");
-dom.select("#id")!.removeClass(["class1", "class2"]);
-```
-
-## FastjsDom.clearClass
-
-Clear all class from the element.
-
-```typescript
-dom.select("#id")!.clearClass();
-```
-
-## FastjsDom.getAttr
-
-Get the attribute of the element.
-
-```typescript
-dom.select("#id")!.getAttr(); // Object
-dom.select("#id")!.getAttr("data-id"); // string
-```
-
-## FastjsDom.setAttr
-
-Set the attribute of the element.
-
-```typescript
-dom.select("#id")!.setAttr("data-id", "id");
-dom.select("#id")!.setAttr({
-  "data-id": "id",
-});
-```
-
-## FastjsDom.push
-
-Push the element to a target element.
+#### Type Declaration
 
 ```typescript
 type PushTarget =
-  | number
   | "firstElementChild"
   | "lastElementChild"
   | "randomElementChild"
   | "beforeElement"
   | "afterElement"
-  | "replaceElement";
+  | "replaceElement"
+  | number;
 
 function push<T extends PushTarget>(
-  el: HTMLElement | FastjsDomList | FastjsDom,
-  target: T,
+  el?: HTMLElement | FastjsDomList | FastjsDom,
+  target?: T,
   clone?: boolean,
-): PushReturn<T>;
-```
+): PushReturn<T, ElementType>;
 
-Example:
-
-```typescript
-dom.create("div").push(dom.select("#app"), "lastElementChild");
-```
-
-It will return a `PushReturn<T>` object.
-
-```typescript
-type PushReturn<T> = {
+interface PushReturn<T, ElementType extends ElementList> {
   isReplace: T extends "replaceElement" ? true : false;
   newElement: T extends "replaceElement" ? FastjsDom : never;
-  oldElement: T extends "replaceElement" ? FastjsDom : never;
+  oldElement: T extends "replaceElement" ? FastjsDom<ElementType> : never;
+  /** Index in the parent's children; -1 when it can't be computed */
   index: number;
+  /** Always points at the newly placed node */
   el: FastjsDom;
-  origin: FastjsDom;
+  /** The FastjsDom that .push was called on */
+  origin: FastjsDom<ElementType>;
   father: FastjsDom | null;
-};
+}
 ```
 
-## FastjsDom.insert
+:::
 
-Insert a element to it.
+### `FastjsDom.insert`
+
+`target` is one of `"first" | "last" | "random" | "before" | "after" | number`.
+
+- `target` defaults to `"last"`.
+- `clone = true` inserts a clone of `el`.
 
 ```typescript
-type InsertTarget = number | "after" | "before" | "first" | "last" | "random";
+dom.select("#button")!.insert(dom.newEl("div", { class: "tooltip" }), "after");
+```
+
+:::advance
+
+#### Type Declaration
+
+```typescript
+type InsertTarget = "first" | "last" | "random" | "before" | "after" | number;
 
 function insert<T extends InsertTarget>(
   el: HTMLElement | FastjsDomList | FastjsDom,
-  target: T,
+  target?: T,
   clone?: boolean,
-): InsertReturn;
-```
+): InsertReturn<ElementType>;
 
-Example:
-
-```typescript
-dom.select("#app").insert(dom.create("div"), "last");
-```
-
-It will return a `InsertReturn` object.
-
-```typescript
-type InsertReturn = {
+interface InsertReturn<ElementType extends ElementList> {
   index: number;
   added: FastjsDom;
-  origin: FastjsDom;
-};
+  origin: FastjsDom<ElementType>;
+}
+```
+
+:::
+
+## `FastjsDomList` extras
+
+`FastjsDomList` also behaves like an array (`list[0]`, `list.length`, `Array.prototype` methods) and forwards `FastjsDom` calls to every member. In addition, it exposes a few list-only helpers:
+
+| Method | Description |
+| --- | --- |
+| `add(el)` | Push a `FastjsDom` onto the list |
+| `delete(key, deleteDom = true)` | Remove the entry at `key`; also detaches the element by default |
+| `each(callback)` | `(el, raw, index) => void` over each member |
+| `el(key = 0)` / `getElement(key = 0)` | Get the underlying DOM node at index |
+| `getDom(key = 0)` | Get the `FastjsDom` at index |
+| `next(selector?)` | Re-query inside **all** elements; defaults to `"*"` |
+| `toArray()` | Return the internal array reference (still a `FastjsDomList`) |
+| `toElArray()` | Return a copy of the underlying DOM nodes |
+
+```typescript
+dom(".item")!
+  .each((el, _, i) => el.setAttr("data-i", String(i)))
+  .delete(0)              // remove the first one
+  .next<FastjsDomList>("img");
 ```
